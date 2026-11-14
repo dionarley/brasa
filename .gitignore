@@ -2,6 +2,7 @@
 # Tudo o que é derivado/gerado não entra no histórico: renders, DXF, exports,
 # previews e backups. A fonte da verdade é cad/solidcraft/PS-001.sc.
 /out/
+/dist/
 /render.png
 /shot*.png
 
@@ -23,3 +24,6 @@ cad/solidcraft/*.3mf
 *.tmp
 *.log
 .DS_Store
+
+# Travas do LibreOffice
+.~lock.*#

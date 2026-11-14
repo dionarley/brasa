@@ -6,6 +6,37 @@ documentação** (não a uma API). Enquanto a série for `0.x`, mudanças de for
 ocorrer em versões menores. Cada tag do git corresponde a um estado do arquivo
 `cad/solidcraft/PS-001.sc`.
 
+## [0.16.0] — 2026-11-14
+
+### Adicionado
+- **PLM**: `docs/plm/PLANO.md` (`PS-001-PL-001`) define códigos de documento, estados
+  (rascunho → em revisão → aprovado → publicado → obsoleto), papéis, fluxo de mudança,
+  baseline por tag e critérios de aprovação por tipo de documento.
+- `docs/plm/REGISTRO.md` (`PS-001-PL-002`): registro mestre com rev., estado e arquivo de
+  cada documento do projeto.
+- `docs/uso/USO.md` (`PS-001-US-001`): manual de uso e segurança — uso pretendido e não
+  pretendido, especificações, princípio de funcionamento, ciclo de trabalho, manutenção,
+  solução de problemas, descarte.
+- `docs/construcao/CONSTRUCAO.md` (`PS-001-CO-001`): sequência de montagem em 5
+  subconjuntos, com critério de aceitação e ponto de inspeção em cada etapa, além dos
+  valores esperados de ensaio (primário ~25 Ω, secundário 0,5–1,5 mΩ, isolação ≥ 2 MΩ).
+- `docs/construcao/BOM.csv` (`PS-001-LM-001`): 16 itens com quantidade, material,
+  dimensões nominais, volume no modelo e observação.
+- `tools/plm/build.sh` + `tools/plm/template.typ`: geram os PDFs (pandoc → typst) e o
+  pacote `dist/v<versao>/` com BOM, renders, `MANIFEST.md` e `SHA256SUMS`.
+- Renders de conferência `out/plot/v016/` (iso, perfil, frontal, topo, detalhe do
+  transformador) gerados do modelo aprovado.
+
+### Alterado
+- `README.md`: versão 0.16.0, seção **Documentação** com a tabela de códigos e o comando
+  de build, estrutura de pastas atualizada e próximos passos revisados.
+- `.gitignore`: `dist/` (pacotes de liberação) fora do git.
+
+### Corrigido
+- Renders: `Nucleo` e `Cabo` estavam ocultos no documento desde a revisão anterior, o que
+  fazia o modelo aparecer com o cabo solto; visibilidade restaurada antes de gerar o
+  pacote.
+
 ## [0.15.0] — 2026-11-14
 
 **Marco: modelo 3D aprovado.** A partir daqui o 3D é congelado e o trabalho passa para a
@@ -93,6 +124,7 @@ prancha 2D e para a documentação de produto.
   modelo** e não devem ser usadas como referência: serão refeitas depois da aprovação
   do 3D.
 
+[0.16.0]: #0160--2026-11-14
 [0.15.0]: #0150--2026-11-14
 [0.14.0]: #0140--2026-11-14
 [0.12.0]: #0120--2026-11-13

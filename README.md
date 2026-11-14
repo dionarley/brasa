@@ -1,7 +1,7 @@
 # PS-001 — Pistola de solda por transformador (estudo)
 
-**Licença:** [CC BY-NC-SA 4.0](LICENSE) (conteúdo próprio) · **Versão:** 0.15.0 ·
-**Estado:** modelo 3D aprovado; prancha 2D em execução.
+**Licença:** [CC BY-NC-SA 4.0](LICENSE) (conteúdo próprio) · **Versão:** 0.16.0 ·
+**Estado:** modelo 3D aprovado; documentação de produto publicada; prancha 2D em execução.
 
 Reconstrução **de estudo** de um estanhador de 550 W / 127 V com transformador e
 secundário de fita de cobre, modelado como peça paramétrica no SolidCraft a partir de
@@ -17,6 +17,7 @@ de reutilizar qualquer coisa.
 | Renders de conferência (`out/plot/ps001_v15_*.png`) | gerados (não versionados) |
 | Exportações STEP/3MF | **antigas** (13/11) — reexportar da versão aprovada |
 | Prancheta 2D (A2) | **em execução** — vistas, corte, detalhes, BOM |
+| Documentação PLM (`docs/plm/`, `docs/uso/`, `docs/construcao/`) | **publicada** — plano, uso e construção |
 | Versionamento e licença | concluído |
 
 ## Estrutura
@@ -25,8 +26,15 @@ de reutilizar qualquer coisa.
 cad/solidcraft/
   PS-001.sc        fonte da verdade: design paramétrico (zip com document.json)
 docs/
+  plm/             plano do ciclo de vida (PLANO.md) e registro mestre (REGISTRO.md)
+  uso/             manual de uso e segurança (USO.md)
+  construcao/      guia de construção (CONSTRUCAO.md) e lista de materiais (BOM.csv)
   referencias.md   fontes, autoria e o que cada uma contribuiu
+tools/plm/
+  build.sh         gera os PDFs (pandoc → typst) e o pacote em dist/
+  template.typ     template de documento (capa, cabeçalho, rodapé)
 out/               renders, DXF e exportações (fora do git)
+dist/              pacotes de liberação gerados (fora do git)
 ref/               fotos e vetores de referência (fora do git, direitos de terceiros)
 LEGAL.md           escopo da licença, marcas, desenho industrial, segurança
 CHANGELOG.md       histórico por versão
@@ -87,6 +95,33 @@ pelas duas janelas do núcleo (X 9,17 e −30,83) sem tocar em núcleo, carretel
 | Cabo | madeira, loft de 10 seções, ~167 mm, topo largo |
 | Chave | bezel 7 × 28 × 37, tecla 5,5 × 18 |
 
+## Documentação
+
+Os documentos são escritos em Markdown (fonte única) e os PDFs são **gerados**. O
+processo — códigos, estados, critérios de aprovação e liberação — está em
+[`docs/plm/PLANO.md`](docs/plm/PLANO.md); o índice controlado em
+[`docs/plm/REGISTRO.md`](docs/plm/REGISTRO.md).
+
+| Código | Documento | Fonte |
+|---|---|---|
+| PS-001-PL-001 | Plano de ciclo de vida (PLM) | [`docs/plm/PLANO.md`](docs/plm/PLANO.md) |
+| PS-001-PL-002 | Registro mestre de documentos | [`docs/plm/REGISTRO.md`](docs/plm/REGISTRO.md) |
+| PS-001-US-001 | Manual de uso e segurança | [`docs/uso/USO.md`](docs/uso/USO.md) |
+| PS-001-CO-001 | Guia de construção (estudo) | [`docs/construcao/CONSTRUCAO.md`](docs/construcao/CONSTRUCAO.md) |
+| PS-001-LM-001 | Lista de materiais (BOM) | [`docs/construcao/BOM.csv`](docs/construcao/BOM.csv) |
+| PS-001-DR-001 | Prancheta 2D A2 | em execução |
+
+Gerar o pacote de liberação (PDFs, BOM e renders com manifesto `sha256`):
+
+```sh
+tools/plm/build.sh                  # dist/v0.16.0/
+tools/plm/build.sh --pdf            # só os PDFs
+tools/plm/build.sh --clean          # limpa dist/ antes
+```
+
+Requer `pandoc` e `typst`. Os renders vêm de `out/plot/v016/`; se faltarem, o PDF sai
+com uma nota no lugar da figura em vez de quebrar.
+
 ## Abrir e editar
 
 Requer o SolidCraft (app desktop) ou o servidor MCP equivalente. O `.sc` é um zip com
@@ -138,8 +173,9 @@ incêndio e queimadura, e a responsabilidade é de quem constrói. Ver LEGAL.md,
 
 ## Próximos passos
 
-1. Aprovar (ou corrigir) o modelo 3D — revisão em andamento.
-2. Atribuir densidade/material por corpo para massa realista.
-3. Reexportar STEP/3MF a partir da versão aprovada.
-4. Refazer a prancha 2D A2 do zero (vistas, corte, detalhes, BOM, cotas) no
-   OpenCADStudio, com `ocs_audit` e `save_verified`.
+1. Refazer a prancha 2D A2 do zero (vistas, corte, detalhes, BOM, cotas) no
+   OpenCADStudio, com `ocs_audit` e `save_verified` — documento `PS-001-DR-001`.
+2. Atribuir densidade/material por corpo para massa realista (hoje o CAD usa 1,29 g/cm³
+   para tudo, o que não representa a peça).
+3. Reexportar STEP/3MF a partir da versão aprovada (`v0.15.0`).
+4. Publicar a revisão `B` de uso/construção quando a prancha 2D fechar as cotas.
