@@ -5,6 +5,10 @@ Entrada : out/draw/v017/{frente,lado,topo,iso}.dxf  (file.export_view_dxf, 1:1)
           docs/construcao/BOM.csv                   (lista de materiais oficial)
 Saída   : out/draw/v017/PS-001_A2.dxf                (ABNT A2, 1º diedro, 1:2)
 
+O DXF gerado é o de trabalho. A publicação (PS-001-DR-001 rev. A) sai do OpenCADStudio:
+abrir o DXF, `ocs_audit` (dxf/2018), `plot` A2 1:1 e `save_verified` para
+out/draw/v017/PS-001-DR-001_rA_prancha-a2.{pdf,dxf}.
+
 A geometria das vistas NÃO é desenhada aqui: vem do modelo. Este script só
 reposiciona, escala e acrescenta a moldura, o carimbo, as cotas e a BOM.
 """
@@ -185,7 +189,7 @@ def main():
     # dados principais (canto superior esquerdo)
     d.text(22, 386, TXT, "DADOS PRINCIPAIS", "TEXTO")
     dados = [
-        ("Envelope (X x Y x Z)", "148,3 x 52,3 x 313,1 mm"),
+        ("Envelope (X x Y x Z)", "148,3 x 52,3 x 312,7 mm"),
         ("Potência / tensão", "550 W / 127 V ~ 60 Hz"),
         ("Núcleo", "EI-75: 75 x 75 x 35; janela 12,5 x 50; perna 12,5"),
         ("Primário", "~700 espiras AWG 28; carretel 37 x 47 x 44"),
@@ -217,14 +221,10 @@ def main():
     d.text(380, 100, TXT, "DETALHE A — CONJUNTO MAGNÉTICO (ESCALA 1:1)", "TEXTO")
     d.text(380, 93, TXT_SM, "Núcleo EI-75, carretel com primário, secundário e cantoneiras", "TEXTO")
 
-    # marca do detalhe na vista frontal (aponta para o canto do núcleo)
-    d.line(55, 246, 67, 232, "COTA")
-    d.text(50, 247, TXT, "A", "TEXTO")
-
     # cotas de envelope (escala 1:2)
     fw, fh = sizes["frente"]
     dim_h(d, VF[0], VF[0] + fw, VF[1] + fh + 9, VF[1] + fh + 12, "148,3")
-    dim_v(d, VF[1], VF[1] + fh, VF[0] - 14, VF[0] - 20, "312,8")
+    dim_v(d, VF[1], VF[1] + fh, VF[0] - 14, VF[0] - 20, "312,7")
     tw, th = sizes["topo"]
     dim_v(d, 78, 78 + th, VF[0] - 14, VF[0] - 20, "52,3")
 
@@ -278,9 +278,10 @@ def main():
         "1. Modelo 3D paramétrico: cad/solidcraft/PS-001.sc (tag v0.15.0, 22 corpos).",
         "2. Vistas obtidas por projeção do modelo; escala 1:2, cotas em mm.",
         "3. Material, dimensões e volumes de cada item: PS-001-LM-001 (BOM.csv).",
-        "4. Linhas ocultas omitidas; vistas sem corte.",
-        "5. Sequência de montagem em PS-001-CO-001; uso e segurança em PS-001-US-001.",
-        "6. Estudo sem certificação: não é instrução de fabricação. Ver LEGAL.md.",
+        "4. Detalhe A: conjunto magnético ampliado a 1:1, a partir da vista frontal.",
+        "5. Linhas ocultas omitidas; vistas sem corte.",
+        "6. Sequência de montagem em PS-001-CO-001; uso e segurança em PS-001-US-001.",
+        "7. Estudo sem certificação: não é instrução de fabricação. Ver LEGAL.md.",
     ]
     for i, t in enumerate(notas):
         d.text(340, 288 - i * 6.4, TXT if i == 0 else TXT_SM, t, "TEXTO")

@@ -6,6 +6,19 @@ documentação** (não a uma API). Enquanto a série for `0.x`, mudanças de for
 ocorrer em versões menores. Cada tag do git corresponde a um estado do arquivo
 `cad/solidcraft/PS-001.sc`.
 
+## [0.17.1] — 2026-11-14
+
+### Alterado
+- STEP e 3MF **regerados a partir do modelo aprovado** (`v0.15.0`): as exportações em
+  `cad/solidcraft/` eram de 13/11, anteriores ao secundário reencaminhado e ao carretel.
+  STEP AP242 com 2.059.738 bytes; 3MF com 5.092.530 bytes. Ambos são derivados e ficam
+  fora do git (`.gitignore`), mas agora correspondem ao `PS-001.sc` da tag `v0.15.0`.
+- Prancha `DR-001` regerada: a altura do envelope estava impressa como 313,1 na tabela de
+  dados e 312,8 na cota; o `measure` dá **312,7 mm**. Corrigido nos dois lugares, a marca
+  "A" da vista frontal foi substituída por nota (não ancorava na geometria) e a BOM
+  passou a caber na moldura. Sem mudança de forma: continua rev. A, com sha256
+  `8d61f09661bf6256…` para o DXF e `7850552f3876d749…` para o PDF.
+
 ## [0.17.0] — 2026-11-14
 
 **Marco: prancha 2D A2 publicada (`PS-001-DR-001` rev. A).** O desenho é montado a partir
@@ -160,6 +173,7 @@ prancha 2D e para a documentação de produto.
   modelo** e não devem ser usadas como referência: serão refeitas depois da aprovação
   do 3D.
 
+[0.17.1]: #0171--2026-11-14
 [0.17.0]: #0170--2026-11-14
 [0.16.0]: #0160--2026-11-14
 [0.15.0]: #0150--2026-11-14

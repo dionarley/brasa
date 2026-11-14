@@ -143,6 +143,7 @@ aprovado naquele instante.
 | `v0.15.0` | **3D aprovado** — secundário fora do grampo, primário em carretel |
 | `v0.16.0` | documentação PLM, uso e construção |
 | `v0.17.0` | **prancha 2D A2 publicada** (`DR-001` rev. A) |
+| `v0.17.1` | exportações STEP/3MF regeradas do modelo aprovado |
 
 ## 6.2 Pacote de liberação
 

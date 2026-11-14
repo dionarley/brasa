@@ -1,6 +1,6 @@
 # PS-001 — Pistola de solda por transformador (estudo)
 
-**Licença:** [CC BY-NC-SA 4.0](LICENSE) (conteúdo próprio) · **Versão:** 0.17.0 ·
+**Licença:** [CC BY-NC-SA 4.0](LICENSE) (conteúdo próprio) · **Versão:** 0.17.1 ·
 **Estado:** modelo 3D aprovado; documentação de produto publicada; prancha 2D A2 publicada.
 
 Reconstrução **de estudo** de um estanhador de 550 W / 127 V com transformador e
@@ -15,7 +15,7 @@ de reutilizar qualquer coisa.
 |---|---|
 | Modelo 3D paramétrico (`cad/solidcraft/PS-001.sc`) | **aprovado** — 22 corpos, 0 erros, 448,4 cm³ |
 | Renders de conferência (`out/plot/ps001_v15_*.png`) | gerados (não versionados) |
-| Exportações STEP/3MF | **antigas** (13/11) — reexportar da versão aprovada |
+| Exportações STEP/3MF | **regeradas** da versão aprovada (derivadas, fora do git) |
 | Prancha 2D A2 (`PS-001-DR-001` rev. A) | **publicada** — vistas em 1º diedro, detalhe 1:1, cotas de envelope, BOM |
 | Documentação PLM (`docs/plm/`, `docs/uso/`, `docs/construcao/`) | **publicada** — plano, uso e construção |
 | Versionamento e licença | concluído |
@@ -193,8 +193,7 @@ A2 correspondente. As pranchas antigas em `out/draw/` e `out/vector/` estão **d
 
 1. Atribuir densidade/material por corpo para massa realista (hoje o CAD usa 1,29 g/cm³
    para tudo, o que não representa a peça).
-2. Reexportar STEP/3MF a partir da versão aprovada (`v0.15.0`).
-3. Cotas finas de montagem (furação, folgas) na prancha — hoje ela cobre envelope e
+2. Cotas finas de montagem (furação, folgas) na prancha — hoje ela cobre envelope e
    detalhe.
-4. Publicar a revisão `B` do manual de uso quando houver massa e ciclo de trabalho
+3. Publicar a revisão `B` do manual de uso quando houver massa e ciclo de trabalho
    declarados.

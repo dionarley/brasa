@@ -60,6 +60,7 @@ Markdown e reconstrói; se o DXF está errado, corrige-se o desenho e reexporta.
 | 0.15.0 | 2026-11-14 | **3D aprovado** | MD (congelado) |
 | 0.16.0 | 2026-11-14 | documentação de produto | PL, US, CO, LM, RG |
 | 0.17.0 | 2026-11-14 | **prancha 2D A2 publicada** | DR, CO (rev. B), RG |
+| 0.17.1 | 2026-11-14 | exportações STEP/3MF regeradas do modelo aprovado | MD (derivados), RG |
 
 ## 4. Revisões substituídas
 

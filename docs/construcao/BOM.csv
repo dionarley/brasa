@@ -1,17 +1,17 @@
-item,codigo,descricao,qtd,corpo_no_modelo,material,dimensoes_nominais,volume_cm3,observacao
-1,PS-001-LM-01,Núcleo EI-75 (pacote de chapas),1,Nucleo,aço silicioso,a 75 × 75 × 35 mm; janela 12,5 × 50; perna 12,5,148.90,Chapa ~0,5 mm empilhada e rebitada; medidas de catálogo EI
-2,PS-001-LM-02,Carretel do primário,1,Bobina,termoplástico rígido (baquelite ou equivalente),37 × 47 × 44 mm; alma 33 × 43 × 40; furo 25 × 35; flanges 3 mm,23.44,Flanges 3 mm em Z ±19…22; quinas R8; topos planos
-3,PS-001-LM-03,Fio de cobre esmaltado AWG 28,1,Fio_primario,cobre esmaltado,Ø 0,32 mm; ~700 espiras; ~118 m,0.66,No modelo só o trecho de ligação é representado; o enrolamento não é geometria
+item,codigo,descricao,qtd,corpo_no_modelo,material,dimensoes_nominais,volume_cm3,observacao,,,,
+1,PS-001-LM-01,Núcleo EI-75 (pacote de chapas),1,Nucleo,aço silicioso,a 75 × 75 × 35 mm; janela 12,5 × 50; perna 12,5,148.90,Chapa ~0,5 mm empilhada e rebitada; medidas de catálogo EI,
+2,PS-001-LM-02,Carretel do primário,1,Bobina,termoplástico rígido (baquelite ou equivalente),37 × 47 × 44 mm; alma 33 × 43 × 40; furo 25 × 35; flanges 3 mm,23.44,Flanges 3 mm em Z ±19…22; quinas R8; topos planos,,,,
+3,PS-001-LM-03,Fio de cobre esmaltado AWG 28,1,Fio_primario,cobre esmaltado,Ø 0,32 mm; ~700 espiras; ~118 m,0.66,No modelo só o trecho de ligação é representado; o enrolamento não é geometria,,,
 4,PS-001-LM-04,Fita de cobre do secundário,1,Secundario,cobre eletrolítico,2 × 9 mm; 2,5 voltas; passo 12,8 mm; ~0,7 m,10.26,Uma tira contínua; pontas contornam o grampo em X 31,7
-5,PS-001-LM-05,Ponta em U,1,Ponta_U,cobre,tubo Ø 4,5 × 0,75 mm de parede; X 34…96,1,2.39,Conformada em U; extremidades achatadas nas postas
-6,PS-001-LM-06,Cantoneira do transformador,4,Canto_dir_sup / Canto_dir_inf / Canto_esq_sup / Canto_esq_inf,aço,15,5 × 13 × 75 mm; chapa 3 mm,22.24,Total das quatro; furação M5 passante
-7,PS-001-LM-07,Parafuso M5 das cantoneiras,4,Parafuso_canto_*,aço,M5 × 75 mm com porca,7.36,Total; atravessa o pacote do núcleo
-8,PS-001-LM-08,Parafuso M5 da ponteira,2,Parafuso_ponta_sup / Parafuso_ponta_inf,aço,M5; furo Ø 6,2 mm; posição X 46,—,Com porca; fixa as postas do U
-9,PS-001-LM-09,Porca M5 da ponteira,2,Porca_ponta_sup / Porca_ponta_inf,aço,M5,—,Conjunto inferior espelhado
-10,PS-001-LM-10,Cabo / empunhadura,1,Cabo,madeira,~167 mm; loft de 10 seções; topo largo,215.00,Aloja chave, fio do primário e prensa-cabo
-11,PS-001-LM-11,Chave,1,Chave,termoplástico,bezel 7 × 28 × 37 mm,9.52,Total com a tecla; face +Y do cabo
-12,PS-001-LM-12,Tecla,1,Tecla,termoplástico,5,5 × 18 mm,—,Retorno por mola; curso curto
-13,PS-001-LM-13,Prensa-cabo,1,Prensa_cabo,termoplástico / borracha,para cabo Ø 6…8 mm,6.39,Total com o cabo de força; alívio de tração na base
-14,PS-001-LM-14,Cabo de força,1,Cabo_forca,PVC flexível,2 × 0,75 mm²; 127 V; plugue NBR 14136,—,Comprimento não modelado
-15,PS-001-LM-15,Isolante entre primário e secundário,—,—,fita de poliéster / mica / papel isolante,—,—,Não modelado; barreira entre enrolamentos
-16,PS-001-LM-16,Estanho e fluxo,—,—,Sn-Pb ou Sn-Ag-Cu + fluxo,—,—,Consumível de operação
+5,PS-001-LM-05,Ponta em U,1,Ponta_U,cobre,tubo Ø 4,5 × 0,75 mm de parede; X 34…96,1,2.39,Conformada em U; extremidades achatadas nas postas,
+6,PS-001-LM-06,Cantoneira do transformador,4,Canto_dir_sup / Canto_dir_inf / Canto_esq_sup / Canto_esq_inf,aço,15,5 × 13 × 75 mm; chapa 3 mm,22.24,Total das quatro; furação M5 passante,,,
+7,PS-001-LM-07,Parafuso M5 das cantoneiras,4,Parafuso_canto_*,aço,M5 × 75 mm com porca,7.36,Total; atravessa o pacote do núcleo,,,,
+8,PS-001-LM-08,Parafuso M5 da ponteira,2,Parafuso_ponta_sup / Parafuso_ponta_inf,aço,M5; furo Ø 6,2 mm; posição X 46,—,Com porca; fixa as postas do U,,,
+9,PS-001-LM-09,Porca M5 da ponteira,2,Porca_ponta_sup / Porca_ponta_inf,aço,M5,—,Conjunto inferior espelhado,,,,
+10,PS-001-LM-10,Cabo / empunhadura,1,Cabo,madeira,~167 mm; loft de 10 seções; topo largo,215.00,Aloja chave, fio do primário e prensa-cabo,,,
+11,PS-001-LM-11,Chave,1,Chave,termoplástico,bezel 7 × 28 × 37 mm,9.52,Total com a tecla; face +Y do cabo,,,,
+12,PS-001-LM-12,Tecla,1,Tecla,termoplástico,5,5 × 18 mm,—,Retorno por mola; curso curto,,,
+13,PS-001-LM-13,Prensa-cabo,1,Prensa_cabo,termoplástico / borracha,para cabo Ø 6…8 mm,6.39,Total com o cabo de força; alívio de tração na base,,,,
+14,PS-001-LM-14,Cabo de força,1,Cabo_forca,PVC flexível,2 × 0,75 mm²; 127 V; plugue NBR 14136,—,Comprimento não modelado,,,
+15,PS-001-LM-15,Isolante entre primário e secundário,—,—,fita de poliéster / mica / papel isolante,—,—,Não modelado; barreira entre enrolamentos,,,,
+16,PS-001-LM-16,Estanho e fluxo,—,—,Sn-Pb ou Sn-Ag-Cu + fluxo,—,—,Consumível de operação,,,,
