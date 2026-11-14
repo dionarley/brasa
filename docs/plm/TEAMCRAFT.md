@@ -305,7 +305,8 @@ O STEP continua anexado e baixável; só não tem malha gerada. A visualização
 |---|---|---|---|
 | `CHG-000001` | 2026-11-14 | 23 revisões A: conjunto, 16 peças, 6 documentos | aprovada pelo `revisor`; tudo `released` |
 | `CHG-000002` | 2026-11-14 | `PL-001` B, `PL-002` B, `PL-003` A | aprovada pelo `revisor`; tudo `released` |
-| `CHG-000003` | 2026-11-14 | `PS-001` B, `US-001` B, `PL-001` C, `PL-002` C, `PL-003` B, `CO-001` C | identidade **Brasa**; aprovada pelo `revisor` |
+| `CHG-000003` | 2026-11-14 | `PS-001` B, `US-001` B, `PL-001` C, `PL-002` C, `PL-003` B e `CO-001` B (regularização) | identidade **Brasa**; aprovada pelo `revisor` |
+| `CHG-000004` | 2026-11-14 | `CO-001` C | guia de construção com a identidade Brasa; aprovada pelo `revisor` |
 
 A migração inicial é reproduzível por `tools/plm/teamcraft_migrate.py`; a segunda
 liberação, por `tools/plm/teamcraft_docs_b.py`; a identidade própria, por

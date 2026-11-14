@@ -7,8 +7,11 @@ novas revisões dos documentos que citavam marca de terceiro:
 * ``PS-001-US-001`` rev. B — manual de uso;
 * ``PS-001-PL-001`` rev. C — plano de PLM;
 * ``PS-001-PL-002`` rev. C — registro mestre;
-* ``PS-001-PL-003`` rev. B — manual do TeamCraft;
-* ``PS-001-CO-001`` rev. C — guia de construção.
+* ``PS-001-PL-003`` rev. B — manual do TeamCraft.
+
+O TeamCraft só tinha o ``PS-001-CO-001`` na rev. A (com o PDF rB): a rev. B é
+regularizada na ECO da identidade e a rev. C sai numa ECO própria, em seguida.
+Arquivos vêm de ``dist/v0.19.0/`` (a rev. B do guia vem de ``dist/v0.18.0/``).
 
 Abre a ECO "PS-001 — identidade Brasa", submete e aprova com o usuário revisor.
 Arquivos vêm de ``dist/v0.19.0/``.
@@ -91,25 +94,46 @@ REVISIONS = [
         "old": "PS-001-PL-003_rA_teamcraft.pdf",
         "folder": "docs",
     },
-    {
-        "number": "PS-001-CO-001",
-        "target": "C",
-        "name": "Guia de construção (estudo)",
-        "description": (
-            "Sequência de montagem, critérios de aceitação e ensaios; identidade "
-            "Brasa. Rev. C."
-        ),
-        "file": DIST / "PS-001-CO-001_rC_construcao.pdf",
-        "old": "PS-001-CO-001_rB_construcao.pdf",
-        "folder": "docs",
-    },
 ]
 
 CHANGE_TITLE = "PS-001 — identidade Brasa"
 CHANGE_DESC = (
     "O projeto passa a se chamar Brasa, sem marca de terceiro: conjunto renomeado, "
-    "manual de uso rev. B, plano rev. C, registro rev. C, manual do PDM rev. B e "
-    "guia de construção rev. C."
+    "manual de uso rev. B, plano rev. C, registro rev. C, manual do PDM rev. B. "
+    "Regulariza também a rev. B do guia de construção, publicada na v0.17.0 e "
+    "ausente do PDM."
+)
+
+# O TeamCraft recebeu o CO-001 só na rev. A, com o PDF rotulado rB; a rev. B real
+# (v0.17.0) precisa ser liberada antes de existir a rev. C. Por isso ela entra na
+# ECO da identidade e a rev. C sai numa ECO própria, logo depois.
+CO = "PS-001-CO-001"
+CO_B = {
+    "target": "B",
+    "name": "Guia de construção (estudo)",
+    "description": (
+        "Sequência de montagem, critérios de aceitação e ensaios. Rev. B, "
+        "publicada na v0.17.0 e regularizada no PDM."
+    ),
+    "file": DIST.parent / "v0.18.0" / "PS-001-CO-001_rB_construcao.pdf",
+    "old": None,
+    "folder": "docs",
+}
+CO_C = {
+    "target": "C",
+    "name": "Guia de construção (estudo)",
+    "description": (
+        "Sequência de montagem, critérios de aceitação e ensaios; identidade "
+        "Brasa. Rev. C."
+    ),
+    "file": DIST / "PS-001-CO-001_rC_construcao.pdf",
+    "old": "PS-001-CO-001_rB_construcao.pdf",
+    "folder": "docs",
+}
+CHANGE_C_TITLE = "PS-001-CO-001 — identidade Brasa na revisão C"
+CHANGE_C_DESC = (
+    "Guia de construção rev. C: identificação Brasa, alinhado ao conjunto rev. B e "
+    "ao manual de uso rev. B."
 )
 
 
@@ -235,20 +259,21 @@ def ensure_file(api: Api, number: str, rev: dict, path: Path, folder: str,
         print(f"  {number}: {old_name} removido da rev. {rev['code']}")
 
 
-def find_change(api: Api):
+def find_change(api: Api, title: str):
     _, data = api.call("GET", "/changes?limit=100")
     for change in data.get("changes", []):
-        if change["title"] == CHANGE_TITLE:
+        if change["title"] == title:
             return change
     return None
 
 
-def ensure_change(api: Api, items, reviewer: Api | None, approve: bool):
-    change = find_change(api)
+def ensure_change(api: Api, title: str, description: str, items,
+                  reviewer: Api | None, approve: bool):
+    change = find_change(api, title)
     if change is None:
         _, change = api.call("POST", "/changes", {
-            "title": CHANGE_TITLE,
-            "description": CHANGE_DESC,
+            "title": title,
+            "description": description,
             "priority": "normal",
         })
         print(f"ECO {change['number']} criada")
@@ -303,7 +328,8 @@ def main():
                         help="submete a ECO mas não aprova")
     args = parser.parse_args()
 
-    missing = [p for p in [r["file"] for r in REVISIONS] if not p.is_file()]
+    missing = [p for p in [r["file"] for r in REVISIONS]
+               + [CO_B["file"], CO_C["file"]] if not p.is_file()]
     if missing:
         sys.exit("Arquivos ausentes (rode tools/plm/build.sh antes):\n  "
                  + "\n  ".join(str(p) for p in missing))
@@ -327,20 +353,38 @@ def main():
         ensure_file(api, meta["number"], rev, meta["file"], meta["folder"],
                     meta["old"])
 
+    print("\n== guia de construção (regulariza a rev. B) ==")
+    rev = ensure_revision(api, CO, CO_B["target"], CO_B["name"], CO_B["description"])
+    ensure_file(api, CO, rev, CO_B["file"], CO_B["folder"], CO_B["old"])
+
     print("\n== ciclo de vida ==")
-    items = [(ASSEMBLY, "B")] + [(r["number"], r["target"]) for r in REVISIONS]
-    change = ensure_change(api, items, reviewer, approve=not args.no_approve)
+    items = ([(ASSEMBLY, "B")] + [(r["number"], r["target"]) for r in REVISIONS]
+             + [(CO, "B")])
+    change = ensure_change(api, CHANGE_TITLE, CHANGE_DESC, items, reviewer,
+                           approve=not args.no_approve)
+
+    print("\n== guia de construção rev. C ==")
+    rev = ensure_revision(api, CO, CO_C["target"], CO_C["name"], CO_C["description"])
+    ensure_file(api, CO, rev, CO_C["file"], CO_C["folder"], CO_C["old"])
+    if rev["state"] != "released":
+        change_c = ensure_change(api, CHANGE_C_TITLE, CHANGE_C_DESC,
+                                 [(CO, "C")], reviewer,
+                                 approve=not args.no_approve)
+    else:
+        change_c = find_change(api, CHANGE_C_TITLE) or {"number": "-", "status": "-"}
+        print(f"  {CO} rev. C já liberada")
 
     print("\n== verificação ==")
     bad = {}
-    for number, code in items:
+    for number, code in items + [(CO, "C")]:
         data = get_item(api, number)
         rev = next((r for r in data["revisions"] if r["code"] == code), None)
         state = rev["state"] if rev else "sem revisão"
         if state != "released":
             bad[number] = f"{code}/{state}"
-    print(f"revisões liberadas: {len(items) - len(bad)}/{len(items)}; "
-          f"ECO {change['number']}: {change['status']}")
+    print(f"revisões liberadas: {len(items) + 1 - len(bad)}/{len(items) + 1}; "
+          f"ECO {change['number']}: {change['status']}; "
+          f"ECO {change_c['number']}: {change_c['status']}")
     if bad:
         print("pendentes:", bad)
         sys.exit(1)

@@ -145,7 +145,7 @@ As revisões liberadas ficam em uma instância local do
 - liberação por ECO aprovada por um segundo usuário (`revisor`): `CHG-000001` levou as
   23 revisões A, `CHG-000002` liberou `PL-001`/`PL-002` rev. B e `PL-003` rev. A, e
   `CHG-000003` liberou a identidade **Brasa** (`PS-001` B, `US-001` B, `PL-001`/`PL-002`
-  C, `PL-003` B, `CO-001` C).
+  C, `PL-003` B, `CO-001` B) e `CHG-000004` fechou o `CO-001` C.
 
 A instalação, a operação, o MCP do OpenCode e o backup estão em
 [`docs/plm/TEAMCRAFT.md`](docs/plm/TEAMCRAFT.md). Backup manual:

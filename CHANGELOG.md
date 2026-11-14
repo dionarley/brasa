@@ -14,7 +14,8 @@ identidade ou referência de origem.
 
 ### Adicionado
 - `tools/plm/teamcraft_identity.py`: libera a identidade no TeamCraft — conjunto rev. B,
-  `US-001` rev. B, `PL-001`/`PL-002`/`CO-001` rev. C, `PL-003` rev. B e ECO `CHG-000003`.
+  `US-001` rev. B, `PL-001`/`PL-002` rev. C, `PL-003` rev. B, `CO-001` rev. C e as ECOs
+  `CHG-000003`/`CHG-000004`.
 - `dist/v0.19.0/`: pacote com os PDFs das novas revisões e manifesto.
 
 ### Alterado
@@ -33,7 +34,8 @@ identidade ou referência de origem.
   metadado no banco); conjunto `PS-001` rev. B com o novo nome.
 
 ### Verificação
-- `CHG-000003` aprovada pelo `revisor`; 6 revisões em `released`.
+- `CHG-000003` (5 revisões + `CO-001` B) e `CHG-000004` (`CO-001` C) aprovadas pelo
+  `revisor`; 7 revisões em `released`.
 - `search_items` mostra o conjunto como "Brasa — estanhador 550 W / 127 V".
 - `dist/v0.19.0/` com `SHA256SUMS` verificado; PDFs `US-001` B, `PL-001` C,
   `PL-002` C e `PL-003` B gerados sem aviso.

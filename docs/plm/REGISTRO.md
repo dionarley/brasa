@@ -60,7 +60,8 @@ humana; a consulta oficial é a API/MCP do PDM.
 | Referências do conjunto | `DR-001`, `US-001`, `CO-001`, `PL-001`, `PL-002`, `LM-001` (rev. A) |
 | ECO de liberação inicial | `CHG-000001` — 23 revisões A, aprovada pelo `revisor` |
 | ECO da documentação | `CHG-000002` — `PL-001` B, `PL-002` B, `PL-003` A, aprovada pelo `revisor` |
-| ECO da identidade | `CHG-000003` — `PS-001` B, `US-001` B, `PL-001` C, `PL-002` C, `PL-003` B, `CO-001` C |
+| ECO da identidade | `CHG-000003` — `PS-001` B, `US-001` B, `PL-001` C, `PL-002` C, `PL-003` B; regulariza `CO-001` B |
+| ECO do guia | `CHG-000004` — `CO-001` C (identidade Brasa) |
 
 A migração é reproduzível por `tools/plm/teamcraft_migrate.py`; a segunda liberação por
 `tools/plm/teamcraft_docs_b.py`. O `PL-003` ainda não é referência do conjunto porque a
