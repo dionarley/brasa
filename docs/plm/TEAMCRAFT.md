@@ -1,12 +1,12 @@
 ---
-title: "PS-001 — TeamCraft: instalação, operação e registro"
+title: "Brasa (PS-001) — TeamCraft: instalação, operação e registro"
 subtitle: "PDM local, ciclo de revisões, MCP e backup"
 docid: "PS-001-PL-003"
-revision: "A"
+revision: "B"
 status: "Aprovado"
 date: "2026-11-14"
 author: "Dionarley"
-project: "PS-001 — Pistola de solda por transformador (estudo)"
+project: "Brasa — estanhador 550 W / 127 V (PS-001, estudo)"
 ---
 
 # 1. Objetivo
@@ -96,7 +96,7 @@ A senha fica em `~/teamcraft/db_password` (modo 600) e é embutida na
 ```sh
 TEAMCRAFT_BIND_ADDR=127.0.0.1:8080
 TEAMCRAFT_PUBLIC_URL=http://localhost:8080
-TEAMCRAFT_INSTANCE_NAME="The Black Tools PLM"
+TEAMCRAFT_INSTANCE_NAME="Brasa PLM"
 TEAMCRAFT_DATABASE_URL=postgres://teamcraft:<senha>@127.0.0.1:55432/teamcraft
 TEAMCRAFT_DB_SSLMODE=disable
 TEAMCRAFT_VAULT_DIR=/home/dionarley/teamcraft/data/vault
@@ -187,10 +187,10 @@ curl -s -X POST -H "Authorization: Bearer $TOK" \
 
 # enviar um arquivo (multipart, com pasta e comentário)
 curl -s -X POST -H "Authorization: Bearer $TOK" \
-  -F file=@dist/v0.18.0/PS-001-DR-001_rB_prancha-a2.pdf \
-  -F 'folders={"PS-001-DR-001_rB_prancha-a2.pdf":"drawing"}' \
-  -F comment='prancha rev. B' \
-  $API/items/PS-001-DR-001/revisions/B/files
+  -F file=@dist/v0.19.0/PS-001-US-001_rB_uso.pdf \
+  -F 'folders={"PS-001-US-001_rB_uso.pdf":"docs"}' \
+  -F comment='manual de uso rev. B' \
+  $API/items/PS-001-US-001/revisions/B/files
 
 # devolver sem liberar (opcional)
 curl -s -X POST -H "Authorization: Bearer $TOK" \
@@ -256,14 +256,14 @@ Exemplo de consulta:
 
 ```text
 search_items {"query": "PS-001"}
-→ 23 itens, revisão A liberada, projeto PS-001
+→ 24 itens (1 conjunto, 16 peças, 7 documentos), revisões liberadas, projeto PS-001
 ```
 
 # 7. Mapeamento do PS-001
 
 ## 7.1 Grupo e itens
 
-Grupo de projeto `PS-001` — "Pistola de solda 550 W / 127 V", visibilidade
+Grupo de projeto `PS-001` — **Brasa**, estanhador 550 W / 127 V, visibilidade
 `internal`, membros `dionarley` (gerente) e `revisor`.
 
 | Tipo | Itens | Quantidade |
@@ -305,11 +305,12 @@ O STEP continua anexado e baixável; só não tem malha gerada. A visualização
 |---|---|---|---|
 | `CHG-000001` | 2026-11-14 | 23 revisões A: conjunto, 16 peças, 6 documentos | aprovada pelo `revisor`; tudo `released` |
 | `CHG-000002` | 2026-11-14 | `PL-001` B, `PL-002` B, `PL-003` A | aprovada pelo `revisor`; tudo `released` |
+| `CHG-000003` | 2026-11-14 | `PS-001` B, `US-001` B, `PL-001` C, `PL-002` C, `PL-003` B, `CO-001` C | identidade **Brasa**; aprovada pelo `revisor` |
 
 A migração inicial é reproduzível por `tools/plm/teamcraft_migrate.py`; a segunda
-liberação, por `tools/plm/teamcraft_docs_b.py`. Ambos leem os artefatos de
-`dist/v<versao>/` e são idempotentes (não repetem item, arquivo por sha256, linha,
-referência ou aprovação).
+liberação, por `tools/plm/teamcraft_docs_b.py`; a identidade própria, por
+`tools/plm/teamcraft_identity.py`. Os scripts leem os artefatos de `dist/v<versao>/` e
+são idempotentes (não repetem item, arquivo por sha256, linha, referência ou aprovação).
 
 # 8. Backup e restauração
 
@@ -392,3 +393,4 @@ PDF do `DR-001`. O cache de previews se refaz sozinho na primeira visualização
 | Rev. | Data | Mudança |
 |---|---|---|
 | A | 2026-11-14 | primeira emissão: instalação 0.2.7, operação, MCP, migração do PS-001 e backup |
+| B | 2026-11-14 | identidade **Brasa**: instância, grupo e ECO 3; exemplo de consulta com 24 itens |

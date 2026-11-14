@@ -1,21 +1,21 @@
 ---
-title: "PS-001 — Guia de construção (estudo)"
+title: "Brasa — Guia de construção (estudo)"
 subtitle: "Sequência de montagem, critérios de aceitação e ensaios"
 docid: "PS-001-CO-001"
-revision: "B"
+revision: "C"
 status: "Aprovado"
 date: "2026-11-14"
 author: "Dionarley"
-project: "PS-001 — Pistola de solda por transformador (estudo)"
+project: "Brasa — estanhador 550 W / 127 V (PS-001, estudo)"
 ---
 
 # 1. Escopo e limites
 
-Este guia descreve **como o PS-001 foi decomposto e montado no modelo** e quais
+Este guia descreve **como o Brasa (`PS-001`) foi decomposto e montado no modelo** e quais
 critérios tornam cada etapa aceitável. Ele serve para ler o CAD, revisar o projeto e
 entender a função de cada peça.
 
-> **Não é instrução de fabricação.** O PS-001 é uma reconstrução por observação, sem
+> **Não é instrução de fabricação.** O Brasa é uma reconstrução por observação, sem
 > ensaio elétrico, sem certificação e sem análise de isolação do produto original. As
 > etapas abaixo reproduzem a lógica de montagem do estudo; executá-las fisicamente em
 > 127 V é decisão e risco de quem executa. Ver [LEGAL.md](../../LEGAL.md) §7 e o manual
@@ -199,3 +199,4 @@ Nunca energizar direto na tomada para "testar".
 |---|---|---|
 | A | 2026-11-14 | primeira emissão sobre o modelo aprovado em `v0.15.0` |
 | B | 2026-11-14 | aponta o desenho de conjunto `PS-001-DR-001` rev. A; pendência de cotas detalhadas reformulada |
+| C | 2026-11-14 | adota o nome próprio **Brasa** na identificação do estudo |

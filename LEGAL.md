@@ -1,4 +1,4 @@
-# Aviso legal — PS-001
+# Aviso legal — Brasa (PS-001)
 
 Este documento explica **o que este repositório é**, **o que a licença cobre**, **o que
 ela não cobre** e **quais são os riscos de segurança**. Ele acompanha o `LICENSE` e
@@ -11,8 +11,8 @@ Data desta revisão: 2026-11-14.
 
 ## 1. Natureza do projeto
 
-O PS-001 é um **estudo de modelagem paramétrica** de uma pistola de solda por
-transformador (estanhador) de 550 W / 127 V, feita a partir de:
+O **Brasa** (`PS-001`) é um **estudo de modelagem paramétrica** de uma pistola de solda
+por transformador (estanhador) de 550 W / 127 V, feita a partir de:
 
 - fotos públicas de anúncios do produto;
 - artigos públicos sobre estanhadores caseiros;
@@ -54,19 +54,19 @@ Pontos de atenção:
 - O produto físico construído não é coberto pela licença: ele é seu, com os riscos e as
   responsabilidades da seção 7.
 
-## 3. Marca "The Black Tools" e outras marcas
+## 3. Nome próprio e marcas de terceiros
 
-- "The Black Tools" e demais nomes comerciais citados pertencem aos seus titulares.
-- O nome aparece apenas em **referência nominativa**, para identificar o produto
-  estudado ("reconstrução de estudo do estanhador vendido sob esta marca").
-- **Não há** uso de logotipo, identidade visual, embalagem ou alegação de origem.
-- Os renders e o modelo **não reproduzem** logotipo ou etiqueta do produto.
-- Se você publicar derivados, **não** use a marca no nome do seu projeto, no título de
-  vídeos ou em material promocional de forma que sugira origem ou aprovação. Descreva
-  como "compatível com" ou "inspirado em", sem destaque visual da marca.
+- O projeto adota o nome **Brasa**, próprio deste estudo. Ele não é a marca do produto
+  original e não sugere origem, patrocínio ou aprovação.
+- Nenhuma marca de terceiro é usada como nome do projeto, em logotipo, identidade
+  visual, embalagem ou alegação de origem.
+- Os renders e o modelo **não reproduzem** logotipo ou etiqueta do produto original.
+- Se você publicar derivados, use o nome **Brasa** (ou um nome próprio seu), **não** a
+  marca do produto original, de forma que sugira origem ou aprovação. Referências
+  informativas ao produto existente são, em regra, admissíveis; uso como marca própria,
+  não.
 - Registro de marca confere ao titular o direito de **coibir confusão** e uso em
-  economia (Lei 9.279/96, arts. 123–132 e 189). Referência informativa a produto
-  existente é, em regra, admissível; uso como marca própria, não.
+  economia (Lei 9.279/96, arts. 123–132 e 189).
 
 ## 4. Referências de terceiros
 
@@ -163,7 +163,7 @@ funcionalidade, adequação a um fim ou não violação de direitos de terceiros
 ## 11. Como citar
 
 ```
-DIONARLEY. PS-001 — Pistola de solda por transformador (estudo), versão 0.14.0.
+DIONARLEY. Brasa — estanhador 550 W / 127 V (PS-001, estudo), versão 0.19.0.
 Modelo CAD paramétrico. 2026. Licenciado sob CC BY-NC-SA 4.0.
 ```
 

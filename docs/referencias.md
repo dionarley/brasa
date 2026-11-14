@@ -9,7 +9,10 @@ do git. Aqui estão autoria, origem e o que cada fonte contribuiu.
 
 | Fonte | Uso | Direitos |
 |---|---|---|
-| Anúncios do estanhador "The Black Tools" 550 W / 127 V, cabo de madeira — Mercado Livre, itens `MLB83995165997` e `MLA99450924224` (fotos salvas em `ref/photos/`) | forma geral, proporções, posição da chave, do cabo e da ponta; cor e acabamento | fotos dos vendedores; uso apenas como referência de estudo |
+| Anúncios do estanhador 550 W / 127 V, cabo de madeira — Mercado Livre, itens `MLB83995165997` e `MLA99450924224` (fotos salvas em `ref/photos/`) | forma geral, proporções, posição da chave, do cabo e da ponta; cor e acabamento | fotos dos vendedores; uso apenas como referência de estudo |
+
+A marca do produto original não é reproduzida no projeto: o estudo adota o nome próprio
+**Brasa** e identifica a fonte apenas pelo anúncio e pelas fotos.
 
 As fotos não são versionadas e não integram nenhuma imagem publicada do projeto. Os
 renders do modelo são gerados no SolidCraft a partir da geometria reconstruída.

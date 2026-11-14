@@ -1,21 +1,21 @@
 ---
-title: "PS-001 — Manual de uso e segurança"
+title: "Brasa — Manual de uso e segurança"
 subtitle: "Estanhador 550 W / 127 V reconstruído como estudo"
 docid: "PS-001-US-001"
-revision: "A"
+revision: "B"
 status: "Aprovado"
 date: "2026-11-14"
 author: "Dionarley"
-project: "PS-001 — Pistola de solda por transformador (estudo)"
+project: "Brasa — estanhador 550 W / 127 V (PS-001, estudo)"
 ---
 
 # 1. O que este documento é
 
-Manual de **uso** do estanhador estudado no PS-001: o que a máquina é, como funciona, o
+Manual de **uso** do estanhador **Brasa** (`PS-001`): o que a máquina é, como funciona, o
 que se pode e o que não se pode fazer com ela, e como ler essa informação junto ao modelo
 3D.
 
-> **Aviso.** O PS-001 é um **estudo de modelagem**. O texto descreve o produto original e
+> **Aviso.** O Brasa é um **estudo de modelagem**. O texto descreve o produto original e
 > o comportamento esperado de um estanhador por transformador, mas **não é manual do
 > fabricante, não é instrução de fabricação e não substitui a documentação de um produto
 > certificado**. O equipamento opera em 127 V e o secundário trabalha em curto, com
@@ -26,7 +26,8 @@ que se pode e o que não se pode fazer com ela, e como ler essa informação jun
 
 | Item | Valor |
 |---|---|
-| Produto estudado | estanhador (pistola de solda) "The Black Tools", 550 W, 127 V |
+| Produto | **Brasa** — estanhador (pistola de solda) 550 W, 127 V |
+| Código do projeto | `PS-001` |
 | Princípio | transformador abaixador com secundário de fita de cobre em curto pela ponta |
 | Aplicação | solda por fusão em eletrônica, fiação e lataria fina; corte térmico de plástico |
 | Modelo de referência | `PS-001-MD-001` rev. 0.15.0, 22 corpos, 448,4 cm³ |
@@ -34,8 +35,8 @@ que se pode e o que não se pode fazer com ela, e como ler essa informação jun
 
 ![Aspecto geral do modelo, transformador no topo e empunhadura de madeira abaixo](renders/PS-001_iso_rA.png){width=78%}
 
-Não há vínculo com o fabricante. "The Black Tools" é marca de terceiro, citada apenas
-para identificar o objeto de estudo.
+**Brasa** é o nome próprio deste estudo; não é a marca do produto original. Não há
+vínculo com o fabricante nem uso de marca de terceiro como identidade do projeto.
 
 # 3. Uso pretendido
 
@@ -195,3 +196,4 @@ ponta e secundário (cobre) em metal. Não incinere o transformador.
 | Rev. | Data | Mudança |
 |---|---|---|
 | A | 2026-11-14 | primeira emissão, sobre o modelo 3D aprovado em `v0.15.0` |
+| B | 2026-11-14 | adota o nome próprio **Brasa**; remove a marca de terceiro da identificação |

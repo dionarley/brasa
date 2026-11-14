@@ -49,9 +49,9 @@ BOM_CSV = ROOT / "docs" / "construcao" / "BOM.csv"
 
 PROJECT = {
     "code": "PS-001",
-    "name": "Pistola de solda 550 W / 127 V",
+    "name": "Brasa — estanhador 550 W / 127 V",
     "description": (
-        "Estudo aberto de pistola de solda por transformador (The Black Tools). "
+        "Estudo aberto de estanhador por transformador (projeto Brasa). "
         "Não certificado; 127 V. Modelo aprovado v0.15.0, prancha A2 rev. A."
     ),
 }

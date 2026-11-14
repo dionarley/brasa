@@ -6,6 +6,39 @@ documentação** (não a uma API). Enquanto a série for `0.x`, mudanças de for
 ocorrer em versões menores. Cada tag do git corresponde a um estado do arquivo
 `cad/solidcraft/PS-001.sc`.
 
+## [0.19.0] — 2026-11-14
+
+**Marco: identidade própria.** O projeto e o produto passam a se chamar **Brasa**;
+`PS-001` continua como código interno. Nenhuma marca de terceiro é usada como nome,
+identidade ou referência de origem.
+
+### Adicionado
+- `tools/plm/teamcraft_identity.py`: libera a identidade no TeamCraft — conjunto rev. B,
+  `US-001` rev. B, `PL-001`/`PL-002`/`CO-001` rev. C, `PL-003` rev. B e ECO `CHG-000003`.
+- `dist/v0.19.0/`: pacote com os PDFs das novas revisões e manifesto.
+
+### Alterado
+- `README.md` e `LICENSE`: título **Brasa — estanhador 550 W / 127 V (PS-001)**; a
+  licença deixa de citar marca de terceiro.
+- `LEGAL.md`: seção 3 passa a tratar de **nome próprio e marcas de terceiros**, sem
+  nomear a marca do produto original; o Brasa é apresentado como nome do estudo.
+- `PS-001-US-001` sobe para **rev. B**: identificação pelo nome Brasa, sem marca.
+- `PS-001-PL-001` sobe para **rev. C** e `PS-001-PL-002` para **rev. C**: título,
+  identidade e tabela de versões/revisões.
+- `PS-001-PL-003` sobe para **rev. B**: instância `Brasa PLM`, grupo e ECO 3.
+- `PS-001-CO-001` sobe para **rev. C**: guia de construção com a identificação Brasa.
+- `docs/referencias.md`: o anúncio é citado pelo produto e pelos IDs, sem a marca.
+- TeamCraft: instância renomeada para `Brasa PLM`; grupo `PS-001` com nome/descrição
+  Brasa (o 0.2.7 não expõe renomear grupo pela API, então o rótulo foi corrigido como
+  metadado no banco); conjunto `PS-001` rev. B com o novo nome.
+
+### Verificação
+- `CHG-000003` aprovada pelo `revisor`; 6 revisões em `released`.
+- `search_items` mostra o conjunto como "Brasa — estanhador 550 W / 127 V".
+- `dist/v0.19.0/` com `SHA256SUMS` verificado; PDFs `US-001` B, `PL-001` C,
+  `PL-002` C e `PL-003` B gerados sem aviso.
+- Backup do TeamCraft gerado e restauração de teste conferida.
+
 ## [0.18.0] — 2026-11-14
 
 **Marco: PDM em uso.** O PS-001 passa a ter as revisões liberadas em uma instância

@@ -1,14 +1,15 @@
-# PS-001 — Pistola de solda por transformador (estudo)
+# Brasa — estanhador 550 W / 127 V (estudo)
 
-**Licença:** [CC BY-NC-SA 4.0](LICENSE) (conteúdo próprio) · **Versão:** 0.18.0 ·
+**Licença:** [CC BY-NC-SA 4.0](LICENSE) (conteúdo próprio) · **Versão:** 0.19.0 ·
 **Estado:** modelo 3D aprovado; documentação de produto publicada; prancha 2D A2
 publicada; revisões liberadas no TeamCraft.
 
-Reconstrução **de estudo** de um estanhador de 550 W / 127 V com transformador e
-secundário de fita de cobre, modelado como peça paramétrica no SolidCraft a partir de
-fotos públicas, artigos e teoria de transformadores. Não é projeto de fabricação, não é
-peça de reposição e não tem vínculo com o fabricante — leia [LEGAL.md](LEGAL.md) antes
-de reutilizar qualquer coisa.
+O **Brasa** é a reconstrução **de estudo** de um estanhador de 550 W / 127 V com
+transformador e secundário de fita de cobre, modelado como peça paramétrica no SolidCraft
+a partir de fotos públicas, artigos e teoria de transformadores. `PS-001` é o código
+interno do projeto. Não é projeto de fabricação, não é peça de reposição e não tem
+vínculo com o fabricante do produto original — leia [LEGAL.md](LEGAL.md) antes de
+reutilizar qualquer coisa.
 
 ## Estado atual
 
@@ -38,6 +39,7 @@ tools/plm/
   template.typ     template de documento (capa, cabeçalho, rodapé)
   teamcraft_migrate.py  migra o PS-001 para o TeamCraft (idempotente)
   teamcraft_docs_b.py   libera PL-001 B, PL-002 B e PL-003 A
+  teamcraft_identity.py libera a identidade Brasa (PS-001 B, US-001 B, PL-001/PL-002 C, PL-003 B)
   teamcraft_backup.sh   backup do banco e do vault
 tools/draw/
   sheet.py         monta a prancha A2 a partir das projeções DXF do modelo
@@ -123,7 +125,7 @@ processo — códigos, estados, critérios de aprovação e liberação — est�
 Gerar o pacote de liberação (PDFs, BOM e renders com manifesto `sha256`):
 
 ```sh
-tools/plm/build.sh                  # dist/v0.18.0/
+tools/plm/build.sh                  # dist/v0.19.0/
 tools/plm/build.sh --pdf            # só os PDFs
 tools/plm/build.sh --clean          # limpa dist/ antes
 ```
@@ -141,7 +143,9 @@ As revisões liberadas ficam em uma instância local do
 - BOM de 16 linhas e arquivos do modelo (`.sc`, STEP, 3MF, renders) na revisão do
   conjunto;
 - liberação por ECO aprovada por um segundo usuário (`revisor`): `CHG-000001` levou as
-  23 revisões A e `CHG-000002` liberou `PL-001`/`PL-002` rev. B e `PL-003` rev. A.
+  23 revisões A, `CHG-000002` liberou `PL-001`/`PL-002` rev. B e `PL-003` rev. A, e
+  `CHG-000003` liberou a identidade **Brasa** (`PS-001` B, `US-001` B, `PL-001`/`PL-002`
+  C, `PL-003` B, `CO-001` C).
 
 A instalação, a operação, o MCP do OpenCode e o backup estão em
 [`docs/plm/TEAMCRAFT.md`](docs/plm/TEAMCRAFT.md). Backup manual:
@@ -186,11 +190,12 @@ O conteúdo próprio (modelo CAD, textos, tabelas e imagens geradas pelo autor) 
 **CC BY-NC-SA 4.0**: use, estude e compartilhe com atribuição, sem fins comerciais, e
 licencie derivados sob a mesma licença.
 
-Ficam **fora** da licença: a marca "The Black Tools" e demais marcas citadas; fotos,
+Ficam **fora** da licença: marcas, nomes comerciais e logotipos de terceiros; fotos,
 PDFs e textos de terceiros (não redistribuídos, listados em
 [`docs/referencias.md`](docs/referencias.md)); e eventuais direitos de desenho
-industrial ou patente sobre o produto original. Detalhes, inclusive sobre fabricação e
-venda, em [LEGAL.md](LEGAL.md).
+industrial ou patente sobre o produto original. O produto original não é identificado
+por marca neste repositório. Detalhes, inclusive sobre fabricação e venda, em
+[LEGAL.md](LEGAL.md).
 
 ## Segurança
 

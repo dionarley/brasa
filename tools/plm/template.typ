@@ -6,7 +6,7 @@
 #let docstatus = "$status$"
 #let docdate = "$date$"
 #let docauthor = "$author$"
-#let docproject = "$project$"
+#let docproject = [$project$]
 
 #set document(title: "$title$", author: docauthor)
 

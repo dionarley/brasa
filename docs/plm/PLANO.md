@@ -1,12 +1,12 @@
 ---
-title: "PS-001 — Plano de ciclo de vida do produto (PLM)"
+title: "Brasa (PS-001) — Plano de ciclo de vida do produto (PLM)"
 subtitle: "Processo, estados, papéis e liberação de documentos"
 docid: "PS-001-PL-001"
-revision: "B"
+revision: "C"
 status: "Aprovado"
 date: "2026-11-14"
 author: "Dionarley"
-project: "PS-001 — Pistola de solda por transformador (estudo)"
+project: "Brasa — estanhador 550 W / 127 V (PS-001, estudo)"
 ---
 
 # 1. Objetivo
@@ -167,6 +167,7 @@ aprovado naquele instante.
 | `v0.17.0` | **prancha 2D A2 publicada** (`DR-001` rev. A) |
 | `v0.17.1` | exportações STEP/3MF regeradas do modelo aprovado |
 | `v0.18.0` | **PDM TeamCraft** — migração do PS-001, `PL-001`/`PL-002` rev. B e `PL-003` rev. A |
+| `v0.19.0` | **identidade própria** — o projeto passa a se chamar **Brasa**, sem marca de terceiro |
 
 ## 6.2 Pacote de liberação
 
@@ -251,3 +252,4 @@ resolvidas em `v0.17.1` e `v0.16.0`, respectivamente.
 |---|---|---|
 | A | 2026-11-14 | primeira emissão, junto com `US-001` e `CO-001` |
 | B | 2026-11-14 | adota o TeamCraft como PDM: estados, papéis, ECO e checklist; cita o `PL-003` |
+| C | 2026-11-14 | adota o nome próprio **Brasa**; produto deixa de ser identificado por marca de terceiro |
