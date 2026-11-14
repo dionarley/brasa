@@ -1,7 +1,7 @@
 # PS-001 — Pistola de solda por transformador (estudo)
 
-**Licença:** [CC BY-NC-SA 4.0](LICENSE) (conteúdo próprio) · **Versão:** 0.14.0 ·
-**Estado:** modelo 3D em revisão; prancha 2D a refazer.
+**Licença:** [CC BY-NC-SA 4.0](LICENSE) (conteúdo próprio) · **Versão:** 0.15.0 ·
+**Estado:** modelo 3D aprovado; prancha 2D em execução.
 
 Reconstrução **de estudo** de um estanhador de 550 W / 127 V com transformador e
 secundário de fita de cobre, modelado como peça paramétrica no SolidCraft a partir de
@@ -13,11 +13,11 @@ de reutilizar qualquer coisa.
 
 | Entrega | Situação |
 |---|---|
-| Modelo 3D paramétrico (`cad/solidcraft/PS-001.sc`) | **em revisão** — 22 corpos, 0 erros de geometria |
-| Renders de conferência (`out/plot/ps001_v14_*.png`) | gerados (não versionados) |
-| Exportações STEP/3MF | **antigas** (13/11) — reexportar depois da aprovação do 3D |
-| Prancheta 2D (A2) | **descartada** — refazer do zero após aprovar o 3D |
-| Versionamento e licença | concluído (este pacote) |
+| Modelo 3D paramétrico (`cad/solidcraft/PS-001.sc`) | **aprovado** — 22 corpos, 0 erros, 448,4 cm³ |
+| Renders de conferência (`out/plot/ps001_v15_*.png`) | gerados (não versionados) |
+| Exportações STEP/3MF | **antigas** (13/11) — reexportar da versão aprovada |
+| Prancheta 2D (A2) | **em execução** — vistas, corte, detalhes, BOM |
+| Versionamento e licença | concluído |
 
 ## Estrutura
 
@@ -40,8 +40,8 @@ histórico paramétrico. Medidas do `measure` atual:
 | Peça(s) | Qtd. | Volume (cm³) | Observação |
 |---|---:|---:|---|
 | `Nucleo` | 1 | 148,90 | EI-75, 75 × 75 × 35 mm, janela 12,5 × 50 |
-| `Bobina` | 1 | 34,58 | primário com quinas R8 e filetes R4 |
-| `Secundario` | 1 | 10,15 | tira 2 × 9 mm, 2,5 voltas, sweep único |
+| `Bobina` | 1 | 23,44 | carretel: alma 33 × 43 e flanges 37 × 47 × 3 |
+| `Secundario` | 1 | 10,26 | tira 2 × 9 mm, 2,5 voltas, sweep único |
 | `Ponta_U` | 1 | 2,39 | tubo Ø4,5 + pastilhas de fixação (X 34…52) |
 | `Cabo` | 1 | 215,00 | loft "cabeça de prego", 10 seções |
 | `Chave`, `Tecla` | 2 | 9,52 | na face +Y do cabo |
@@ -50,7 +50,7 @@ histórico paramétrico. Medidas do `measure` atual:
 | `Canto_*` | 4 | 22,24 | cantoneiras do transformador |
 | `Parafuso_canto_*` | 4 | 7,36 | M5 passante |
 | `Parafuso_ponta_*`, `Porca_ponta_*` | 4 | 2,26 | fixação das postas, em X 46 |
-| **Total** | **22** | **459,5** | |
+| **Total** | **22** | **448,4** | |
 
 Envelope: X −52,2…+96,1 · Y ±26,1 · Z −273,7…+39 mm (≈ 148 × 52 × 313 mm).
 
@@ -70,12 +70,16 @@ do núcleo, entra na face +Y em Z +16, desce e sai na face −Y em Z −16, term
 braços em "S" que alimentam as postas. Modelada como **um sweep e um corpo** — foi a
 forma de garantir continuidade elétrica e evitar uniões por faces coincidentes.
 
+As duas pontas (entrada e saída) contornam o grampo do lado da ponteira por fora, em
+X = 31,7 (face externa do grampo em 29,67), com 1 mm de folga; o resto da hélice passa
+pelas duas janelas do núcleo (X 9,17 e −30,83) sem tocar em núcleo, carretel ou grampos.
+
 ## Parâmetros principais
 
 | Item | Valor |
 |---|---|
 | Núcleo | EI-75: 75 × 75 × 35 mm, janela 12,5 × 50, perna 12,5 |
-| Primário | ~700 espiras AWG 28 (127 V), corpo 37 × 47 × 44 |
+| Primário | ~700 espiras AWG 28 (127 V) em carretel 37 × 47 × 44 (alma 33 × 43, flanges 3) |
 | Secundário | 2,5 voltas de fita Cu 2 × 9 mm, passo 12,8 |
 | Ponta | tubo Cu Ø4,5 (parede 0,75), em U, X 34…96,1 |
 | Fixação das postas | parafuso M5 em X 46, furo Ø6,2 |

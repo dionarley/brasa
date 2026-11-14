@@ -6,6 +6,38 @@ documentação** (não a uma API). Enquanto a série for `0.x`, mudanças de for
 ocorrer em versões menores. Cada tag do git corresponde a um estado do arquivo
 `cad/solidcraft/PS-001.sc`.
 
+## [0.15.0] — 2026-11-14
+
+**Marco: modelo 3D aprovado.** A partir daqui o 3D é congelado e o trabalho passa para a
+prancha 2D e para a documentação de produto.
+
+### Alterado
+- Secundário reencaminhado nos dois trechos de entrada e saída: as pontas agora correm
+  por **fora** do grampo da ponteira, em X = 31,7 (face externa do grampo em 29,67,
+  folga de 1 mm), em vez de atravessar o núcleo. Entrada em Y +3 / Z +16 e saída em
+  Y −2 / Z −16, ambas terminando em X 54. A hélice de 2,5 voltas não foi tocada.
+- Primário (`Bobina`) refeito como **carretel** de transformador real: alma
+  33 × 43 × 40 mm (Z ±20) e flanges 37 × 47 × 3 mm (Z 19…22 e −22…−19), furo
+  25 × 35 mm passante, filete R8 nas 12 arestas verticais e topos sem arredondamento.
+  Volume 34.577 → **23.437 mm³**.
+
+### Corrigido
+- `Secundario - furo inf` deixou de emitir o aviso de booleano ("Boolean retry: tool
+  displacement 8,6e-5 mm"): a face de topo do furo coincidia com a face inferior da
+  tira; a altura do corte passou de 5 para **5,5 mm**.
+- Colisão do secundário com o núcleo eliminada — verificado com `inspect.clearance`
+  contra `Nucleo` e `Bobina`: nenhuma sobreposição.
+
+### Verificação
+- 22 corpos, 0 erros, **448,4 cm³**, envelope X −52,2…+96,1 · Y ±26,1 · Z −273,7…+39.
+- Renders de conferência em `out/plot/ps001_v15_*.png` (não versionados).
+
+### Notas
+- A prancha 2D anterior (`out/draw/`, `out/vector/`) permanece descartada e não é
+  referência de forma.
+- Exportações STEP/3MF de 13/11 ficaram **anteriores** a este estado; reexportar a partir
+  do `PS-001.sc` aprovado.
+
 ## [0.14.0] — 2026-11-14
 
 ### Adicionado
@@ -61,6 +93,7 @@ ocorrer em versões menores. Cada tag do git corresponde a um estado do arquivo
   modelo** e não devem ser usadas como referência: serão refeitas depois da aprovação
   do 3D.
 
+[0.15.0]: #0150--2026-11-14
 [0.14.0]: #0140--2026-11-14
 [0.12.0]: #0120--2026-11-13
 [0.1.0]: #010--2026-11-11
