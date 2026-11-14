@@ -1,0 +1,25 @@
+# ---------------------------------------------------------------- artefatos
+# Tudo o que é derivado/gerado não entra no histórico: renders, DXF, exports,
+# previews e backups. A fonte da verdade é cad/solidcraft/PS-001.sc.
+/out/
+/render.png
+/shot*.png
+
+# Backups manuais do SolidCraft (o git já guarda o histórico)
+cad/solidcraft/*.bak
+cad/solidcraft/*_backup.sc
+cad/solidcraft/.~*.lock
+cad/solidcraft/*.step
+cad/solidcraft/*.3mf
+
+# ------------------------------------------------- referências de terceiros
+# Fotos de anúncios, artigos e PDFs têm direitos de terceiros e NÃO são
+# redistribuídos neste repositório (ver LEGAL.md, seção 3).
+/ref/
+/docs/*.pdf
+/docs/extracted/
+
+# ------------------------------------------------------------------- lixo
+*.tmp
+*.log
+.DS_Store

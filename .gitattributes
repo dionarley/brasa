@@ -1,0 +1,25 @@
+# ------------------------------------------------------------------ texto
+# Normaliza fim de linha para LF em tudo que é texto.
+* text=auto eol=lf
+
+# --------------------------- binários e formatos de CAD/malha (sem diff)
+*.sc      binary
+*.step    -text -diff
+*.stp     -text -diff
+*.3mf     -text -diff
+*.stl     -text -diff
+*.obj     -text -diff
+*.dxf     -text -diff
+*.dwg     binary
+
+# ------------------------------------------------------------- imagens/PDF
+*.png     binary
+*.jpg     binary
+*.jpeg    binary
+*.webp    binary
+*.pdf     binary
+*.gif     binary
+
+# --------------------------------------- saída de ferramentas e temporários
+*.log     text eol=lf
+*.csv     text eol=lf
