@@ -70,6 +70,20 @@ if [ "$ONLY_PDF" -eq 0 ]; then
   echo "  BOM: PS-001-LM-001_rA_bom.csv"
 fi
 
+# ----------------------------------------------------------------- desenho
+# prancha A2 verificada (ocs_audit + save_verified), nunca a de trabalho
+if [ "$ONLY_PDF" -eq 0 ]; then
+  dr="$(ls -t out/draw/v*/PS-001-DR-001_rA_prancha-a2.pdf 2>/dev/null | head -1 || true)"
+  if [ -n "${dr:-}" ]; then
+    cp "$dr" "$OUT/$(basename "$dr")"
+    dxf="${dr%.pdf}.dxf"
+    [ -f "$dxf" ] && cp "$dxf" "$OUT/$(basename "$dxf")"
+    echo "  desenho: $(basename "$dr") ($(dirname "$dr"))"
+  else
+    echo "  desenho: nenhum PS-001-DR-001 em out/draw (siga sem a prancha)" >&2
+  fi
+fi
+
 # -------------------------------------------------------------------- PDFs
 for entry in "${DOCS[@]}"; do
   IFS='|' read -r code src slug <<<"$entry"

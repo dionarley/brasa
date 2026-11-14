@@ -142,18 +142,22 @@ aprovado naquele instante.
 | `v0.14.0` | secundário em sweep único, pacote de licença |
 | `v0.15.0` | **3D aprovado** — secundário fora do grampo, primário em carretel |
 | `v0.16.0` | documentação PLM, uso e construção |
+| `v0.17.0` | **prancha 2D A2 publicada** (`DR-001` rev. A) |
 
 ## 6.2 Pacote de liberação
 
 Gerado por `tools/plm/build.sh` em `dist/v<versao>/` (fora do git):
 
 ```
-dist/v0.16.0/
+dist/v0.17.0/
   MANIFEST.md                       versão, data, commit, sha256 de cada arquivo
   PS-001-US-001_rA_uso.pdf
-  PS-001-CO-001_rA_construcao.pdf
+  PS-001-CO-001_rB_construcao.pdf
   PS-001-PL-001_rA_plano-plm.pdf
+  PS-001-PL-002_rA_registro-documentos.pdf
   PS-001-LM-001_rA_bom.csv
+  PS-001-DR-001_rA_prancha-a2.pdf    prancha A2 (594 x 420 mm, 1:1)
+  PS-001-DR-001_rA_prancha-a2.dxf    mesma prancha, AC1032 verificado
   renders/PS-001_iso_rA.png …
 ```
 
@@ -189,6 +193,7 @@ Cada afirmação de documento aponta para uma fonte verificável.
 |---|---|---|
 | CAD 3D | SolidCraft (MCP) | `measure` e `inspect.clearance` são a evidência |
 | Desenho 2D | OpenCADStudio (MCP) | `ocs_audit` + `save_verified` antes de entregar |
+| Montagem da prancha | `tools/draw/sheet.py` | vistas exportadas do CAD; BOM lida do `LM-001` |
 | Texto | Markdown | fonte única, diff legível |
 | PDF | `pandoc` → `typst` | `tools/plm/build.sh` |
 | Render | `screenshot` do SolidCraft | CPU, sem GPU |
@@ -199,7 +204,7 @@ Cada afirmação de documento aponta para uma fonte verificável.
 | # | Pendência | Impacto | Dono |
 |---|---|---|---|
 | 1 | Densidade por material (massa real) | BOM e manual sem massa | autor |
-| 2 | Prancha 2D A2 (vistas, corte, detalhes) | falta o `DR-001` publicado | autor |
+| 2 | Cotas finas de montagem na prancha | o `DR-001` cobre envelope e detalhe, não a furação | autor |
 | 3 | Reexportar STEP/3MF da versão aprovada | exportações de 13/11 defasadas | autor |
 | 4 | Ensaio de isolação documentado | critério de segurança sem evidência | autor |
 | 5 | Template de documento versionado | hoje o layout vive no script | autor |

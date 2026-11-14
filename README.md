@@ -1,7 +1,7 @@
 # PS-001 — Pistola de solda por transformador (estudo)
 
-**Licença:** [CC BY-NC-SA 4.0](LICENSE) (conteúdo próprio) · **Versão:** 0.16.0 ·
-**Estado:** modelo 3D aprovado; documentação de produto publicada; prancha 2D em execução.
+**Licença:** [CC BY-NC-SA 4.0](LICENSE) (conteúdo próprio) · **Versão:** 0.17.0 ·
+**Estado:** modelo 3D aprovado; documentação de produto publicada; prancha 2D A2 publicada.
 
 Reconstrução **de estudo** de um estanhador de 550 W / 127 V com transformador e
 secundário de fita de cobre, modelado como peça paramétrica no SolidCraft a partir de
@@ -16,7 +16,7 @@ de reutilizar qualquer coisa.
 | Modelo 3D paramétrico (`cad/solidcraft/PS-001.sc`) | **aprovado** — 22 corpos, 0 erros, 448,4 cm³ |
 | Renders de conferência (`out/plot/ps001_v15_*.png`) | gerados (não versionados) |
 | Exportações STEP/3MF | **antigas** (13/11) — reexportar da versão aprovada |
-| Prancheta 2D (A2) | **em execução** — vistas, corte, detalhes, BOM |
+| Prancha 2D A2 (`PS-001-DR-001` rev. A) | **publicada** — vistas em 1º diedro, detalhe 1:1, cotas de envelope, BOM |
 | Documentação PLM (`docs/plm/`, `docs/uso/`, `docs/construcao/`) | **publicada** — plano, uso e construção |
 | Versionamento e licença | concluído |
 
@@ -33,6 +33,8 @@ docs/
 tools/plm/
   build.sh         gera os PDFs (pandoc → typst) e o pacote em dist/
   template.typ     template de documento (capa, cabeçalho, rodapé)
+tools/draw/
+  sheet.py         monta a prancha A2 a partir das projeções DXF do modelo
 out/               renders, DXF e exportações (fora do git)
 dist/              pacotes de liberação gerados (fora do git)
 ref/               fotos e vetores de referência (fora do git, direitos de terceiros)
@@ -109,7 +111,7 @@ processo — códigos, estados, critérios de aprovação e liberação — est�
 | PS-001-US-001 | Manual de uso e segurança | [`docs/uso/USO.md`](docs/uso/USO.md) |
 | PS-001-CO-001 | Guia de construção (estudo) | [`docs/construcao/CONSTRUCAO.md`](docs/construcao/CONSTRUCAO.md) |
 | PS-001-LM-001 | Lista de materiais (BOM) | [`docs/construcao/BOM.csv`](docs/construcao/BOM.csv) |
-| PS-001-DR-001 | Prancheta 2D A2 | em execução |
+| PS-001-DR-001 | Prancha 2D A2 (conjunto geral) | `out/draw/v017/` (gerada por `tools/draw/sheet.py`) |
 
 Gerar o pacote de liberação (PDFs, BOM e renders com manifesto `sha256`):
 
@@ -171,11 +173,28 @@ O produto original opera em **127 V** e o secundário trabalha com corrente da o
 Construir, ligar ou modificar um equipamento assim envolve risco de choque elétrico,
 incêndio e queimadura, e a responsabilidade é de quem constrói. Ver LEGAL.md, seção 7.
 
+## Prancha 2D
+
+A folha A2 não é desenhada à mão: as vistas vêm do modelo. O fluxo é
+
+1. exportar as projeções com `file.export_view_dxf` (frente, lado, topo, iso) para
+   `out/draw/v017/`; o detalhe do conjunto magnético é exportado à parte, com o resto dos
+   corpos oculto;
+2. rodar `python3 tools/draw/sheet.py`, que escala a 1:2, posiciona em 1º diedro,
+   acrescenta moldura, cotas de envelope, detalhe 1:1, BOM (lida de `BOM.csv`), notas e
+   carimbo;
+3. abrir o DXF no OpenCADStudio e conferir com `ocs_audit` (dxf/2018) e `save_verified`;
+   o plot A2 1:1 é gerado pelo mesmo app.
+
+Resultado publicado: `out/draw/v017/PS-001-DR-001_rA_prancha-a2.dxf` (AC1032) e o PDF
+A2 correspondente. As pranchas antigas em `out/draw/` e `out/vector/` estão **descartadas**.
+
 ## Próximos passos
 
-1. Refazer a prancha 2D A2 do zero (vistas, corte, detalhes, BOM, cotas) no
-   OpenCADStudio, com `ocs_audit` e `save_verified` — documento `PS-001-DR-001`.
-2. Atribuir densidade/material por corpo para massa realista (hoje o CAD usa 1,29 g/cm³
+1. Atribuir densidade/material por corpo para massa realista (hoje o CAD usa 1,29 g/cm³
    para tudo, o que não representa a peça).
-3. Reexportar STEP/3MF a partir da versão aprovada (`v0.15.0`).
-4. Publicar a revisão `B` de uso/construção quando a prancha 2D fechar as cotas.
+2. Reexportar STEP/3MF a partir da versão aprovada (`v0.15.0`).
+3. Cotas finas de montagem (furação, folgas) na prancha — hoje ela cobre envelope e
+   detalhe.
+4. Publicar a revisão `B` do manual de uso quando houver massa e ciclo de trabalho
+   declarados.

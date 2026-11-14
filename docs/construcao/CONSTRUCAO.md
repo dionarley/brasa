@@ -2,7 +2,7 @@
 title: "PS-001 — Guia de construção (estudo)"
 subtitle: "Sequência de montagem, critérios de aceitação e ensaios"
 docid: "PS-001-CO-001"
-revision: "A"
+revision: "B"
 status: "Aprovado"
 date: "2026-11-14"
 author: "Dionarley"
@@ -22,7 +22,9 @@ entender a função de cada peça.
 > `PS-001-US-001`.
 
 A lista de materiais é `PS-001-LM-001` (`BOM.csv`, nesta pasta). Números de volume e
-envelope vêm do `measure` do modelo aprovado em `v0.15.0`.
+envelope vêm do `measure` do modelo aprovado em `v0.15.0`. O desenho de conjunto é
+`PS-001-DR-001` rev. A — prancha A2 com as vistas em 1º diedro a 1:2, o detalhe do
+conjunto magnético a 1:1 e as cotas de envelope.
 
 # 2. Visão geral
 
@@ -187,7 +189,7 @@ Nunca energizar direto na tomada para "testar".
 | # | Pendência | Efeito |
 |---|---|---|
 | 1 | Densidade por material | BOM sem massa; manual sem massa |
-| 2 | Prancha 2D com cotas de montagem | este guia cita números, não desenho |
+| 2 | Cotas finas de montagem (furação, folgas) | o `DR-001` traz envelope e detalhe, não a cota de cada furo |
 | 3 | Ensaio de isolação executado | critério de segurança sem evidência |
 | 4 | Ciclo de trabalho declarado | operação depende de julgamento do usuário |
 
@@ -196,3 +198,4 @@ Nunca energizar direto na tomada para "testar".
 | Rev. | Data | Mudança |
 |---|---|---|
 | A | 2026-11-14 | primeira emissão sobre o modelo aprovado em `v0.15.0` |
+| B | 2026-11-14 | aponta o desenho de conjunto `PS-001-DR-001` rev. A; pendência de cotas detalhadas reformulada |

@@ -6,6 +6,42 @@ documentação** (não a uma API). Enquanto a série for `0.x`, mudanças de for
 ocorrer em versões menores. Cada tag do git corresponde a um estado do arquivo
 `cad/solidcraft/PS-001.sc`.
 
+## [0.17.0] — 2026-11-14
+
+**Marco: prancha 2D A2 publicada (`PS-001-DR-001` rev. A).** O desenho é montado a partir
+das projeções exportadas do modelo aprovado — nenhuma forma é desenhada à mão.
+
+### Adicionado
+- `tools/draw/sheet.py`: monta a folha A2 a partir de `out/draw/v017/{frente,lado,topo,iso,
+  detalhe}.dxf` (exportados por `file.export_view_dxf`), desenhando moldura, vistas em
+  1º diedro a 1:2, **detalhe A** do conjunto magnético a 1:1, cotas de envelope, lista de
+  materiais lida do `BOM.csv`, dados principais, notas e carimbo.
+- `PS-001-DR-001` rev. A: `out/draw/v017/PS-001-DR-001_rA_prancha-a2.dxf` (12.465
+  entidades, camadas `CONTORNO`/`COTA`/`TEXTO`/`TABELA`) e o PDF A2 594 × 420 mm.
+- `tools/plm/build.sh`: o pacote de liberação passa a incluir a prancha verificada
+  (`PS-001-DR-001_rA_prancha-a2.pdf` + `.dxf`).
+- Detalhe A exportado com o restante dos corpos oculto (`browser.visibility`), o que dá a
+  vista limpa do núcleo, carretel, secundário e cantoneiras sem recorte manual de geometria.
+
+### Alterado
+- `PS-001-CO-001` sobe para **rev. B**: a pendência "prancha 2D com cotas de montagem"
+  passa a apontar o `DR-001` publicado.
+- `README.md`: versão 0.17.0, prancha marcada como publicada e seção de desenho 2D.
+
+### Corrigido
+- Parser DXF do gerador: `LINE` lê o segundo vértice em 11/21 (antes só 10/20, o que
+  descartava todas as linhas) e só o vazio final do arquivo é removido — vazios internos
+  são valores válidos.
+- `SKETCH` é descartado na leitura: os traços de sketch do modelo estendiam o bbox e
+  deslocavam a vista.
+- Prisma de leitura da BOM: a coluna `MATERIAL` saiu do quadro (texto truncado); material,
+  dimensões e volumes ficam no `PS-001-LM-001`.
+
+### Verificação
+- `ocs_audit` (dxf, 2018): 0 erro, 0 aviso, `lossless: true`, 0 entidade desconhecida.
+- `save_verified` → AC1032, 12.465 entidades preservadas, sha256 `ad84cf7a5597c6ea…`.
+- BOM da prancha e `BOM.csv` têm os mesmos 16 itens.
+
 ## [0.16.0] — 2026-11-14
 
 ### Adicionado
@@ -124,6 +160,7 @@ prancha 2D e para a documentação de produto.
   modelo** e não devem ser usadas como referência: serão refeitas depois da aprovação
   do 3D.
 
+[0.17.0]: #0170--2026-11-14
 [0.16.0]: #0160--2026-11-14
 [0.15.0]: #0150--2026-11-14
 [0.14.0]: #0140--2026-11-14
