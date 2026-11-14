@@ -35,6 +35,7 @@ mkdir -p "$BUILD"
 DOCS=(
   "PS-001-PL-001|docs/plm/PLANO.md|plano-plm"
   "PS-001-PL-002|docs/plm/REGISTRO.md|registro-documentos"
+  "PS-001-PL-003|docs/plm/TEAMCRAFT.md|teamcraft"
   "PS-001-US-001|docs/uso/USO.md|uso"
   "PS-001-CO-001|docs/construcao/CONSTRUCAO.md|construcao"
 )

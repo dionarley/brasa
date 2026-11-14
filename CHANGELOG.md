@@ -6,6 +6,47 @@ documentação** (não a uma API). Enquanto a série for `0.x`, mudanças de for
 ocorrer em versões menores. Cada tag do git corresponde a um estado do arquivo
 `cad/solidcraft/PS-001.sc`.
 
+## [0.18.0] — 2026-11-14
+
+**Marco: PDM em uso.** O PS-001 passa a ter as revisões liberadas em uma instância
+local do [TeamCraft](https://github.com/rudalabs/TeamCraft) 0.2.7, com PostgreSQL 16
+em podman, liberação por ECO e aprovação por um segundo usuário.
+
+### Adicionado
+- `docs/plm/TEAMCRAFT.md` (`PS-001-PL-003` rev. A): instalação, configuração,
+  usuários e tokens, operação de check-out/ECO, MCP do OpenCode, mapeamento do
+  PS-001, backup/restauração e limites de segurança.
+- `tools/plm/teamcraft_migrate.py`: migração idempotente do PS-001 (grupo, 23 itens,
+  arquivos, BOM de 16 linhas, 6 referências e ECO `CHG-000001`), com aprovação
+  quatro olhos pelo usuário `revisor`.
+- `tools/plm/teamcraft_docs_b.py`: segunda liberação — `PL-001`/`PL-002` rev. B e
+  `PL-003` rev. A na ECO `CHG-000002`.
+- `tools/plm/teamcraft_backup.sh`: dump `pg_dump -Fc` dentro do contêiner, tar do
+  vault (sem o cache de previews), `SHA256SUMS`, instruções de restauração e
+  retenção de 7 pacotes.
+- Instância TeamCraft em `http://127.0.0.1:8080` (loopback): 24 itens no grupo
+  `PS-001`, BOM e arquivos do modelo (`.sc`, STEP, 3MF, cinco renders), documentos
+  com PDF/DXF/CSV, preview 3D pelo 3MF.
+- MCP do TeamCraft no OpenCode (`~/teamcraft/mcp.sh`, token de escopo `mcp_only`):
+  consulta de itens, BOM, onde usado, impacto e ECOs; não libera nem aprova.
+
+### Alterado
+- `PS-001-PL-001` sobe para **rev. B**: adota o TeamCraft, mapeia os estados
+  (`in_work`/`in_review`/`released`/`obsolete`), separa autor e aprovador, inclui a
+  ECO no fluxo de mudança, atualiza checklist, ferramentas e pendências.
+- `PS-001-PL-002` sobe para **rev. B**: registra o `PL-003`, o grupo/ECO do TeamCraft
+  e as revisões substituídas.
+- `tools/plm/build.sh`: gera o PDF do `PL-003`.
+- `README.md`: versão 0.18.0, seção **PDM (TeamCraft)** e pacote `dist/v0.18.0/`.
+
+### Verificação
+- `readyz`: banco, vault e versão 0.2.7 ok; `GET /api/v1` com os endpoints esperados.
+- 24 itens do grupo `PS-001` em `released`; BOM do conjunto com 16 linhas; 6
+  referências de documento; `CHG-000001` e `CHG-000002` aprovadas pelo `revisor`.
+- Backup gerado e conferido (`sha256sum -c`), com dump lido por `pg_restore -l`.
+- `dist/v0.18.0/`: 13 arquivos, `SHA256SUMS` verificado; PDFs `PL-001` rev. B,
+  `PL-002` rev. B e `PL-003` rev. A gerados sem aviso.
+
 ## [0.17.1] — 2026-11-14
 
 ### Alterado

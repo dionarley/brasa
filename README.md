@@ -1,7 +1,8 @@
 # PS-001 — Pistola de solda por transformador (estudo)
 
-**Licença:** [CC BY-NC-SA 4.0](LICENSE) (conteúdo próprio) · **Versão:** 0.17.1 ·
-**Estado:** modelo 3D aprovado; documentação de produto publicada; prancha 2D A2 publicada.
+**Licença:** [CC BY-NC-SA 4.0](LICENSE) (conteúdo próprio) · **Versão:** 0.18.0 ·
+**Estado:** modelo 3D aprovado; documentação de produto publicada; prancha 2D A2
+publicada; revisões liberadas no TeamCraft.
 
 Reconstrução **de estudo** de um estanhador de 550 W / 127 V com transformador e
 secundário de fita de cobre, modelado como peça paramétrica no SolidCraft a partir de
@@ -17,7 +18,8 @@ de reutilizar qualquer coisa.
 | Renders de conferência (`out/plot/ps001_v15_*.png`) | gerados (não versionados) |
 | Exportações STEP/3MF | **regeradas** da versão aprovada (derivadas, fora do git) |
 | Prancha 2D A2 (`PS-001-DR-001` rev. A) | **publicada** — vistas em 1º diedro, detalhe 1:1, cotas de envelope, BOM |
-| Documentação PLM (`docs/plm/`, `docs/uso/`, `docs/construcao/`) | **publicada** — plano, uso e construção |
+| Documentação PLM (`docs/plm/`, `docs/uso/`, `docs/construcao/`) | **publicada** — plano, registro, uso e construção |
+| PDM TeamCraft (`http://127.0.0.1:8080`) | **em uso** — 24 itens, BOM e arquivos liberados por ECO |
 | Versionamento e licença | concluído |
 
 ## Estrutura
@@ -26,13 +28,17 @@ de reutilizar qualquer coisa.
 cad/solidcraft/
   PS-001.sc        fonte da verdade: design paramétrico (zip com document.json)
 docs/
-  plm/             plano do ciclo de vida (PLANO.md) e registro mestre (REGISTRO.md)
+  plm/             plano do ciclo de vida (PLANO.md), registro mestre (REGISTRO.md)
+                   e manual do TeamCraft (TEAMCRAFT.md)
   uso/             manual de uso e segurança (USO.md)
   construcao/      guia de construção (CONSTRUCAO.md) e lista de materiais (BOM.csv)
   referencias.md   fontes, autoria e o que cada uma contribuiu
 tools/plm/
   build.sh         gera os PDFs (pandoc → typst) e o pacote em dist/
   template.typ     template de documento (capa, cabeçalho, rodapé)
+  teamcraft_migrate.py  migra o PS-001 para o TeamCraft (idempotente)
+  teamcraft_docs_b.py   libera PL-001 B, PL-002 B e PL-003 A
+  teamcraft_backup.sh   backup do banco e do vault
 tools/draw/
   sheet.py         monta a prancha A2 a partir das projeções DXF do modelo
 out/               renders, DXF e exportações (fora do git)
@@ -108,6 +114,7 @@ processo — códigos, estados, critérios de aprovação e liberação — est�
 |---|---|---|
 | PS-001-PL-001 | Plano de ciclo de vida (PLM) | [`docs/plm/PLANO.md`](docs/plm/PLANO.md) |
 | PS-001-PL-002 | Registro mestre de documentos | [`docs/plm/REGISTRO.md`](docs/plm/REGISTRO.md) |
+| PS-001-PL-003 | TeamCraft: instalação, operação e registro | [`docs/plm/TEAMCRAFT.md`](docs/plm/TEAMCRAFT.md) |
 | PS-001-US-001 | Manual de uso e segurança | [`docs/uso/USO.md`](docs/uso/USO.md) |
 | PS-001-CO-001 | Guia de construção (estudo) | [`docs/construcao/CONSTRUCAO.md`](docs/construcao/CONSTRUCAO.md) |
 | PS-001-LM-001 | Lista de materiais (BOM) | [`docs/construcao/BOM.csv`](docs/construcao/BOM.csv) |
@@ -116,13 +123,32 @@ processo — códigos, estados, critérios de aprovação e liberação — est�
 Gerar o pacote de liberação (PDFs, BOM e renders com manifesto `sha256`):
 
 ```sh
-tools/plm/build.sh                  # dist/v0.16.0/
+tools/plm/build.sh                  # dist/v0.18.0/
 tools/plm/build.sh --pdf            # só os PDFs
 tools/plm/build.sh --clean          # limpa dist/ antes
 ```
 
-Requer `pandoc` e `typst`. Os renders vêm de `out/plot/v016/`; se faltarem, o PDF sai
-com uma nota no lugar da figura em vez de quebrar.
+Requer `pandoc` e `typst`. Os renders vêm da pasta mais recente em `out/plot/`; se
+faltarem, o PDF sai com uma nota no lugar da figura em vez de quebrar.
+
+## PDM (TeamCraft)
+
+As revisões liberadas ficam em uma instância local do
+[TeamCraft](https://github.com/rudalabs/TeamCraft) em <http://127.0.0.1:8080>
+(somente loopback), com o grupo de projeto `PS-001`:
+
+- 1 conjunto (`PS-001`), 16 peças (`PS-001-LM-01`…`-16`) e 7 documentos;
+- BOM de 16 linhas e arquivos do modelo (`.sc`, STEP, 3MF, renders) na revisão do
+  conjunto;
+- liberação por ECO aprovada por um segundo usuário (`revisor`): `CHG-000001` levou as
+  23 revisões A e `CHG-000002` liberou `PL-001`/`PL-002` rev. B e `PL-003` rev. A.
+
+A instalação, a operação, o MCP do OpenCode e o backup estão em
+[`docs/plm/TEAMCRAFT.md`](docs/plm/TEAMCRAFT.md). Backup manual:
+
+```sh
+tools/plm/teamcraft_backup.sh          # banco + vault em ~/teamcraft/backups/
+```
 
 ## Abrir e editar
 
@@ -197,3 +223,5 @@ A2 correspondente. As pranchas antigas em `out/draw/` e `out/vector/` estão **d
    detalhe.
 3. Publicar a revisão `B` do manual de uso quando houver massa e ciclo de trabalho
    declarados.
+4. Backup remoto do TeamCraft e teste de restauração periódico.
+5. Referenciar o `PL-003` no conjunto na próxima revisão do item `PS-001`.

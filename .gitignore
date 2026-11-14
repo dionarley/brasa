@@ -24,6 +24,8 @@ cad/solidcraft/*.3mf
 *.tmp
 *.log
 .DS_Store
+__pycache__/
+*.pyc
 
 # Travas do LibreOffice
 .~lock.*#
