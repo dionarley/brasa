@@ -69,6 +69,23 @@ LEGAL.md           escopo da licença, marcas, desenho industrial, segurança
 CHANGELOG.md       histórico por versão
 ```
 
+## Plataforma (Forja)
+
+As ferramentas não moram neste repositório: os apps (SolidCraft, CadCraft,
+GridCraft, visualizador DXF) e o serviço de PDM vivem na plataforma
+[`dionarley/forja`](https://github.com/dionarley/forja), com os forks em
+submodules. Aqui fica o **produto**: modelo, desenhos, documentos e os scripts
+que agem no PDM.
+
+| ferramenta | onde | o que faz com o PS-001 |
+|---|---|---|
+| `forja-pdm` | `dionarley/forja`, `127.0.0.1:8090` | abre o STEP do TeamCraft e tessela com o kernel `solidcore` (22 corpos, ~32,6 mil triângulos) |
+| [Gabarito](https://github.com/dionarley/gabarito) | `dionarley/gabarito` | molde para produto novo; o PS-001 é anterior a ele |
+| TeamCraft | local, `127.0.0.1:8080` | itens, revisões, ECO e arquivos |
+
+A marca que assina contrato, laudo e proposta é a **Tessera**; **Brasa** é a
+marca deste produto.
+
 ## Modelo 3D
 
 Um design no SolidCraft, sem montagem separada: cada peça é um corpo nomeado, com

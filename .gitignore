@@ -57,3 +57,7 @@ __pycache__/
 
 # Travas do LibreOffice
 .~lock.*#
+
+# Exportações avulsas de CAD (derivadas; a fonte é o .sc) e trava do OpenCADStudio
+*.dxf
+.xdp-*.ocs.lock-*
