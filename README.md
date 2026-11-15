@@ -1,5 +1,7 @@
 # Brasa — estanhador 550 W / 127 V (estudo)
 
+<p align="center"><img src="branding/brasa-wide.svg" alt="Brasa — estanhador 550 W / 127 V" height="96"></p>
+
 **Licença:** [CC BY-NC-SA 4.0](LICENSE) (conteúdo próprio) · **Versão:** 0.20.0 ·
 **Estado:** modelo 3D aprovado; documentação de produto publicada; prancha 2D A2
 publicada; revisões liberadas no TeamCraft.
