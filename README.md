@@ -40,6 +40,7 @@ tools/plm/
   teamcraft_migrate.py  migra o PS-001 para o TeamCraft (idempotente)
   teamcraft_docs_b.py   libera PL-001 B, PL-002 B e PL-003 A
   teamcraft_identity.py libera a identidade Brasa (PS-001 B, US-001 B, PL-001/PL-002 C, PL-003 B)
+  teamcraft_tools.py    libera as revisões de processo da 0.20.0 (PL-001/PL-002 D, PL-003 C)
   teamcraft_backup.sh   backup do banco e do vault
   admin/
     teamcraft_service.sh   sobe, derruba e diagnostica servidor e banco

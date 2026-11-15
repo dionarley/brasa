@@ -66,7 +66,7 @@ humana; a consulta oficial é a API/MCP do PDM.
 
 A migração é reproduzível por `tools/plm/teamcraft_migrate.py`; a segunda liberação por
 `tools/plm/teamcraft_docs_b.py`; a identidade por `tools/plm/teamcraft_identity.py`; esta
-revisão por `tools/plm/teamcraft_docs_c.py`. O `PL-003` ainda não é referência do conjunto
+revisão por `tools/plm/teamcraft_tools.py`. O `PL-003` ainda não é referência do conjunto
 porque a revisão A do item `PS-001` foi liberada antes da sua criação; o vínculo entra na
 próxima revisão do conjunto.
 
