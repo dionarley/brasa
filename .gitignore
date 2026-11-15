@@ -7,6 +7,18 @@
 /render.png
 /shot*.png
 
+# GridCraft: site baixado, binário da CLI, cache de release e versão instalada
+/tools/gridcraft/web/
+/tools/gridcraft/bin/
+/tools/gridcraft/.cache/
+/tools/gridcraft/.version
+/tools/gridcraft/.port
+
+# Planilhas locais de trabalho (o arquivo controlado vai para o TeamCraft)
+/workbooks/*.xlsx
+/workbooks/*.xlsm
+/workbooks/*.ods
+
 # Backups manuais do SolidCraft (o git já guarda o histórico)
 cad/solidcraft/*.bak
 cad/solidcraft/*_backup.sc

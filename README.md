@@ -41,8 +41,17 @@ tools/plm/
   teamcraft_docs_b.py   libera PL-001 B, PL-002 B e PL-003 A
   teamcraft_identity.py libera a identidade Brasa (PS-001 B, US-001 B, PL-001/PL-002 C, PL-003 B)
   teamcraft_backup.sh   backup do banco e do vault
+  admin/
+    teamcraft_service.sh   sobe, derruba e diagnostica servidor e banco
+    teamcraft_branding.sh  logos e nome do cabeçalho da instância
+    teamcraft_tokens.sh    tokens pessoais de acesso (listar, criar, revogar)
 tools/draw/
   sheet.py         monta a prancha A2 a partir das projeções DXF do modelo
+tools/gridcraft/
+  install.sh       instala o GridCraft no podman (site web + CLI) com assinatura conferida
+  gridcraft.sh     up/down/status/logs, CLI headless e MCP em stdio
+  compose.yaml     serviço web (nginx, 127.0.0.1:8088)
+workbooks/         planilhas de trabalho (fora do git; arquivo controlado vai ao TeamCraft)
 branding/
   build.sh         regera os exports do logo (VectorCraft, flatpak)
   brasa-wide.*     logo 600 × 120 px: fonte .vectorcraft, SVG e PNG
@@ -158,6 +167,24 @@ A instalação, a operação, o MCP do OpenCode e o backup estão em
 tools/plm/teamcraft_backup.sh          # banco + vault em ~/teamcraft/backups/
 ```
 
+## Planilhas (GridCraft)
+
+O [GridCraft](https://github.com/storytold/gridcraft) roda no podman: site em
+<http://127.0.0.1:8088> e CLI headless (também MCP) no mesmo motor. Serve para
+listas, orçamento e conferência de cálculo; o arquivo que vale é entregue como
+revisão no TeamCraft, como os PDFs.
+
+```sh
+tools/gridcraft/install.sh             # baixa, confere a assinatura e sobe o serviço
+tools/gridcraft/gridcraft.sh status
+tools/gridcraft/gridcraft.sh cli info workbooks/orcamento.xlsx
+tools/gridcraft/gridcraft.sh cli eval '=SUM(C2:C9)' --in workbooks/orcamento.xlsx
+```
+
+Planilhas de trabalho ficam em [`workbooks/`](workbooks/README.md), fora do git.
+Instalação, CLI, MCP e limites em
+[`tools/gridcraft/README.md`](tools/gridcraft/README.md).
+
 ## Abrir e editar
 
 Requer o SolidCraft (app desktop) ou o servidor MCP equivalente. O `.sc` é um zip com
@@ -179,7 +206,9 @@ parâmetros, e feche cada sketch com `dof 0`. Depois de qualquer mudança, confi
   histórico útil é o par **(commit + tag)**; para inspecionar uma versão, faça checkout
   da tag e abra o `.sc`.
 - Fora do git (`.gitignore`): `out/` (renders, DXF, STEP/3MF), `ref/` e `docs/*.pdf`
-  (direitos de terceiros), backups `.bak`/`*_backup.sc`, `render.png`, `shot*.png`.
+  (direitos de terceiros), backups `.bak`/`*_backup.sc`, `render.png`, `shot*.png`,
+  `workbooks/*.xlsx` e o que o `tools/gridcraft/install.sh` baixa (`web/`, `bin/`,
+  `.cache/`).
 - Commits em português, no imperativo ("ajusta o secundário para sweep único").
 
 ```sh
