@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="256" height="256" viewBox="0 0 256 256">
+  <defs>
+    <linearGradient id="linear-gradient-1" x1="128" y1="256" x2="128" y2="0" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#e4560f"/>
+      <stop offset="1" stop-color="#a93007"/>
+    </linearGradient>
+  </defs>
+  <title>brasa-square</title>
+  <g id="Layer_1" data-name="Layer 1">
+    <path d="M56 0 L200 0 C230.928 0 256 25.072 256 56 L256 200 C256 230.928 230.928 256 200 256 L56 256 C25.072 256 0 230.928 0 200 L0 56 C0 25.072 25.072 0 56 0 Z" fill="url(#linear-gradient-1)"/>
+    <path d="M128 42 C141 82 176 100 176 146 C176 178 154 202 128 202 C102 202 80 178 80 146 C80 100 115 82 128 42 Z" fill="#fff1e0"/>
+    <path d="M119 96 C125 120 154 134 154 158 C154 180 140 194 124 194 C108 194 96 179 96 158 C96 136 111 116 119 96 Z" fill="#a93007"/>
+  </g>
+</svg>

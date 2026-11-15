@@ -3,6 +3,7 @@
 # previews e backups. A fonte da verdade é cad/solidcraft/PS-001.sc.
 /out/
 /dist/
+/branding/.build/
 /render.png
 /shot*.png
 

@@ -43,6 +43,10 @@ tools/plm/
   teamcraft_backup.sh   backup do banco e do vault
 tools/draw/
   sheet.py         monta a prancha A2 a partir das projeções DXF do modelo
+branding/
+  build.sh         regera os exports do logo (VectorCraft, flatpak)
+  brasa-wide.*     logo 600 × 120 px: fonte .vectorcraft, SVG e PNG
+  brasa-square.*   marca 256 × 256 px: fonte .vectorcraft, SVG e PNG
 out/               renders, DXF e exportações (fora do git)
 dist/              pacotes de liberação gerados (fora do git)
 ref/               fotos e vetores de referência (fora do git, direitos de terceiros)
