@@ -1,0 +1,209 @@
+/* Identidade Brasa + variáveis que o chrome do MLightCAD usa (--ml-ui-*). */
+:root {
+  color-scheme: dark;
+
+  --brasas-laranja: #e4560f;
+  --brasas-laranja-claro: #ff8a54;
+  --brasas-fundo: #101216;
+  --brasas-fundo-2: #171a1f;
+  --brasas-borda: #2c3037;
+  --brasas-texto: #eceff3;
+  --brasas-texto-2: #a5adba;
+
+  --ml-ui-text: var(--brasas-texto);
+  --ml-ui-text-muted: var(--brasas-texto-2);
+  --ml-ui-bg: var(--brasas-fundo);
+  --ml-ui-bg-page: #0b0d10;
+  --ml-ui-bg-fill: var(--brasas-fundo-2);
+  --ml-ui-border: var(--brasas-borda);
+  --ml-ui-shadow: 0 6px 18px rgba(0, 0, 0, 0.45);
+  --ml-ui-overlay: rgba(0, 0, 0, 0.55);
+  --ml-ui-accent: var(--brasas-laranja);
+  --ml-ui-accent-alt: #8b939f;
+  --ml-ui-danger: #f56c6c;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'DejaVu Sans', sans-serif;
+  background: var(--brasas-fundo);
+  color: var(--brasas-texto);
+  overflow: hidden;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
+}
+
+/* ------------------------------------------------------------- barra topo */
+
+#topbar {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.55rem 0.9rem;
+  background: var(--brasas-fundo-2);
+  border-bottom: 1px solid var(--brasas-borda);
+  font-size: 0.86rem;
+  flex: 0 0 auto;
+}
+
+#topbar .brand {
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--brasas-laranja-claro);
+}
+
+#topbar .brand small {
+  margin-left: 0.4rem;
+  padding: 0.05rem 0.35rem;
+  border: 1px solid var(--brasas-borda);
+  border-radius: 999px;
+  font-weight: 500;
+  font-size: 0.68rem;
+  color: var(--brasas-texto-2);
+}
+
+#file-name {
+  max-width: 46ch;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--brasas-texto-2);
+  font-family: ui-monospace, 'DejaVu Sans Mono', monospace;
+  font-size: 0.8rem;
+}
+
+.grow {
+  flex: 1 1 auto;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.7rem;
+  border: 1px solid var(--brasas-laranja);
+  border-radius: 6px;
+  background: var(--brasas-laranja);
+  color: #fff;
+  font: inherit;
+  font-weight: 600;
+  font-size: 0.82rem;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.button:hover {
+  background: var(--brasas-laranja-claro);
+  border-color: var(--brasas-laranja-claro);
+}
+
+.button.ghost {
+  background: transparent;
+  color: var(--brasas-texto-2);
+  border-color: var(--brasas-borda);
+}
+
+#file-input {
+  display: none;
+}
+
+#drawing-select {
+  max-width: 34ch;
+  padding: 0.3rem 0.4rem;
+  border: 1px solid var(--brasas-borda);
+  border-radius: 6px;
+  background: var(--brasas-fundo);
+  color: var(--brasas-texto);
+  font: inherit;
+  font-size: 0.8rem;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+/* --------------------------------------------------------------- viewport */
+
+#cad-viewer {
+  position: relative;
+  flex: 1 1 auto;
+  min-height: 0;
+  background: var(--brasas-fundo);
+}
+
+body[data-drag='true'] #cad-viewer {
+  outline: 2px dashed var(--brasas-laranja);
+  outline-offset: -8px;
+}
+
+/* ------------------------------------------------------------- dica inicial */
+
+#hint {
+  position: absolute;
+  inset: auto 0 46%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0 1.5rem;
+  text-align: center;
+  color: var(--brasas-texto-2);
+  font-size: 0.9rem;
+  pointer-events: none;
+  z-index: 5;
+}
+
+#hint[hidden] {
+  display: none;
+}
+
+#hint strong {
+  color: var(--brasas-texto);
+  font-size: 1.05rem;
+}
+
+#hint code {
+  font-family: ui-monospace, 'DejaVu Sans Mono', monospace;
+  color: var(--brasas-laranja-claro);
+}
+
+#hint .button {
+  pointer-events: auto;
+}
+
+/* --------------------------------------------------------------- rodapé */
+
+#statusbar {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.35rem 0.9rem;
+  border-top: 1px solid var(--brasas-borda);
+  background: var(--brasas-fundo-2);
+  font-size: 0.76rem;
+  color: var(--brasas-texto-2);
+  flex: 0 0 auto;
+}
+
+#status[data-kind='error'] {
+  color: #ff9b9b;
+}
+
+#status[data-kind='busy'] {
+  color: var(--brasas-laranja-claro);
+}

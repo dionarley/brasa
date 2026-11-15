@@ -51,7 +51,12 @@ tools/gridcraft/
   install.sh       instala o GridCraft no podman (site web + CLI) com assinatura conferida
   gridcraft.sh     up/down/status/logs, CLI headless e MCP em stdio
   compose.yaml     serviço web (nginx, 127.0.0.1:8088)
+tools/cad-viewer/
+  install.sh       constrói o visualizador DXF (Vite + MLightCAD no podman) e sobe
+  cad_viewer.sh    view/publish de DXF, up/down/status/logs
+  compose.yaml     serviço web (nginx, 127.0.0.1:8089)
 workbooks/         planilhas de trabalho (fora do git; arquivo controlado vai ao TeamCraft)
+site/              documentação publicada em Docusaurus (lê docs/ e LEGAL.md)
 branding/
   build.sh         regera os exports do logo (VectorCraft, flatpak)
   brasa-wide.*     logo 600 × 120 px: fonte .vectorcraft, SVG e PNG
@@ -146,6 +151,10 @@ tools/plm/build.sh --clean          # limpa dist/ antes
 Requer `pandoc` e `typst`. Os renders vêm da pasta mais recente em `out/plot/`; se
 faltarem, o PDF sai com uma nota no lugar da figura em vez de quebrar.
 
+A mesma fonte é publicada como site (Docusaurus) em <http://127.0.0.1:8081>:
+`site/docs.sh build` (ou `serve`) gera e sobe; nada é editado em `site/`, o site
+só lê `docs/` e `LEGAL.md`. Ver [`site/README.md`](site/README.md).
+
 ## PDM (TeamCraft)
 
 As revisões liberadas ficam em uma instância local do
@@ -185,6 +194,22 @@ Planilhas de trabalho ficam em [`workbooks/`](workbooks/README.md), fora do git.
 Instalação, CLI, MCP e limites em
 [`tools/gridcraft/README.md`](tools/gridcraft/README.md).
 
+## Desenhos (visualizador DXF)
+
+O [MLightCAD](https://github.com/mlightcad/cad-viewer) roda como app estático no
+podman: <http://127.0.0.1:8089> abre DXF no próprio navegador (parsing e render
+em WebGL), com zoom, medida e camadas — sem CAD instalado e sem enviar arquivo
+para servidor. Serve para conferir a prancha e as projeções durante o trabalho.
+
+```sh
+tools/cad-viewer/install.sh            # build do app (Node no podman) + serviço
+tools/cad-viewer/cad_viewer.sh view dist/v0.19.0/PS-001-DR-001_rA_prancha-a2.dxf
+tools/cad-viewer/cad_viewer.sh publish out/draw/v017
+```
+
+Só DXF: o suporte a DWG usa LibreDWG (GPL), que fica fora do projeto. Detalhes,
+fontes do CDN e limites em [`tools/cad-viewer/README.md`](tools/cad-viewer/README.md).
+
 ## Abrir e editar
 
 Requer o SolidCraft (app desktop) ou o servidor MCP equivalente. O `.sc` é um zip com
@@ -207,8 +232,8 @@ parâmetros, e feche cada sketch com `dof 0`. Depois de qualquer mudança, confi
   da tag e abra o `.sc`.
 - Fora do git (`.gitignore`): `out/` (renders, DXF, STEP/3MF), `ref/` e `docs/*.pdf`
   (direitos de terceiros), backups `.bak`/`*_backup.sc`, `render.png`, `shot*.png`,
-  `workbooks/*.xlsx` e o que o `tools/gridcraft/install.sh` baixa (`web/`, `bin/`,
-  `.cache/`).
+  `workbooks/*.xlsx`, o que o `tools/gridcraft/install.sh` baixa (`web/`, `bin/`,
+  `.cache/`) e o build do visualizador (`tools/cad-viewer/{node_modules,dist,drawings}`).
 - Commits em português, no imperativo ("ajusta o secundário para sweep único").
 
 ```sh

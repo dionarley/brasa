@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Brasa — visualizador DXF</title>
+    <meta
+      name="description"
+      content="Visualizador DXF do projeto Brasa (PS-001), rodando inteiramente no navegador."
+    />
+  </head>
+  <body>
+    <div id="app">
+      <header id="topbar">
+        <span class="brand">Brasa<small>PS-001</small></span>
+        <select id="drawing-select" title="desenhos publicados em drawings/" hidden></select>
+        <span id="file-name" title="desenho aberto">nenhum desenho aberto</span>
+        <span class="grow"></span>
+        <label class="button" for="file-input">Abrir DXF…</label>
+        <input id="file-input" type="file" accept=".dxf" />
+      </header>
+
+      <div id="hint" role="status">
+        <strong>Arraste um <code>.dxf</code> aqui</strong>
+        <span>
+          ou use <em>Abrir DXF…</em>. O arquivo é lido no navegador: nada é
+          enviado para servidor.
+        </span>
+        <button id="hint-pick" class="button">Escolher arquivo</button>
+      </div>
+
+      <main id="cad-viewer"></main>
+
+      <footer id="statusbar">
+        <span id="status">pronto</span>
+        <span class="grow"></span>
+        <span>MLightCAD · MIT · DXF no navegador</span>
+      </footer>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

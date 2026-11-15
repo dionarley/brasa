@@ -1,0 +1,15 @@
+# Documentação do Brasa (Docusaurus) servida como site estático.
+# O conteúdo publicado é o `build/` gerado por ./docs.sh build; o nginx só
+# entrega os arquivos. A fonte continua sendo ../docs (Markdown do projeto).
+name: brasa-docs
+
+services:
+  web:
+    image: docker.io/library/nginx:1.29-alpine
+    container_name: brasa-docs
+    ports:
+      - "127.0.0.1:${DOCS_PORT:-8081}:8080"
+    volumes:
+      - ./build:/usr/share/nginx/html:ro
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    restart: unless-stopped

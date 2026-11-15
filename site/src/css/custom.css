@@ -1,0 +1,185 @@
+/**
+ * Identidade Brasa para o site. As cores vêm de branding/README.md:
+ * laranja brasa (#E4560F → #A93007), creme (#FFF1E0) e o fundo escuro (#101216).
+ */
+
+:root {
+  --ifm-color-primary: #d6450e;
+  --ifm-color-primary-dark: #c03e0c;
+  --ifm-color-primary-darker: #b53b0b;
+  --ifm-color-primary-darkest: #953009;
+  --ifm-color-primary-light: #e0521a;
+  --ifm-color-primary-lighter: #e25822;
+  --ifm-color-primary-lightest: #ee8253;
+
+  --ifm-heading-font-weight: 650;
+  --ifm-font-family-base: system-ui, -apple-system, "Segoe UI", Roboto,
+    "DejaVu Sans", sans-serif;
+  --ifm-code-font-size: 92%;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme='dark'] {
+  --ifm-color-primary: #ff8a54;
+  --ifm-color-primary-dark: #ff7433;
+  --ifm-color-primary-darker: #ff6922;
+  --ifm-color-primary-darkest: #f04e00;
+  --ifm-color-primary-light: #ffa075;
+  --ifm-color-primary-lighter: #ffab86;
+  --ifm-color-primary-lightest: #ffc4ac;
+  --ifm-background-color: #101216;
+  --ifm-background-surface-color: #171a1f;
+  --docusaurus-highlighted-code-line-bg: rgba(255, 255, 255, 0.1);
+}
+
+/* ------------------------------------------------------------------ páginas */
+
+.hero-brasa {
+  padding: 4rem 0 2.5rem;
+  background: radial-gradient(
+    circle at 20% 0%,
+    rgba(228, 86, 15, 0.12),
+    transparent 55%
+  );
+}
+
+.hero-brasa .hero-logo {
+  display: block;
+  width: min(420px, 78vw);
+  height: auto;
+  margin: 0 auto 1.75rem;
+}
+
+.hero-brasa h1 {
+  font-size: clamp(2rem, 5vw, 3rem);
+  letter-spacing: -0.02em;
+  margin-bottom: 0.75rem;
+}
+
+.hero-brasa p.lead {
+  max-width: 44rem;
+  margin: 0 auto 2rem;
+  font-size: 1.15rem;
+  color: var(--ifm-color-emphasis-700);
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
+}
+
+.doc-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem;
+  margin: 2.5rem 0 3rem;
+}
+
+.doc-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  padding: 1.25rem;
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-top: 4px solid var(--ifm-color-primary);
+  border-radius: 8px;
+  background: var(--ifm-background-surface-color);
+  color: inherit;
+  text-decoration: none;
+  transition: transform 120ms ease, box-shadow 120ms ease;
+}
+
+.doc-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(16, 18, 22, 0.12);
+  color: inherit;
+  text-decoration: none;
+}
+
+.doc-card .doc-card-code {
+  font-family: var(--ifm-font-family-monospace);
+  font-size: 0.78rem;
+  color: var(--ifm-color-emphasis-600);
+}
+
+.doc-card .doc-card-title {
+  font-weight: 650;
+  font-size: 1.05rem;
+}
+
+.doc-card .doc-card-desc {
+  font-size: 0.92rem;
+  color: var(--ifm-color-emphasis-700);
+}
+
+.notice-brasa {
+  max-width: 56rem;
+  margin: 0 auto 3rem;
+  padding: 1rem 1.25rem;
+  border-left: 4px solid var(--ifm-color-primary);
+  border-radius: 6px;
+  background: rgba(228, 86, 15, 0.08);
+  font-size: 0.95rem;
+}
+
+/* ------------------------------------------- faixa de documento controlado */
+
+/* Os manuais numeram as seções com #; no padrão do Docusaurus cada uma vira
+   um h1 de 2.5rem e a página fica pesada. */
+.markdown h1 {
+  font-size: 1.9rem;
+}
+
+.markdown h1:not(:first-child) {
+  margin-top: 2.4rem;
+}
+
+.markdown h2 {
+  font-size: 1.45rem;
+}
+
+.markdown h3 {
+  font-size: 1.18rem;
+}
+
+
+.doc-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem 1rem;
+  margin-bottom: 1.75rem;
+  padding: 0.6rem 0.9rem;
+  border-left: 4px solid var(--ifm-color-primary);
+  border-radius: 6px;
+  background: var(--ifm-background-surface-color);
+  font-size: 0.85rem;
+  color: var(--ifm-color-emphasis-700);
+}
+
+.doc-meta .doc-meta-code {
+  font-family: var(--ifm-font-family-monospace);
+  font-weight: 600;
+  color: var(--ifm-color-emphasis-900);
+}
+
+.doc-meta .doc-meta-status {
+  padding: 0.05rem 0.5rem;
+  border-radius: 999px;
+  background: rgba(228, 86, 15, 0.15);
+  color: var(--ifm-color-primary-darkest);
+  font-weight: 600;
+}
+
+[data-theme='dark'] .doc-meta .doc-meta-status {
+  background: rgba(255, 138, 84, 0.18);
+  color: var(--ifm-color-primary-lighter);
+}
+
+.doc-meta .doc-meta-sub {
+  flex-basis: 100%;
+  font-size: 0.82rem;
+  color: var(--ifm-color-emphasis-600);
+}

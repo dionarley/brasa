@@ -1,0 +1,16 @@
+# Visualizador DXF do Brasa (MLightCAD) servido como site estático.
+# O app é o dist/ gerado pelo vite; os DXF publicados ficam em drawings/,
+# montado em /drawings e aberto por ?file=drawings/<arquivo>.dxf.
+name: brasa-cad-viewer
+
+services:
+  web:
+    image: docker.io/library/nginx:1.29-alpine
+    container_name: brasa-cad-viewer
+    ports:
+      - "127.0.0.1:${CAD_VIEWER_PORT:-8089}:8080"
+    volumes:
+      - ./dist:/usr/share/nginx/html:ro
+      - ./drawings:/srv/drawings:ro
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    restart: unless-stopped

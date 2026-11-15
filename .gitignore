@@ -19,6 +19,21 @@
 /workbooks/*.xlsm
 /workbooks/*.ods
 
+# Visualizador DXF: dependências, build, cache e desenhos publicados
+/tools/cad-viewer/node_modules/
+/tools/cad-viewer/dist/
+/tools/cad-viewer/.npm/
+/tools/cad-viewer/drawings/
+/tools/cad-viewer/.port
+
+# Site da documentação: dependências, build, cache e cópias geradas
+/site/node_modules/
+/site/build/
+/site/.docusaurus/
+/site/.npm/
+/site/static/renders/
+/site/static/LICENSE
+
 # Backups manuais do SolidCraft (o git já guarda o histórico)
 cad/solidcraft/*.bak
 cad/solidcraft/*_backup.sc
