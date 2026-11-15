@@ -81,7 +81,7 @@ O servidor MCP roda em stdio dentro do contêiner, com o projeto montado:
 "gridcraft": {
   "type": "local",
   "command": [
-    "/home/dionarley/codes-area/diy_hot_gun/tools/gridcraft/gridcraft.sh",
+    "/home/dionarley/codes-area/brasa/tools/gridcraft/gridcraft.sh",
     "mcp"
   ]
 }

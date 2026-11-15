@@ -246,7 +246,7 @@ parâmetros, e feche cada sketch com `dof 0`. Depois de qualquer mudança, confi
 
 ## Versionamento
 
-- Repositório git **dentro de `diy_hot_gun/`** (branch `main`); tags `v0.x.y`.
+- Repositório git **dentro de `brasa/`** (branch `main`); tags `v0.x.y`.
 - `PS-001.sc` é gravado pelo SolidCraft como zip: o diff não é legível, então o
   histórico útil é o par **(commit + tag)**; para inspecionar uma versão, faça checkout
   da tag e abra o `.sc`.
