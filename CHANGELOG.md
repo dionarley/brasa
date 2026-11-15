@@ -6,6 +6,51 @@ documentação** (não a uma API). Enquanto a série for `0.x`, mudanças de for
 ocorrer em versões menores. Cada tag do git corresponde a um estado do arquivo
 `cad/solidcraft/PS-001.sc`.
 
+## [0.20.0] — 2026-11-15
+
+**Marco: ferramentas de apoio.** A documentação ganha uma publicação derivada (site),
+as planilhas entram pelo GridCraft, o desenho passa a ser conferido num visualizador DXF
+no navegador e o TeamCraft ganha scripts de administração. Nenhum documento controlado
+muda de conteúdo de produto — muda o processo em volta dele.
+
+### Adicionado
+- `site/`: Docusaurus 3.10 publicando `docs/**/*.md` e `LEGAL.md` como site estático
+  (podman, `127.0.0.1:8081`), com banner de documento controlado lido do front matter e
+  plugin remark para as figuras do pandoc (`{width=NN%}` e `renders/`).
+- `tools/gridcraft/`: GridCraft instalado e verificado (serviço web em `127.0.0.1:8088`,
+  CLI headless e servidor MCP stdio), com `workbooks/` para as planilhas de trabalho.
+- `tools/cad-viewer/`: visualizador DXF com `@mlightcad/cad-simple-viewer` 1.7.8 no
+  navegador (`127.0.0.1:8089`), aberto por arrastar, botão, `?file=` ou lista de
+  desenhos publicados. Só DXF: DWG (LibreDWG, GPL) fica fora.
+- `tools/plm/admin/`: `teamcraft_service.sh` (subir, parar, reiniciar, status, logs),
+  `teamcraft_branding.sh` (logos e nome do cabeçalho) e `teamcraft_tokens.sh` (tokens).
+- `dist/v0.20.0/`: pacote com as revisões desta liberação e manifesto `sha256`.
+
+### Alterado
+- `PS-001-PL-001` sobe para **rev. D**: §8 registra site, GridCraft, visualizador e
+  scripts de administração; §6.2 trata o site como publicação derivada da mesma fonte;
+  §9 ganha a pendência do carimbo da prancha rev. B.
+- `PS-001-PL-002` sobe para **rev. D**: tabela com as revisões D/D/C, ECO 5, derivados
+  (site, planilhas, `drawings/`), versão 0.20.0 e revisões substituídas.
+- `PS-001-PL-003` sobe para **rev. C**: §3.5 e §8.2 passam a usar
+  `tools/plm/admin/teamcraft_service.sh`; nova §3.6 descreve os scripts.
+- `README.md`: versão 0.20.0, seção de documentação publicada e de desenhos, árvore de
+  `site/`, `tools/gridcraft/`, `tools/cad-viewer/` e `workbooks/`.
+- `.gitignore`: `site/{node_modules,build,.docusaurus,.npm,static/renders,static/LICENSE}`
+  e o build do visualizador.
+
+### Corrigido
+- O manual do PDM ensinava `pkill -x teamcraft` para parar o servidor: o sinal derrubava
+  também a ponte MCP do OpenCode e as tools `teamcraft_*` sumiam até reconectar. Agora o
+  `down` do script encerra só o `teamcraft serve` e confere o `readyz`.
+
+### Verificação
+- ECO `CHG-000005` aprovada pelo `revisor`; `PL-001` D, `PL-002` D e `PL-003` C em
+  `released`.
+- `dist/v0.20.0/` com `MANIFEST.md` e sha256 conferidos.
+- Site reconstruído (`site/docs.sh build`) com os banners das revisões D e C; visualizador
+  abrindo o DXF da prancha A2 com textos, cotas e carimbo.
+
 ## [0.19.0] — 2026-11-14
 
 **Marco: identidade própria.** O projeto e o produto passam a se chamar **Brasa**;

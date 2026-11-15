@@ -2,9 +2,9 @@
 title: "Brasa (PS-001) — Registro mestre de documentos"
 subtitle: "Índice controlado: código, revisão, estado e arquivo"
 docid: "PS-001-PL-002"
-revision: "C"
+revision: "D"
 status: "Aprovado"
-date: "2026-11-14"
+date: "2026-11-15"
 author: "Dionarley"
 project: "Brasa — estanhador 550 W / 127 V (PS-001, estudo)"
 ---
@@ -20,9 +20,9 @@ arquivo definido; o que é derivado aparece na coluna **Publicação**.
 
 | Código | Título | Rev. | Estado | Arquivo |
 |---|---|---|---|---|
-| PS-001-PL-001 | Plano de ciclo de vida (PLM) | C | Aprovado | `docs/plm/PLANO.md` |
-| PS-001-PL-002 | Registro mestre de documentos | C | Aprovado | `docs/plm/REGISTRO.md` |
-| PS-001-PL-003 | TeamCraft: instalação, operação e registro | B | Aprovado | `docs/plm/TEAMCRAFT.md` |
+| PS-001-PL-001 | Plano de ciclo de vida (PLM) | D | Aprovado | `docs/plm/PLANO.md` |
+| PS-001-PL-002 | Registro mestre de documentos | D | Aprovado | `docs/plm/REGISTRO.md` |
+| PS-001-PL-003 | TeamCraft: instalação, operação e registro | C | Aprovado | `docs/plm/TEAMCRAFT.md` |
 | PS-001-US-001 | Manual de uso e segurança | B | Aprovado | `docs/uso/USO.md` |
 | PS-001-CO-001 | Guia de construção (estudo) | C | Aprovado | `docs/construcao/CONSTRUCAO.md` |
 | PS-001-LM-001 | Lista de materiais (BOM) | A | Aprovado | `docs/construcao/BOM.csv` |
@@ -62,11 +62,13 @@ humana; a consulta oficial é a API/MCP do PDM.
 | ECO da documentação | `CHG-000002` — `PL-001` B, `PL-002` B, `PL-003` A, aprovada pelo `revisor` |
 | ECO da identidade | `CHG-000003` — `PS-001` B, `US-001` B, `PL-001` C, `PL-002` C, `PL-003` B; regulariza `CO-001` B |
 | ECO do guia | `CHG-000004` — `CO-001` C (identidade Brasa) |
+| ECO das ferramentas | `CHG-000005` — `PL-001` D, `PL-002` D, `PL-003` C (site, GridCraft, visualizador e administração) |
 
 A migração é reproduzível por `tools/plm/teamcraft_migrate.py`; a segunda liberação por
-`tools/plm/teamcraft_docs_b.py`. O `PL-003` ainda não é referência do conjunto porque a
-revisão A do item `PS-001` foi liberada antes da sua criação; o vínculo entra na próxima
-revisão do conjunto.
+`tools/plm/teamcraft_docs_b.py`; a identidade por `tools/plm/teamcraft_identity.py`; esta
+revisão por `tools/plm/teamcraft_docs_c.py`. O `PL-003` ainda não é referência do conjunto
+porque a revisão A do item `PS-001` foi liberada antes da sua criação; o vínculo entra na
+próxima revisão do conjunto.
 
 ## 3. Artefatos derivados
 
@@ -75,12 +77,17 @@ revisão do conjunto.
 | PDFs de documento | `tools/plm/build.sh` | `dist/v<versao>/` | não |
 | Manifesto com sha256 | `tools/plm/build.sh` | `dist/v<versao>/MANIFEST.md` | não |
 | Renders | `screenshot` do SolidCraft | `dist/v<versao>/renders/` | não |
+| Site da documentação | `site/docs.sh build` | `site/build/` | não |
+| Planilhas de trabalho | GridCraft (web/CLI) | `workbooks/` | não — o arquivo controlado vai ao PDM |
+| DXF publicados para conferência | `tools/cad-viewer/cad_viewer.sh` | `tools/cad-viewer/drawings/` | não |
 | STEP / 3MF | exportação do SolidCraft | `cad/solidcraft/` | não |
 | DXF da prancha | OpenCADStudio | `out/draw/` | não |
 | Backup do PDM | `tools/plm/teamcraft_backup.sh` | `~/teamcraft/backups/` | não |
 
 Regra: artefato derivado **nunca** é editado à mão. Se o PDF está errado, corrige-se o
-Markdown e reconstrói; se o DXF está errado, corrige-se o desenho e reexporta.
+Markdown e reconstrói; se o DXF está errado, corrige-se o desenho e reexporta. O site
+segue a mesma regra: o texto exibido é o Markdown de `docs/`; corrigir a página é mudar
+o documento, com revisão e ECO.
 
 ## 4. Correspondência versão × documentos
 
@@ -93,6 +100,7 @@ Markdown e reconstrói; se o DXF está errado, corrige-se o desenho e reexporta.
 | 0.17.1 | 2026-11-14 | exportações STEP/3MF regeradas do modelo aprovado | MD (derivados), RG |
 | 0.18.0 | 2026-11-14 | **PDM TeamCraft e documentação do fluxo** | PL-001 (B), PL-002 (B), PL-003 (A), RG |
 | 0.19.0 | 2026-11-14 | **identidade própria Brasa** | MD (nome), US (B), PL-001 (C), PL-002 (C), PL-003 (B), CO (C), LE, RE, RG |
+| 0.20.0 | 2026-11-15 | **ferramentas de apoio** | PL-001 (D), PL-002 (D), PL-003 (C), RG |
 
 ## 5. Revisões substituídas
 
@@ -102,9 +110,12 @@ Markdown e reconstrói; se o DXF está errado, corrige-se o desenho e reexporta.
 | `PS-001-CO-001` | B | C | 0.19.0 | tag `v0.18.0` |
 | `PS-001-PL-001` | A | B | 0.18.0 | tag `v0.17.1` |
 | `PS-001-PL-001` | B | C | 0.19.0 | tag `v0.18.0` |
+| `PS-001-PL-001` | C | D | 0.20.0 | tag `v0.19.0` |
 | `PS-001-PL-002` | A | B | 0.18.0 | tag `v0.17.1` |
 | `PS-001-PL-002` | B | C | 0.19.0 | tag `v0.18.0` |
+| `PS-001-PL-002` | C | D | 0.20.0 | tag `v0.19.0` |
 | `PS-001-PL-003` | A | B | 0.19.0 | tag `v0.18.0` |
+| `PS-001-PL-003` | B | C | 0.20.0 | tag `v0.19.0` |
 | `PS-001-US-001` | A | B | 0.19.0 | tag `v0.18.0` |
 
 Documento obsoleto não fica listado como vigente; o histórico fica na tag correspondente

@@ -2,9 +2,9 @@
 title: "Brasa (PS-001) — Plano de ciclo de vida do produto (PLM)"
 subtitle: "Processo, estados, papéis e liberação de documentos"
 docid: "PS-001-PL-001"
-revision: "C"
+revision: "D"
 status: "Aprovado"
-date: "2026-11-14"
+date: "2026-11-15"
 author: "Dionarley"
 project: "Brasa — estanhador 550 W / 127 V (PS-001, estudo)"
 ---
@@ -168,19 +168,20 @@ aprovado naquele instante.
 | `v0.17.1` | exportações STEP/3MF regeradas do modelo aprovado |
 | `v0.18.0` | **PDM TeamCraft** — migração do PS-001, `PL-001`/`PL-002` rev. B e `PL-003` rev. A |
 | `v0.19.0` | **identidade própria** — o projeto passa a se chamar **Brasa**, sem marca de terceiro |
+| `v0.20.0` | **ferramentas de apoio** — documentação publicada como site, GridCraft, visualizador DXF e scripts de administração do PDM |
 
 ## 6.2 Pacote de liberação
 
 Gerado por `tools/plm/build.sh` em `dist/v<versao>/` (fora do git):
 
 ```
-dist/v0.18.0/
+dist/v0.20.0/
   MANIFEST.md                       versão, data, commit, sha256 de cada arquivo
-  PS-001-US-001_rA_uso.pdf
-  PS-001-CO-001_rB_construcao.pdf
-  PS-001-PL-001_rB_plano-plm.pdf
-  PS-001-PL-002_rB_registro-documentos.pdf
-  PS-001-PL-003_rA_teamcraft.pdf
+  PS-001-US-001_rB_uso.pdf
+  PS-001-CO-001_rC_construcao.pdf
+  PS-001-PL-001_rD_plano-plm.pdf
+  PS-001-PL-002_rD_registro-documentos.pdf
+  PS-001-PL-003_rC_teamcraft.pdf
   PS-001-LM-001_rA_bom.csv
   PS-001-DR-001_rA_prancha-a2.pdf    prancha A2 (594 x 420 mm, 1:1)
   PS-001-DR-001_rA_prancha-a2.dxf    mesma prancha, AC1032 verificado
@@ -191,6 +192,11 @@ O mesmo pacote é anexado às revisões no TeamCraft antes da ECO de liberação
 `MANIFEST.md` é a prova de que o PDF corresponde ao commit: sem ele, o pacote não é
 publicado.
 
+O **site** é uma publicação derivada desta mesma fonte, não um segundo documento:
+`site/docs.sh build` lê `docs/**/*.md` e `LEGAL.md` e gera o HTML em `site/build/`
+(fora do git). Nada é escrito em `docs/` a partir do site; o banner de revisão que
+aparece na página vem do front matter do Markdown.
+
 ## 6.3 Checklist de publicação
 
 - [ ] `git status` limpo (só artefatos ignorados).
@@ -198,6 +204,7 @@ publicado.
 - [ ] `measure` do modelo sem erro e sem aviso de booleano.
 - [ ] PDFs gerados sem warning de build.
 - [ ] `MANIFEST.md` com sha256 de todos os arquivos.
+- [ ] Site reconstruído (`site/docs.sh build`) com as revisões vigentes.
 - [ ] Revisões e arquivos anexados no TeamCraft, com `readiness` sem bloqueios.
 - [ ] ECO aprovada pelo `revisor` (usuário diferente do autor).
 - [ ] Tag anotada criada e enviada (quando houver remote).
@@ -226,8 +233,12 @@ Cada afirmação de documento aponta para uma fonte verificável.
 | Montagem da prancha | `tools/draw/sheet.py` | vistas exportadas do CAD; BOM lida do `LM-001` |
 | Texto | Markdown | fonte única, diff legível |
 | PDF | `pandoc` → `typst` | `tools/plm/build.sh` |
+| Site | Docusaurus (`site/`) | publica `docs/` e `LEGAL.md`; derivado, sem conteúdo próprio |
+| Planilhas | GridCraft (web + CLI) | rascunhos em `workbooks/`; o arquivo controlado vai ao PDM |
+| Visualizador DXF | MLightCAD (`tools/cad-viewer/`) | só leitura, no navegador; DWG (GPL) fica fora |
 | Render | `screenshot` do SolidCraft | CPU, sem GPU |
 | PDM | TeamCraft 0.2.7 (local) | revisões, ECO, arquivos e BOM liberados |
+| Administração do PDM | `tools/plm/admin/*.sh` | serviço, branding e tokens; não derruba a ponte MCP |
 | Consulta | MCP do TeamCraft no OpenCode | somente leitura/ECR; não libera |
 | Backup | `tools/plm/teamcraft_backup.sh` | `pg_dump` no contêiner + vault |
 | Versão | git + tags anotadas | `PS-001.sc` é zip: o par commit+tag é o histórico |
@@ -242,6 +253,7 @@ Cada afirmação de documento aponta para uma fonte verificável.
 | 4 | Backup remoto e teste de restauração periódico | hoje o pacote fica no mesmo disco do servidor | autor |
 | 5 | Preview do STEP no TeamCraft | o conversor excede 180 s / 4 GB; o 3MF cobre a visualização | autor |
 | 6 | Referência do `PL-003` no conjunto | entra na próxima revisão do item `PS-001` | autor |
+| 7 | Carimbo da prancha com a identidade Brasa | o `DR-001` rev. A ainda traz o título genérico; entra na rev. B, com as cotas | autor |
 
 As pendências 3 e 5 da revisão A (reexportar STEP/3MF e versionar o template) foram
 resolvidas em `v0.17.1` e `v0.16.0`, respectivamente.
@@ -253,3 +265,4 @@ resolvidas em `v0.17.1` e `v0.16.0`, respectivamente.
 | A | 2026-11-14 | primeira emissão, junto com `US-001` e `CO-001` |
 | B | 2026-11-14 | adota o TeamCraft como PDM: estados, papéis, ECO e checklist; cita o `PL-003` |
 | C | 2026-11-14 | adota o nome próprio **Brasa**; produto deixa de ser identificado por marca de terceiro |
+| D | 2026-11-15 | registra as ferramentas de apoio (site, GridCraft, visualizador DXF, scripts de administração) e a publicação derivada; pendência da prancha rev. B |

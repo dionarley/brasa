@@ -2,9 +2,9 @@
 title: "Brasa (PS-001) — TeamCraft: instalação, operação e registro"
 subtitle: "PDM local, ciclo de revisões, MCP e backup"
 docid: "PS-001-PL-003"
-revision: "B"
+revision: "C"
 status: "Aprovado"
-date: "2026-11-14"
+date: "2026-11-15"
 author: "Dionarley"
 project: "Brasa — estanhador 550 W / 127 V (PS-001, estudo)"
 ---
@@ -42,7 +42,7 @@ TeamCraft guarda os arquivos publicados, o estado de cada revisão e quem aprovo
 
 ## 2.1 Estados e correspondência com o PLANO
 
-| PLANO (rev. B) | TeamCraft | Significado |
+| PLANO (rev. D) | TeamCraft | Significado |
 |---|---|---|
 | Rascunho | `in_work` | em edição, sob check-out do autor |
 | Em revisão | `in_review` | ECO submetida, aguardando parecer |
@@ -140,15 +140,29 @@ e `.mcp_token`.
 ## 3.5 Subir e conferir
 
 ```sh
-cd ~/teamcraft
-TEAMCRAFT_ENV_FILE=$PWD/teamcraft.env nohup \
-  ./teamcraft-0.2.7-linux-x86_64/teamcraft serve >> teamcraft.log 2>&1 &
+tools/plm/admin/teamcraft_service.sh up      # banco + servidor
+tools/plm/admin/teamcraft_service.sh status  # servidor, banco, contadores e backup
 curl -s http://127.0.0.1:8080/readyz
 # {"database":"ok","status":"ok","vault":"ok","version":"0.2.7"}
 ```
 
-Parar o servidor é `pkill -x teamcraft` (o banco continua no contêiner). **Não**
-use `pkill`/`flatpak kill` nos apps de CAD com o MCP em uso.
+O `down` encerra **só** o `teamcraft serve` — o banco continua no contêiner, com
+os dados no volume — e o `restart` faz `down + up`. **Nunca** use
+`pkill -x teamcraft`: o sinal derruba também a ponte MCP do OpenCode, e as tools
+`teamcraft_*` somem até ela reconectar. O `down` encerra com `TERM` e espera o
+processo sair; o `up` sobe banco e servidor e espera o servidor responder.
+
+## 3.6 Administração da instância
+
+| Script | Para quê |
+|---|---|
+| `tools/plm/admin/teamcraft_service.sh` | `up`, `down`, `restart`, `status`, `logs` |
+| `tools/plm/admin/teamcraft_branding.sh` | logos do cabeçalho (`branding/`) e nome da instância |
+| `tools/plm/admin/teamcraft_tokens.sh` | listar, criar e revogar tokens pessoais |
+
+Os três leem servidor e token de `~/teamcraft/credentials.txt`; exemplos e
+detalhes em `tools/plm/admin/README.md`. O upload de logo é rota web e exige
+sessão de administrador com `Origin`/`Referer` — o script já cuida disso.
 
 # 4. Acesso
 
@@ -343,7 +357,7 @@ Saída típica:
 ## 8.2 Restauração
 
 ```sh
-pkill -x teamcraft
+tools/plm/admin/teamcraft_service.sh down
 
 # banco: recriar a base e restaurar
 podman exec teamcraft-db psql -U teamcraft -d postgres \
@@ -357,8 +371,7 @@ rm -rf ~/teamcraft/data/vault
 tar -C ~/teamcraft/data -xf teamcraft-20261114T2300-vault.tar.zst
 
 # subir e conferir
-cd ~/teamcraft && TEAMCRAFT_ENV_FILE=$PWD/teamcraft.env \
-  nohup ./teamcraft-0.2.7-linux-x86_64/teamcraft serve >> teamcraft.log 2>&1 &
+tools/plm/admin/teamcraft_service.sh up
 curl -s http://127.0.0.1:8080/readyz
 ```
 
@@ -395,3 +408,4 @@ PDF do `DR-001`. O cache de previews se refaz sozinho na primeira visualização
 |---|---|---|
 | A | 2026-11-14 | primeira emissão: instalação 0.2.7, operação, MCP, migração do PS-001 e backup |
 | B | 2026-11-14 | identidade **Brasa**: instância, grupo e ECO 3; exemplo de consulta com 24 itens |
+| C | 2026-11-15 | scripts de administração (`tools/plm/admin/`) no lugar do `pkill`; nova seção 3.6 e restauração pelo serviço |

@@ -1,6 +1,6 @@
 # Brasa — estanhador 550 W / 127 V (estudo)
 
-**Licença:** [CC BY-NC-SA 4.0](LICENSE) (conteúdo próprio) · **Versão:** 0.19.0 ·
+**Licença:** [CC BY-NC-SA 4.0](LICENSE) (conteúdo próprio) · **Versão:** 0.20.0 ·
 **Estado:** modelo 3D aprovado; documentação de produto publicada; prancha 2D A2
 publicada; revisões liberadas no TeamCraft.
 
@@ -143,7 +143,7 @@ processo — códigos, estados, critérios de aprovação e liberação — est�
 Gerar o pacote de liberação (PDFs, BOM e renders com manifesto `sha256`):
 
 ```sh
-tools/plm/build.sh                  # dist/v0.19.0/
+tools/plm/build.sh                  # dist/v0.20.0/
 tools/plm/build.sh --pdf            # só os PDFs
 tools/plm/build.sh --clean          # limpa dist/ antes
 ```
@@ -203,7 +203,7 @@ para servidor. Serve para conferir a prancha e as projeções durante o trabalho
 
 ```sh
 tools/cad-viewer/install.sh            # build do app (Node no podman) + serviço
-tools/cad-viewer/cad_viewer.sh view dist/v0.19.0/PS-001-DR-001_rA_prancha-a2.dxf
+tools/cad-viewer/cad_viewer.sh view dist/v0.20.0/PS-001-DR-001_rA_prancha-a2.dxf
 tools/cad-viewer/cad_viewer.sh publish out/draw/v017
 ```
 
