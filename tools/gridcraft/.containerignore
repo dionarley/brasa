@@ -1,0 +1,4 @@
+# Contexto do `podman build`: só o binário da CLI entra na imagem.
+*
+!bin/
+!bin/gridcraft-cli

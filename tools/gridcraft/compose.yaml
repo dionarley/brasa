@@ -1,0 +1,18 @@
+# GridCraft no podman: a versão web (WASM) é um site estático, servido por
+# nginx. O `install.sh` baixa o pacote oficial e preenche ./web; suba com
+# ./gridcraft.sh up (ou podman-compose up -d).
+#
+# A CLI (headless: info, convert, eval, cat, run, mcp) roda em um contêiner
+# separado, construído pelo install.sh; o atalho é ./gridcraft.sh cli ....
+name: gridcraft
+
+services:
+  web:
+    image: docker.io/library/nginx:1.29-alpine
+    container_name: gridcraft-web
+    ports:
+      - "127.0.0.1:${GRIDCRAFT_PORT:-8088}:8080"
+    volumes:
+      - ./web:/usr/share/nginx/html:ro
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    restart: unless-stopped

@@ -1,0 +1,12 @@
+# Imagem da CLI headless do GridCraft (info, convert, eval, cat, run, mcp).
+# O binário é extraído do tarball oficial Linux pelo install.sh.
+FROM docker.io/library/debian:bookworm-slim
+
+RUN useradd --create-home --uid 1000 --user-group gridcraft
+
+COPY bin/gridcraft-cli /usr/local/bin/gridcraft-cli
+
+USER gridcraft
+WORKDIR /work
+
+ENTRYPOINT ["gridcraft-cli"]
