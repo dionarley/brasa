@@ -50,6 +50,9 @@ tools/gridcraft/gridcraft.sh up|down|restart|status|logs [N]|url|open
 ```
 
 `up` é idempotente e `down` só para o serviço web (a imagem e o site ficam).
+Depois de reiniciar a máquina, rode `gridcraft.sh up` de novo: como no TeamCraft,
+não há unit systemd; o `restart: unless-stopped` do compose só vale enquanto o
+podman da sessão está de pé.
 
 ## CLI (headless)
 
@@ -105,6 +108,7 @@ com um arquivo aberto: `gridcraft.sh mcp --in workbooks/orcamento.xlsx`.
   inválida. Atualização é trocar a versão e rodar o `install.sh` de novo.
 - A porta 8088 é só em `127.0.0.1`; nada é exposto na rede.
 - O `web/` é o site inteiro (26 MB) e o `bin/gridcraft-cli` tem 18 MB; ambos
-  ficam fora do git.
+  ficam fora do git. O `.cache/` guarda os downloads (60 MB) para reinstalar sem
+  baixar de novo; pode apagar quando não precisar.
 - O serviço não tem volume de dados: não há nada a fazer backup. Planilhas são
   arquivos do projeto.
