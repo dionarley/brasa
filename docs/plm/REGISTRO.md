@@ -95,14 +95,14 @@ regera.
 
 ## 6. Onde conferir
 
-```sh
-# estrutura, revisões e estados
-curl -s -H "Authorization: Bearer $TOKEN" \
-  http://127.0.0.1:8080/api/items/PS-001/revisions/B/bom
+Pelo MCP do TeamCraft, no OpenCode:
 
-# ou pelo MCP do TeamCraft, no OpenCode
-#   get_bom({ item: "PS-001", revision: "B" })
-#   get_revision({ item: "PS-001-LM-05", revision: "A" })
+```text
+get_bom({ item: "PS-001", revision: "B" })
+get_revision({ item: "PS-001-LM-05", revision: "A" })
+item_history({ item: "PS-001" })
 ```
 
-Interface: <http://localhost:8080> — grupo `PS-001`.
+Interface: <http://localhost:8080> — grupo `PS-001`. A API é `http://127.0.0.1:8080/api/v1`
+(token em `~/teamcraft/.admin_token`); as rotas usadas estão em
+[TEAMCRAFT.md](TEAMCRAFT.md) §5.
