@@ -31,8 +31,14 @@ Item de PLM tem número fixo; a revisão é letra:
 
 ```
 PS-001        conjunto (montagem)
-PS-001-LM-01  peça — 3 dígitos (ECR-000001)
+PS-001-LM-01  peça — sequencial de 2 dígitos
 ```
+
+O TeamCraft **não renomeia item** (`PATCH /items/{n}` aceita só grupo, unidade e
+classificação). Os 16 números nasceram com 2 dígitos e ficam assim: a ECR-000001
+foi aceita e decidida em 16/11/2026 por manter os números históricos — a
+lista de materiais que colidia (`PS-001-LM-001`, 3 dígitos) está obsoleta, e a BOM
+do conjunto `PS-001` é a verdade da estrutura.
 
 - Um item existe uma vez; revisões A, B, C… registram a forma liberada.
 - Código de documento (`PS-001-US-001` etc.) **não existe mais**: documento é
@@ -109,13 +115,12 @@ no commit.
 
 | # | Pendência | Impacto | Dono |
 |---|---|---|---|
-| 1 | Renumerar as 16 peças para 3 dígitos (`-01` → `-001`) | ECR-000001 aceita, falta executar | autor |
-| 2 | Tirar as referências do conjunto aos itens de documento obsoletos | `PS-001` rev. B aponta para 6 itens em `obsolete` | autor |
-| 3 | Densidade por material (massa real) | BOM e manual sem massa | autor |
-| 4 | Cotas finas de montagem na prancha | a prancha cobre envelope e detalhe, não a furação | autor |
-| 5 | Ensaio de isolação documentado | critério de segurança sem evidência | autor |
-| 6 | Backup remoto e teste de restauração periódico | hoje o pacote fica no mesmo disco do servidor | autor |
-| 7 | Preview do STEP no TeamCraft | o conversor excede 180 s / 4 GB; o 3MF cobre a visualização | autor |
+| 1 | Tirar as referências do conjunto aos itens de documento obsoletos | `PS-001` rev. B aponta para 6 itens em `obsolete` | autor |
+| 2 | Densidade por material (massa real) | BOM e manual sem massa | autor |
+| 3 | Cotas finas de montagem na prancha | a prancha cobre envelope e detalhe, não a furação | autor |
+| 4 | Ensaio de isolação documentado | critério de segurança sem evidência | autor |
+| 5 | Backup remoto e teste de restauração periódico | hoje o pacote fica no mesmo disco do servidor | autor |
+| 6 | Preview do STEP no TeamCraft | o conversor excede 180 s / 4 GB; o 3MF cobre a visualização | autor |
 
 ## 9. Histórico
 

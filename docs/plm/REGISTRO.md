@@ -41,6 +41,10 @@ Todas em revisão **A**, `released`. A coluna **corpo** é o nome no
 Detalhe de material, dimensão e volume de cada uma está na descrição do item e na
 nota da linha da BOM. `docs/construcao/BOM.csv` é a exportação dessa estrutura.
 
+Os números de 2 dígitos são históricos e **ficam**: o TeamCraft não renomeia item e
+a ECR-000001 foi decidida em 16/11/2026 por manter a numeração (a lista de
+materiais em 3 dígitos, `PS-001-LM-001`, está obsoleta e não colide mais).
+
 ## 3. Sobra do modelo anterior
 
 Sete itens de **documento** foram criados quando a documentação era controlada

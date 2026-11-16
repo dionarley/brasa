@@ -33,9 +33,9 @@ documento não tem “revisão aprovada” — tem diff.
   `-LM-001`) foram **obsoletados** (política do grupo não exige ECO para
   obsolescência). O conjunto `PS-001` rev. B ainda os referencia; a próxima
   revisão tira as referências.
-- ECR-000001: não é possível renumerar item no TeamCraft 0.2.7 (`PATCH` aceita só
-  grupo, unidade e classificação). A ECR recebeu a nota com os dois caminhos —
-  manter os números de 2 dígitos ou migrar por substituição.
+- ECR-000001: decidida por **manter os números de 2 dígitos**. O TeamCraft não
+  renomeia item e a colisão que motivou o pedido sumiu com a obsolescência de
+  `PS-001-LM-001`; migrar custaria 16 itens novos em rev. A por zero à esquerda.
 
 ## [0.20.0] — 2026-11-15
 
