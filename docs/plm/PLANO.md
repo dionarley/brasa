@@ -77,8 +77,8 @@ base de decisão de forma.
 - Tag `vX.Y.Z` é uma **baseline do repo**: o estado exato de modelo, código e
   documentação naquele instante. A mensagem da tag lista as revisões de PLM
   liberadas junto.
-- O front matter dos Markdown serve só ao site (título, ordem); não carrega
-  código, revisão nem estado de documento.
+- Markdown não carrega código, revisão nem estado de documento: o título é o H1 e
+  a ordem do site está em `site/sidebars.js`.
 - Quem precisa do texto impresso usa o pacote de `dist/v<versao>/`, gerado por
   `tools/plm/build.sh` a partir do commit e identificado pelo manifesto.
 
