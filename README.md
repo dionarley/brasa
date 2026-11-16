@@ -2,9 +2,9 @@
 
 <p align="center"><img src="branding/brasa-wide.svg" alt="Brasa — estanhador 550 W / 127 V" height="96"></p>
 
-**Licença:** [CC BY-NC-SA 4.0](LICENSE) (conteúdo próprio) · **Versão:** 0.20.0 ·
-**Estado:** modelo 3D aprovado; documentação de produto publicada; prancha 2D A2
-publicada; revisões liberadas no TeamCraft.
+**Licença:** [CC BY-NC-SA 4.0](LICENSE) (conteúdo próprio) · **Versão:** 0.21.0 ·
+**Estado:** modelo 3D aprovado; documentação no git; prancha 2D A2 publicada;
+peças e conjunto com revisão liberada no TeamCraft.
 
 O **Brasa** é a reconstrução **de estudo** de um estanhador de 550 W / 127 V com
 transformador e secundário de fita de cobre, modelado como peça paramétrica no SolidCraft
@@ -20,9 +20,9 @@ reutilizar qualquer coisa.
 | Modelo 3D paramétrico (`cad/solidcraft/PS-001.sc`) | **aprovado** — 22 corpos, 0 erros, 448,4 cm³ |
 | Renders de conferência (`out/plot/ps001_v15_*.png`) | gerados (não versionados) |
 | Exportações STEP/3MF | **regeradas** da versão aprovada (derivadas, fora do git) |
-| Prancha 2D A2 (`PS-001-DR-001` rev. A) | **publicada** — vistas em 1º diedro, detalhe 1:1, cotas de envelope, BOM |
-| Documentação PLM (`docs/plm/`, `docs/uso/`, `docs/construcao/`) | **publicada** — plano, registro, uso e construção |
-| PDM TeamCraft (`http://127.0.0.1:8080`) | **em uso** — 24 itens, BOM e arquivos liberados por ECO |
+| Prancha 2D A2 | **publicada** — vistas em 1º diedro, detalhe 1:1, cotas de envelope, BOM (`out/draw/`, derivada) |
+| Documentação (`docs/`, `LEGAL.md`) | **no git** — plano, registro, uso, construção; site e PDF derivados |
+| PDM TeamCraft (`http://127.0.0.1:8080`) | **em uso** — 1 conjunto + 16 peças com BOM e ECO liberadas |
 | Versionamento e licença | concluído |
 
 ## Estrutura
@@ -31,7 +31,7 @@ reutilizar qualquer coisa.
 cad/solidcraft/
   PS-001.sc        fonte da verdade: design paramétrico (zip com document.json)
 docs/
-  plm/             plano do ciclo de vida (PLANO.md), registro mestre (REGISTRO.md)
+  plm/             fronteira PLM × git (PLANO.md), registro de itens (REGISTRO.md)
                    e manual do TeamCraft (TEAMCRAFT.md)
   uso/             manual de uso e segurança (USO.md)
   construcao/      guia de construção (CONSTRUCAO.md) e lista de materiais (BOM.csv)
@@ -40,9 +40,9 @@ tools/plm/
   build.sh         gera os PDFs (pandoc → typst) e o pacote em dist/
   template.typ     template de documento (capa, cabeçalho, rodapé)
   teamcraft_migrate.py  migra o PS-001 para o TeamCraft (idempotente)
-  teamcraft_docs_b.py   libera PL-001 B, PL-002 B e PL-003 A
-  teamcraft_identity.py libera a identidade Brasa (PS-001 B, US-001 B, PL-001/PL-002 C, PL-003 B)
-  teamcraft_tools.py    libera as revisões de processo da 0.20.0 (PL-001/PL-002 D, PL-003 C)
+  teamcraft_docs_b.py   histórico (modelo antigo): PL-001/PL-002 B, PL-003 A
+  teamcraft_identity.py histórico: identidade Brasa (PS-001 B, US-001 B, docs)
+  teamcraft_tools.py    histórico: revisões de processo da 0.20.0
   teamcraft_backup.sh   backup do banco e do vault
   admin/
     teamcraft_service.sh   sobe, derruba e diagnostica servidor e banco
@@ -58,7 +58,7 @@ tools/cad-viewer/
   install.sh       constrói o visualizador DXF (Vite + MLightCAD no podman) e sobe
   cad_viewer.sh    view/publish de DXF, up/down/status/logs
   compose.yaml     serviço web (nginx, 127.0.0.1:8089)
-workbooks/         planilhas de trabalho (fora do git; arquivo controlado vai ao TeamCraft)
+workbooks/         planilhas de trabalho (fora do git; resultado vai para o Markdown ou a BOM)
 site/              documentação publicada em Docusaurus (lê docs/ e LEGAL.md)
 branding/
   build.sh         regera os exports do logo (VectorCraft, flatpak)
@@ -145,25 +145,26 @@ pelas duas janelas do núcleo (X 9,17 e −30,83) sem tocar em núcleo, carretel
 
 ## Documentação
 
-Os documentos são escritos em Markdown (fonte única) e os PDFs são **gerados**. O
-processo — códigos, estados, critérios de aprovação e liberação — está em
-[`docs/plm/PLANO.md`](docs/plm/PLANO.md); o índice controlado em
-[`docs/plm/REGISTRO.md`](docs/plm/REGISTRO.md).
+A documentação é **arquivo do repo**: Markdown no git, sem código de documento,
+sem revisão de letra e sem ECO. O histórico é `git log`; a tag `vX.Y.Z` congela
+modelo, código e texto juntos. O que separa isso do PLM está em
+[`docs/plm/PLANO.md`](docs/plm/PLANO.md) — que decide o que é item de PLM (peça e
+conjunto) e o que é arquivo de git.
 
-| Código | Documento | Fonte |
-|---|---|---|
-| PS-001-PL-001 | Plano de ciclo de vida (PLM) | [`docs/plm/PLANO.md`](docs/plm/PLANO.md) |
-| PS-001-PL-002 | Registro mestre de documentos | [`docs/plm/REGISTRO.md`](docs/plm/REGISTRO.md) |
-| PS-001-PL-003 | TeamCraft: instalação, operação e registro | [`docs/plm/TEAMCRAFT.md`](docs/plm/TEAMCRAFT.md) |
-| PS-001-US-001 | Manual de uso e segurança | [`docs/uso/USO.md`](docs/uso/USO.md) |
-| PS-001-CO-001 | Guia de construção (estudo) | [`docs/construcao/CONSTRUCAO.md`](docs/construcao/CONSTRUCAO.md) |
-| PS-001-LM-001 | Lista de materiais (BOM) | [`docs/construcao/BOM.csv`](docs/construcao/BOM.csv) |
-| PS-001-DR-001 | Prancha 2D A2 (conjunto geral) | `out/draw/v017/` (gerada por `tools/draw/sheet.py`) |
+| Documento | Fonte |
+|---|---|
+| Plano: PLM × git, estados e liberação | [`docs/plm/PLANO.md`](docs/plm/PLANO.md) |
+| Registro do PLM: conjunto, peças e legado | [`docs/plm/REGISTRO.md`](docs/plm/REGISTRO.md) |
+| TeamCraft: instalação, operação e backup | [`docs/plm/TEAMCRAFT.md`](docs/plm/TEAMCRAFT.md) |
+| Manual de uso e segurança | [`docs/uso/USO.md`](docs/uso/USO.md) |
+| Guia de construção (estudo) | [`docs/construcao/CONSTRUCAO.md`](docs/construcao/CONSTRUCAO.md) |
+| Lista de materiais (exportação da BOM) | [`docs/construcao/BOM.csv`](docs/construcao/BOM.csv) |
+| Prancha 2D A2 | `out/draw/` (gerada por `tools/draw/sheet.py`) |
 
-Gerar o pacote de liberação (PDFs, BOM e renders com manifesto `sha256`):
+Gerar o pacote de leitura (PDFs, BOM e renders com manifesto `sha256`):
 
 ```sh
-tools/plm/build.sh                  # dist/v0.20.0/
+tools/plm/build.sh                  # dist/v0.21.0/
 tools/plm/build.sh --pdf            # só os PDFs
 tools/plm/build.sh --clean          # limpa dist/ antes
 ```
@@ -177,17 +178,20 @@ só lê `docs/` e `LEGAL.md`. Ver [`site/README.md`](site/README.md).
 
 ## PDM (TeamCraft)
 
-As revisões liberadas ficam em uma instância local do
+As revisões de peça e conjunto ficam em uma instância local do
 [TeamCraft](https://github.com/rudalabs/TeamCraft) em <http://127.0.0.1:8080>
 (somente loopback), com o grupo de projeto `PS-001`:
 
-- 1 conjunto (`PS-001`), 16 peças (`PS-001-LM-01`…`-16`) e 7 documentos;
-- BOM de 16 linhas e arquivos do modelo (`.sc`, STEP, 3MF, renders) na revisão do
-  conjunto;
-- liberação por ECO aprovada por um segundo usuário (`revisor`): `CHG-000001` levou as
-  23 revisões A, `CHG-000002` liberou `PL-001`/`PL-002` rev. B e `PL-003` rev. A, e
-  `CHG-000003` liberou a identidade **Brasa** (`PS-001` B, `US-001` B, `PL-001`/`PL-002`
-  C, `PL-003` B, `CO-001` B) e `CHG-000004` fechou o `CO-001` C.
+- 1 conjunto (`PS-001`, rev. B) e 16 peças (`PS-001-LM-01`…`-16`, rev. A);
+- BOM de 16 linhas e arquivos do conjunto (`.sc`, STEP, 3MF, renders);
+- liberação por ECO aprovada por um segundo usuário (`revisor`): `CHG-000001` levou
+  as 23 revisões A, `CHG-000003` liberou a identidade **Brasa** (`PS-001` B) e
+  `CHG-000004` fechou o guia de construção.
+
+Os sete itens de **documento** (`PS-001-PL-00x`, `-US-001`, `-CO-001`, `-DR-001`,
+`-LM-001`) são sobra de quando a documentação era controlada por ECO; continuam
+`released` até a ECO de obsolescência. O estado de cada item está em
+[`docs/plm/REGISTRO.md`](docs/plm/REGISTRO.md).
 
 A instalação, a operação, o MCP do OpenCode e o backup estão em
 [`docs/plm/TEAMCRAFT.md`](docs/plm/TEAMCRAFT.md). Backup manual:
@@ -200,8 +204,8 @@ tools/plm/teamcraft_backup.sh          # banco + vault em ~/teamcraft/backups/
 
 O [GridCraft](https://github.com/storytold/gridcraft) roda no podman: site em
 <http://127.0.0.1:8088> e CLI headless (também MCP) no mesmo motor. Serve para
-listas, orçamento e conferência de cálculo; o arquivo que vale é entregue como
-revisão no TeamCraft, como os PDFs.
+listas, orçamento e conferência de cálculo; o resultado entra no Markdown ou na
+BOM do PLM, nunca como planilha solta.
 
 ```sh
 tools/gridcraft/install.sh             # baixa, confere a assinatura e sobe o serviço
@@ -223,7 +227,7 @@ para servidor. Serve para conferir a prancha e as projeções durante o trabalho
 
 ```sh
 tools/cad-viewer/install.sh            # build do app (Node no podman) + serviço
-tools/cad-viewer/cad_viewer.sh view dist/v0.20.0/PS-001-DR-001_rA_prancha-a2.dxf
+tools/cad-viewer/cad_viewer.sh view dist/v0.21.0/PS-001-DR-001_rA_prancha-a2.dxf
 tools/cad-viewer/cad_viewer.sh publish out/draw/v017
 ```
 
@@ -307,4 +311,5 @@ A2 correspondente. As pranchas antigas em `out/draw/` e `out/vector/` estão **d
 3. Publicar a revisão `B` do manual de uso quando houver massa e ciclo de trabalho
    declarados.
 4. Backup remoto do TeamCraft e teste de restauração periódico.
-5. Referenciar o `PL-003` no conjunto na próxima revisão do item `PS-001`.
+5. Obsoletar os itens de documento e tirar as referências do conjunto na próxima
+   revisão do `PS-001`.

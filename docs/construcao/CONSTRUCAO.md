@@ -1,14 +1,3 @@
----
-title: "Brasa — Guia de construção (estudo)"
-subtitle: "Sequência de montagem, critérios de aceitação e ensaios"
-docid: "PS-001-CO-001"
-revision: "C"
-status: "Aprovado"
-date: "2026-11-14"
-author: "Dionarley"
-project: "Brasa — estanhador 550 W / 127 V (PS-001, estudo)"
----
-
 # 1. Escopo e limites
 
 Este guia descreve **como o Brasa (`PS-001`) foi decomposto e montado no modelo** e quais
@@ -19,12 +8,12 @@ entender a função de cada peça.
 > ensaio elétrico, sem certificação e sem análise de isolação do produto original. As
 > etapas abaixo reproduzem a lógica de montagem do estudo; executá-las fisicamente em
 > 127 V é decisão e risco de quem executa. Ver [LEGAL.md](../../LEGAL.md) §7 e o manual
-> `PS-001-US-001`.
+> [`docs/uso/USO.md`](../uso/USO.md).
 
-A lista de materiais é `PS-001-LM-001` (`BOM.csv`, nesta pasta). Números de volume e
-envelope vêm do `measure` do modelo aprovado em `v0.15.0`. O desenho de conjunto é
-`PS-001-DR-001` rev. A — prancha A2 com as vistas em 1º diedro a 1:2, o detalhe do
-conjunto magnético a 1:1 e as cotas de envelope.
+A lista de materiais é a BOM do conjunto `PS-001` no PLM; `BOM.csv`, nesta pasta, é a
+exportação dela. Números de volume e envelope vêm do `measure` do modelo aprovado em
+`v0.15.0`. O desenho de conjunto é a prancha A2 (`out/draw/`, derivada do modelo) — vistas
+em 1º diedro a 1:2, o detalhe do conjunto magnético a 1:1 e as cotas de envelope.
 
 # 2. Visão geral
 
@@ -69,7 +58,7 @@ anterior.
 | Conferência | acesso ao `PS-001.sc` no SolidCraft para `measure` |
 
 Regra de bancada: cada etapa termina com medição registrada. Sem número, a etapa não
-fecha — é o mesmo critério do plano `PS-001-PL-001` §3.1.
+fecha — é o mesmo critério do plano (`docs/plm/PLANO.md` §4).
 
 # 4. Etapas
 
@@ -189,14 +178,14 @@ Nunca energizar direto na tomada para "testar".
 | # | Pendência | Efeito |
 |---|---|---|
 | 1 | Densidade por material | BOM sem massa; manual sem massa |
-| 2 | Cotas finas de montagem (furação, folgas) | o `DR-001` traz envelope e detalhe, não a cota de cada furo |
+| 2 | Cotas finas de montagem (furação, folgas) | a prancha traz envelope e detalhe, não a cota de cada furo |
 | 3 | Ensaio de isolação executado | critério de segurança sem evidência |
 | 4 | Ciclo de trabalho declarado | operação depende de julgamento do usuário |
 
 # 9. Histórico
 
-| Rev. | Data | Mudança |
-|---|---|---|
-| A | 2026-11-14 | primeira emissão sobre o modelo aprovado em `v0.15.0` |
-| B | 2026-11-14 | aponta o desenho de conjunto `PS-001-DR-001` rev. A; pendência de cotas detalhadas reformulada |
-| C | 2026-11-14 | adota o nome próprio **Brasa** na identificação do estudo |
+Sem tabela de revisões: o histórico é o do git.
+
+```sh
+git log --follow -- docs/construcao/CONSTRUCAO.md
+```

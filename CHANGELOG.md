@@ -6,6 +6,33 @@ documentação** (não a uma API). Enquanto a série for `0.x`, mudanças de for
 ocorrer em versões menores. Cada tag do git corresponde a um estado do arquivo
 `cad/solidcraft/PS-001.sc`.
 
+## [0.21.0] — 2026-11-16
+
+**Marco: a fronteira do PLM.** O PLM passa a guardar **peça e montagem**; código e
+documentação ficam no git, versionados por commit. Documento deixa de ser item do
+TeamCraft: sem código de documento, sem revisão de letra, sem ECO para texto. Um
+documento não tem “revisão aprovada” — tem diff.
+
+### Alterado
+- `docs/plm/PLANO.md`: reescrito em torno da fronteira (PLM × git). Estados e ECO
+  valem para item de peça/conjunto; documentação muda por commit e tag `vX.Y.Z` do
+  repo. O histórico do documento passa a ser `git log`.
+- `docs/plm/REGISTRO.md`: agora é o índice do PLM — conjunto, 16 peças, corpo do
+  modelo de cada uma e o que sobrou do modelo antigo.
+- `docs/plm/TEAMCRAFT.md`: item = peça ou conjunto; o exemplo de check-in usa uma
+  peça; as referências do conjunto aos documentos ficam marcadas como legado.
+- `docs/uso/USO.md`, `docs/construcao/CONSTRUCAO.md`: sem front matter e sem tabela
+  de revisões; os documentos passam a se citar por caminho, não por código.
+- `site/`: removida a faixa de documento controlado; o site publica o texto do
+  commit, sem código/revisão/estado.
+- `tools/plm/build.sh`: PDFs nomeados pelo slug (`uso.pdf`, `plano-plm.pdf`), sem
+  código de documento nem revisão; `BOM.csv` sai com o nome do arquivo-fonte.
+
+### Pendente no TeamCraft
+- Sete itens de documento (`PS-001-PL-00x`, `-US-001`, `-CO-001`, `-DR-001`,
+  `-LM-001`) continuam `released`; sair de linha exige ECO.
+- ECR-000001 (peças em três dígitos) aceita, execução pendente.
+
 ## [0.20.0] — 2026-11-15
 
 **Marco: ferramentas de apoio.** A documentação ganha uma publicação derivada (site),

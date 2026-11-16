@@ -11,7 +11,6 @@ fonte única continua em [`../docs/`](../docs) e no [`../LEGAL.md`](../LEGAL.md)
 | `docusaurus.config.js` | raiz do conteúdo em `..`, só `docs/**/*.md` e `LEGAL.md`, navbar/footer/cores |
 | `sidebars.js` | ordem: uso e segurança, construção, PLM, referências, projeto e direitos |
 | `plugins/remark-doc-images.js` | `renders/*.png` → `/renders/*.png` e `{width=NN%}` → `style="width: NN%"` |
-| `src/theme/DocItem/Content/index.js` | faixa de documento controlado (código, revisão, estado, data) a partir do front matter |
 | `src/pages/index.js` | página inicial com o logo e os cartões dos documentos |
 | `docs.sh` | build/serve/dev do site no podman (Node 22) |
 | `compose.yaml`, `nginx.conf` | site em `127.0.0.1:8081` |
@@ -45,14 +44,13 @@ dono e ficam fora do git.
 - O `LICENSE` da raiz é copiado para `static/LICENSE` no build (o `LEGAL.md`
   aponta para ele) e servido como texto puro pelo nginx.
 
-**Nada de conteúdo é editado aqui.** Corrigir texto, front matter ou figura é
-mudar `docs/`, com revisão e ECO: o site reflete o que estiver nos documentos e
-o PDF sai da mesma fonte.
+**Nada de conteúdo é editado aqui.** Corrigir texto ou figura é mudar `docs/`, num
+commit: o site reflete o que estiver nos documentos e o PDF sai da mesma fonte.
 
 ## Limites
 
-- Sem edição: o site é somente leitura, e o banner de revisão vem do front matter
-  (não é gerado um "documento controlado" novo).
+- Sem edição: o site é somente leitura e é derivado do commit (não há banner de
+  documento controlado nem revisão de texto).
 - O verificador de links do Docusaurus ainda avisa do link `LEGAL.md` → `LICENSE`:
   o arquivo é servido em `/LICENSE`, mas fora do grafo de rotas. O build segue
   verde (`onBrokenLinks: 'warn'`) e o link funciona.

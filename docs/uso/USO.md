@@ -1,14 +1,3 @@
----
-title: "Brasa — Manual de uso e segurança"
-subtitle: "Estanhador 550 W / 127 V reconstruído como estudo"
-docid: "PS-001-US-001"
-revision: "B"
-status: "Aprovado"
-date: "2026-11-14"
-author: "Dionarley"
-project: "Brasa — estanhador 550 W / 127 V (PS-001, estudo)"
----
-
 # 1. O que este documento é
 
 Manual de **uso** do estanhador **Brasa** (`PS-001`): o que a máquina é, como funciona, o
@@ -30,7 +19,7 @@ que se pode e o que não se pode fazer com ela, e como ler essa informação jun
 | Código do projeto | `PS-001` |
 | Princípio | transformador abaixador com secundário de fita de cobre em curto pela ponta |
 | Aplicação | solda por fusão em eletrônica, fiação e lataria fina; corte térmico de plástico |
-| Modelo de referência | `PS-001-MD-001` rev. 0.15.0, 22 corpos, 448,4 cm³ |
+| Modelo de referência | `cad/solidcraft/PS-001.sc` na tag `v0.15.0`, 22 corpos, 448,4 cm³ |
 | Envelope | ≈ 148 × 52 × 313 mm (X × Y × Z) |
 
 ![Aspecto geral do modelo, transformador no topo e empunhadura de madeira abaixo](renders/PS-001_iso_rA.png){width=78%}
@@ -188,12 +177,15 @@ ponta e secundário (cobre) em metal. Não incinere o transformador.
 1. Abra `cad/solidcraft/PS-001.sc` no SolidCraft (ou inspecione o zip).
 2. Procure o corpo pelo nome da tabela do §6 — os nomes são estáveis desde a 0.14.0.
 3. Use `measure` para conferir volume e envelope; não confie em render para número.
-4. Para a sequência de montagem, veja `PS-001-CO-001`; para a lista de materiais,
-   `PS-001-LM-001`.
+4. Para a sequência de montagem, veja
+   [`docs/construcao/CONSTRUCAO.md`](../construcao/CONSTRUCAO.md); para a lista de
+   materiais, a BOM do conjunto `PS-001` no PLM (`docs/construcao/BOM.csv` é a
+   exportação dela).
 
 # 13. Histórico
 
-| Rev. | Data | Mudança |
-|---|---|---|
-| A | 2026-11-14 | primeira emissão, sobre o modelo 3D aprovado em `v0.15.0` |
-| B | 2026-11-14 | adota o nome próprio **Brasa**; remove a marca de terceiro da identificação |
+Sem tabela de revisões: o histórico é o do git.
+
+```sh
+git log --follow -- docs/uso/USO.md
+```

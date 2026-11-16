@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-# Gera o pacote de liberação do PS-001: PDFs (pandoc -> typst), BOM e renders,
-# com manifesto sha256. Ver docs/plm/PLANO.md §6.
+# Gera o pacote de leitura do PS-001: PDFs (pandoc -> typst), BOM e renders,
+# com manifesto sha256. Derivado do commit; ver docs/plm/PLANO.md §5.
 #
 #   tools/plm/build.sh            # tudo (PDF, BOM e renders já copiados)
 #   tools/plm/build.sh --pdf      # só os PDFs
@@ -31,13 +31,13 @@ command -v typst  >/dev/null || { echo "typst não encontrado"  >&2; exit 1; }
 
 mkdir -p "$BUILD"
 
-# código do documento | fonte | slug | título
+# fonte | slug
 DOCS=(
-  "PS-001-PL-001|docs/plm/PLANO.md|plano-plm"
-  "PS-001-PL-002|docs/plm/REGISTRO.md|registro-documentos"
-  "PS-001-PL-003|docs/plm/TEAMCRAFT.md|teamcraft"
-  "PS-001-US-001|docs/uso/USO.md|uso"
-  "PS-001-CO-001|docs/construcao/CONSTRUCAO.md|construcao"
+  "docs/plm/PLANO.md|plano-plm"
+  "docs/plm/REGISTRO.md|registro-plm"
+  "docs/plm/TEAMCRAFT.md|teamcraft"
+  "docs/uso/USO.md|uso"
+  "docs/construcao/CONSTRUCAO.md|construcao"
 )
 
 echo "PS-001 · pacote $VERSION"
@@ -67,8 +67,8 @@ fi
 
 # --------------------------------------------------------------------- BOM
 if [ "$ONLY_PDF" -eq 0 ]; then
-  cp docs/construcao/BOM.csv "$OUT/PS-001-LM-001_rA_bom.csv"
-  echo "  BOM: PS-001-LM-001_rA_bom.csv"
+  cp docs/construcao/BOM.csv "$OUT/BOM.csv"
+  echo "  BOM: BOM.csv"
 fi
 
 # ----------------------------------------------------------------- desenho
@@ -87,13 +87,11 @@ fi
 
 # -------------------------------------------------------------------- PDFs
 for entry in "${DOCS[@]}"; do
-  IFS='|' read -r code src slug <<<"$entry"
+  IFS='|' read -r src slug <<<"$entry"
   [ -f "$src" ] || { echo "  falta a fonte: $src" >&2; continue; }
-  rev="$(sed -n 's/^revision: *"\(.*\)"/\1/p' "$src" | head -1)"
-  rev="${rev:-A}"
 
   # figura ausente não quebra a build: vira nota visível no PDF
-  md="$BUILD/$code.md"
+  md="$BUILD/$slug.md"
   python3 - "$src" "$md" "$OUT" <<'PY'
 import os, re, sys
 
@@ -112,8 +110,8 @@ open(dst, "w", encoding="utf-8").write(
 )
 PY
 
-  typ="$OUT/.$code.typ"
-  pdf="$OUT/${code}_r${rev}_${slug}.pdf"
+  typ="$OUT/.$slug.typ"
+  pdf="$OUT/${slug}.pdf"
   pandoc "$md" -t typst --template=tools/plm/template.typ -o "$typ"
   typst compile --root . "$typ" "$pdf"
   rm -f "$typ"
@@ -126,7 +124,7 @@ find . -maxdepth 2 -type f ! -path "./.build/*" ! -name MANIFEST.md ! -name SHA2
   -printf '%P\n' | sort | xargs -d '\n' sha256sum > SHA256SUMS
 
 {
-  echo "# Pacote de liberação — PS-001 v${VERSION}"
+  echo "# Pacote de leitura — PS-001 v${VERSION}"
   echo
   echo "- Gerado em: $(date -Iminutes)"
   echo "- Commit: \`$(git rev-parse --short HEAD 2>/dev/null || echo 'sem git')\`"
@@ -146,8 +144,8 @@ find . -maxdepth 2 -type f ! -path "./.build/*" ! -name MANIFEST.md ! -name SHA2
   echo '```'
   echo
   echo "O pacote só vale para o commit acima: PDF regerado a partir de outro"
-  echo "estado não corresponde a esta liberação. Arquivos derivados não são"
-  echo "versionados (ver docs/plm/PLANO.md §6)."
+  echo "estado não corresponde a ele. Arquivos derivados não são versionados"
+  echo "(ver docs/plm/PLANO.md §5)."
 } > MANIFEST.md
 cd "$ROOT"
 

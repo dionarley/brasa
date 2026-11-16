@@ -5,8 +5,7 @@ cálculos e relatórios. Abra pelo GridCraft web (<http://127.0.0.1:8088>) ou us
 CLI (`tools/gridcraft/gridcraft.sh cli …`); ver
 [`../tools/gridcraft/README.md`](../tools/gridcraft/README.md).
 
-Os `.xlsx` daqui **não entram no git** (arquivos binários, histórico ruim): o
-rascunho fica local e a versão que vale é entregue como arquivo de um item no
-TeamCraft, com revisão — o mesmo caminho dos PDFs em `dist/`. A planilha que for
-fonte de um número publicado em documento controlado precisa ser indicada no
-próprio documento (nota ou referência).
+Os `.xlsx` daqui **não entram no git** (arquivos binários, histórico ruim): são
+rascunho local. Resultado que entra em documento vai para o Markdown, com o
+caminho da planilha citado no próprio texto; resultado que define peça (massa,
+material, custo) entra na BOM do conjunto no PLM.

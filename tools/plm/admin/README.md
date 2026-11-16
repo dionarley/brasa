@@ -104,6 +104,7 @@ tools/plm/admin/teamcraft_tokens.sh revoke --id 4ded81ef-433d-46e7-9d47-1aa738cd
 4. `../teamcraft_backup.sh` — o backup leva banco (logos, tokens, ECOs) e vault.
 5. `git status` no projeto: o que é conteúdo versionado entra em commit próprio.
 
-O `scripts` não alteram a versão do produto: logo e administração da instância
-não são revisão de documento controlado. Mudança de documento é `build.sh` +
-revisão + ECO no TeamCraft (ver [`../../docs/plm/PLANO.md`](../../docs/plm/PLANO.md)).
+Os scripts não alteram a forma do produto: logo e administração da instância não
+são revisão de peça. Mudança de documentação é commit (e `build.sh` para o PDF);
+revisão de peça e conjunto é ECO no TeamCraft — a fronteira está em
+[`../../docs/plm/PLANO.md`](../../docs/plm/PLANO.md) §1.

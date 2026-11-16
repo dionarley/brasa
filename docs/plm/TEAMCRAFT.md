@@ -1,24 +1,13 @@
----
-title: "Brasa (PS-001) — TeamCraft: instalação, operação e registro"
-subtitle: "PDM local, ciclo de revisões, MCP e backup"
-docid: "PS-001-PL-003"
-revision: "C"
-status: "Aprovado"
-date: "2026-11-15"
-author: "Dionarley"
-project: "Brasa — estanhador 550 W / 127 V (PS-001, estudo)"
----
-
 # 1. Objetivo
 
 Este documento descreve a instância do **TeamCraft** usada como PDM do PS-001:
 o que nela é registrado, como foi instalada, como se trabalha no dia a dia, como o
 OpenCode consulta os dados e como o conjunto é salvo e restaurado.
 
-O [PLANO.md](PLANO.md) define o processo (códigos, estados, papéis e liberação);
-este documento é o **manual da ferramenta** que passou a guardar esse processo. O
-[REGISTRO.md](REGISTRO.md) continua sendo o índice legível dos documentos, agora
-acompanhado do registro mestre do TeamCraft.
+O [PLANO.md](PLANO.md) define a fronteira (o que é item de PLM e o que é arquivo
+de git), os estados e a liberação; este documento é o **manual da ferramenta** que
+guarda a estrutura do produto. O [REGISTRO.md](REGISTRO.md) é o índice legível:
+quais peças existem, em que revisão, e onde cada documento está no git.
 
 Escopo: instância **local**, em `127.0.0.1`, para um projeto de estudo. Não há
 exposição na rede, TLS, SSO nem backup remoto. O TeamCraft está em
@@ -28,27 +17,30 @@ desenvolvimento (versão 0.2.7) e não substitui um PDM certificado.
 
 | Conceito | No PS-001 |
 |---|---|
-| **Item** | peça, conjunto ou documento com número fixo (`PS-001`, `PS-001-LM-01`, `PS-001-PL-003`) |
+| **Item** | peça ou conjunto com número fixo (`PS-001`, `PS-001-LM-01`) — não documento |
 | **Revisão** | letra (`A`, `B`, …) com estado `in_work`, `in_review`, `released` ou `obsolete` |
 | **Arquivo** | versão imutável no vault, endereçada por sha256, com pasta e comentário |
 | **BOM** | estrutura do conjunto: 16 linhas, com quantidade, número de posição e nota |
-| **Referência** | ligação documentada entre o conjunto e os documentos controlados |
+| **Referência** | ligação do conjunto a desenho ou especificação; hoje só sobrevive em revisão antiga |
 | **ECO** | ordem de mudança que libera revisões em conjunto, com revisão de outra pessoa |
 | **ECR** | pedido de mudança (opcional; este projeto usa ECO direto para correções já analisadas) |
 
-Regra que vale a partir desta revisão: **revisão liberada no TeamCraft é a que vale**.
-O git continua guardando a fonte (`.sc`, Markdown, scripts) e o histórico do texto; o
-TeamCraft guarda os arquivos publicados, o estado de cada revisão e quem aprovou.
+Regra: **revisão de peça liberada no TeamCraft é a que vale** — é ela que diz a
+forma, o material e a quantidade. Documentação e código não são item: vivem no git
+e mudam por commit (ver [PLANO.md](PLANO.md) §1). O TeamCraft guarda também os
+arquivos da revisão liberada (`.sc`, STEP, 3MF) e quem aprovou.
 
 ## 2.1 Estados e correspondência com o PLANO
 
-| PLANO (rev. D) | TeamCraft | Significado |
+| PLANO §3 | TeamCraft | Significado |
 |---|---|---|
-| Rascunho | `in_work` | em edição, sob check-out do autor |
-| Em revisão | `in_review` | ECO submetida, aguardando parecer |
-| Aprovado | `released` (revisão) | revisão liberada; arquivos congelados |
-| Publicado | `released` + tag git | pacote `dist/v<versao>/` com manifesto |
-| Obsoleto | `obsolete` | substituído por revisão posterior |
+| `in_work` | `in_work` | em edição, sob check-out do autor |
+| `in_review` | `in_review` | ECO submetida, aguardando parecer |
+| `released` | `released` | revisão liberada; arquivos congelados |
+| `obsolete` | `obsolete` | substituída por revisão posterior |
+
+Não há estado “publicado” separado: a tag `vX.Y.Z` é do repo, não do item, e a
+mensagem dela lista as revisões liberadas junto.
 
 # 3. Instalação
 
@@ -197,18 +189,18 @@ TOK=$(cat ~/teamcraft/.admin_token)
 
 # pegar a revisão mais nova e colocá-la em trabalho
 curl -s -X POST -H "Authorization: Bearer $TOK" \
-  $API/items/PS-001-DR-001/revisions/latest/revise
+  $API/items/PS-001-LM-05/revisions/latest/revise
 
 # enviar um arquivo (multipart, com pasta e comentário)
 curl -s -X POST -H "Authorization: Bearer $TOK" \
-  -F file=@dist/v0.19.0/PS-001-US-001_rB_uso.pdf \
-  -F 'folders={"PS-001-US-001_rB_uso.pdf":"docs"}' \
-  -F comment='manual de uso rev. B' \
-  $API/items/PS-001-US-001/revisions/B/files
+  -F file=@cad/solidcraft/PS-001-LM-05.step \
+  -F 'folders={"PS-001-LM-05.step":"cad"}' \
+  -F comment='STEP da revisão B: ponta em U com 1,5 mm a mais' \
+  $API/items/PS-001-LM-05/revisions/B/files
 
 # devolver sem liberar (opcional)
 curl -s -X POST -H "Authorization: Bearer $TOK" \
-  $API/items/PS-001-DR-001/revisions/B/checkin
+  $API/items/PS-001-LM-05/revisions/B/checkin
 ```
 
 Arquivos são imutáveis: reenviar o mesmo nome cria **outra versão** do mesmo
@@ -284,22 +276,22 @@ Grupo de projeto `PS-001` — **Brasa**, estanhador 550 W / 127 V, visibilidade
 |---|---|---:|
 | Conjunto | `PS-001` | 1 |
 | Peças | `PS-001-LM-01` … `PS-001-LM-16` | 16 |
-| Documentos | `PS-001-DR-001`, `-US-001`, `-CO-001`, `-PL-001`, `-PL-002`, `-LM-001`, `-PL-003` | 7 |
+| Documentos (legado) | `PS-001-DR-001`, `-US-001`, `-CO-001`, `-PL-001`, `-PL-002`, `-LM-001`, `-PL-003` | 7 |
 
 O conjunto `PS-001` tem no vault: `PS-001.sc`, STEP AP242, 3MF e cinco renders
-(`frontal`, `iso`, `perfil`, `topo`, `trafo`). Os documentos têm os PDFs
-publicados; o `DR-001` tem também o DXF verificado e o `LM-001` o CSV da BOM.
+(`frontal`, `iso`, `perfil`, `topo`, `trafo`). Os sete itens de documento são
+sobra do modelo antigo: continuam `released` porque sair de linha exige ECO
+(pendência 2 de [PLANO.md](PLANO.md)).
 
 ## 7.2 Estrutura e referências
 
 - BOM do conjunto: 16 linhas, iguais ao `docs/construcao/BOM.csv` (quantidade,
   material, dimensões e volume estão na descrição do item; o corpo do modelo e a
-  posição vão na nota da linha).
-- Referências do conjunto (revisão A): `DR-001` (drawing) e `US-001`, `CO-001`,
-  `PL-001`, `PL-002`, `LM-001` (specification). O `PL-003` entra no registro pelo
-  `PL-002` rev. B; a revisão A do conjunto foi liberada antes da existência dele e
-  não é reaberta só para criar a referência — o vínculo aparece na próxima revisão
-  do conjunto.
+  posição vão na nota da linha). A BOM no PLM é a verdade; o CSV é a exportação.
+- Referências do conjunto: a revisão B ainda aponta os seis documentos da revisão
+  A (`DR-001`, `US-001`, `CO-001`, `PL-001`, `PL-002`, `LM-001`). A próxima
+  revisão do conjunto tira todas e deixa só desenho, se houver. Documento não
+  entra mais como referência de conjunto: o texto está no git.
 
 ## 7.3 Visualização 3D
 
@@ -326,6 +318,10 @@ A migração inicial é reproduzível por `tools/plm/teamcraft_migrate.py`; a se
 liberação, por `tools/plm/teamcraft_docs_b.py`; a identidade própria, por
 `tools/plm/teamcraft_identity.py`. Os scripts leem os artefatos de `dist/v<versao>/` e
 são idempotentes (não repetem item, arquivo por sha256, linha, referência ou aprovação).
+
+Daqui em diante a ECO trata **só de peça e conjunto**. As quatro acima incluem
+documentos porque foram liberadas no modelo antigo; obsoletá-los é a pendência 2
+do [PLANO.md](PLANO.md).
 
 # 8. Backup e restauração
 
@@ -376,7 +372,7 @@ curl -s http://127.0.0.1:8080/readyz
 ```
 
 Conferir depois: `/api/v1/items?project=PS-001`, `vault check` e a abertura de um
-PDF do `DR-001`. O cache de previews se refaz sozinho na primeira visualização.
+STEP do conjunto. O cache de previews se refaz sozinho na primeira visualização.
 
 # 9. Segurança e limites
 
@@ -387,7 +383,7 @@ PDF do `DR-001`. O cache de previews se refaz sozinho na primeira visualização
   escrever dados liberados.
 - O TeamCraft 0.2.7 é software em desenvolvimento; a liberação registrada aqui não
   substitui revisão humana. O PS-001 continua sendo **estudo não certificado**, em
-  127 V — ver `LEGAL.md` e o `US-001`.
+  127 V — ver `LEGAL.md` e `docs/uso/USO.md`.
 - O vault cresce com cada versão de arquivo; não há expurgo automático. Rodar
   `teamcraft vault gc --apply` só depois de conferir a lista e com backup recente.
 
@@ -399,13 +395,13 @@ PDF do `DR-001`. O cache de previews se refaz sozinho na primeira visualização
 - [ ] BOM e referências completos antes de submeter a ECO.
 - [ ] `readiness` sem bloqueios.
 - [ ] ECO aprovada por usuário diferente do autor.
-- [ ] Tag git e `dist/v<versao>/` com manifesto conferido.
+- [ ] `CHANGELOG.md` com a entrada e o commit (o pacote de `dist/` só vale para ele).
 - [ ] Backup do dia gerado e testado.
 
 # 11. Histórico deste documento
 
-| Rev. | Data | Mudança |
-|---|---|---|
-| A | 2026-11-14 | primeira emissão: instalação 0.2.7, operação, MCP, migração do PS-001 e backup |
-| B | 2026-11-14 | identidade **Brasa**: instância, grupo e ECO 3; exemplo de consulta com 24 itens |
-| C | 2026-11-15 | scripts de administração (`tools/plm/admin/`) no lugar do `pkill`; nova seção 3.6 e restauração pelo serviço |
+Sem tabela de revisões: este arquivo é do git, e o histórico é
+
+```sh
+git log --follow -- docs/plm/TEAMCRAFT.md
+```
