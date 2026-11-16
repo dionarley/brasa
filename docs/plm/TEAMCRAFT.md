@@ -280,8 +280,7 @@ Grupo de projeto `PS-001` — **Brasa**, estanhador 550 W / 127 V, visibilidade
 
 O conjunto `PS-001` tem no vault: `PS-001.sc`, STEP AP242, 3MF e cinco renders
 (`frontal`, `iso`, `perfil`, `topo`, `trafo`). Os sete itens de documento são
-sobra do modelo antigo: continuam `released` porque sair de linha exige ECO
-(pendência 2 de [PLANO.md](PLANO.md)).
+sobra do modelo antigo e estão `obsolete` desde 16/11/2026.
 
 ## 7.2 Estrutura e referências
 

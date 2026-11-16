@@ -110,7 +110,7 @@ no commit.
 | # | Pendência | Impacto | Dono |
 |---|---|---|---|
 | 1 | Renumerar as 16 peças para 3 dígitos (`-01` → `-001`) | ECR-000001 aceita, falta executar | autor |
-| 2 | Obsoletar os itens de documento `PS-001-CO-001`, `-DR-001`, `-LM-001` e tirar as referências do conjunto | sobra do modelo antigo, confunde a leitura | autor |
+| 2 | Tirar as referências do conjunto aos itens de documento obsoletos | `PS-001` rev. B aponta para 6 itens em `obsolete` | autor |
 | 3 | Densidade por material (massa real) | BOM e manual sem massa | autor |
 | 4 | Cotas finas de montagem na prancha | a prancha cobre envelope e detalhe, não a furação | autor |
 | 5 | Ensaio de isolação documentado | critério de segurança sem evidência | autor |

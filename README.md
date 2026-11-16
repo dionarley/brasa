@@ -189,8 +189,8 @@ As revisões de peça e conjunto ficam em uma instância local do
   `CHG-000004` fechou o guia de construção.
 
 Os sete itens de **documento** (`PS-001-PL-00x`, `-US-001`, `-CO-001`, `-DR-001`,
-`-LM-001`) são sobra de quando a documentação era controlada por ECO; continuam
-`released` até a ECO de obsolescência. O estado de cada item está em
+`-LM-001`) são sobra de quando a documentação era controlada por ECO e estão
+**obsoletos** desde 16/11/2026. O estado de cada item está em
 [`docs/plm/REGISTRO.md`](docs/plm/REGISTRO.md).
 
 A instalação, a operação, o MCP do OpenCode e o backup estão em

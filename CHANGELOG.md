@@ -28,10 +28,14 @@ documento não tem “revisão aprovada” — tem diff.
 - `tools/plm/build.sh`: PDFs nomeados pelo slug (`uso.pdf`, `plano-plm.pdf`), sem
   código de documento nem revisão; `BOM.csv` sai com o nome do arquivo-fonte.
 
-### Pendente no TeamCraft
-- Sete itens de documento (`PS-001-PL-00x`, `-US-001`, `-CO-001`, `-DR-001`,
-  `-LM-001`) continuam `released`; sair de linha exige ECO.
-- ECR-000001 (peças em três dígitos) aceita, execução pendente.
+### Feito no TeamCraft
+- Os sete itens de documento (`PS-001-PL-00x`, `-US-001`, `-CO-001`, `-DR-001`,
+  `-LM-001`) foram **obsoletados** (política do grupo não exige ECO para
+  obsolescência). O conjunto `PS-001` rev. B ainda os referencia; a próxima
+  revisão tira as referências.
+- ECR-000001: não é possível renumerar item no TeamCraft 0.2.7 (`PATCH` aceita só
+  grupo, unidade e classificação). A ECR recebeu a nota com os dois caminhos —
+  manter os números de 2 dígitos ou migrar por substituição.
 
 ## [0.20.0] — 2026-11-15
 

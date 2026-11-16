@@ -45,21 +45,22 @@ nota da linha da BOM. `docs/construcao/BOM.csv` é a exportação dessa estrutur
 
 Sete itens de **documento** foram criados quando a documentação era controlada
 por revisão e ECO. Eles não têm mais papel: o texto está no git e o PDF é derivado.
-Continuam `released` porque sair de linha exige ECO — pendência 2 do plano.
+Foram **obsoletados em 16/11/2026** — a política do grupo `PS-001` não exige ECO
+para obsolescência, então a mudança foi direta e está no `item_history`.
 
 | Item | Nome | Rev. | Estado |
 |---|---|---|---|
-| `PS-001-CO-001` | Guia de construção (estudo) | C | `released` |
-| `PS-001-US-001` | Manual de uso e segurança | B | `released` |
-| `PS-001-DR-001` | Prancha 2D A2 — conjunto geral | A | `released` |
-| `PS-001-LM-001` | Lista de materiais (BOM) | A | `released` |
-| `PS-001-PL-001` | Plano de ciclo de vida (PLM) | D | `released` |
-| `PS-001-PL-002` | Registro mestre de documentos | D | `released` |
-| `PS-001-PL-003` | TeamCraft: instalação, operação e registro | C | `released` |
+| `PS-001-CO-001` | Guia de construção (estudo) | C | `obsolete` |
+| `PS-001-US-001` | Manual de uso e segurança | B | `obsolete` |
+| `PS-001-DR-001` | Prancha 2D A2 — conjunto geral | A | `obsolete` |
+| `PS-001-LM-001` | Lista de materiais (BOM) | A | `obsolete` |
+| `PS-001-PL-001` | Plano de ciclo de vida (PLM) | D | `obsolete` |
+| `PS-001-PL-002` | Registro mestre de documentos | D | `obsolete` |
+| `PS-001-PL-003` | TeamCraft: instalação, operação e registro | C | `obsolete` |
 
-O conjunto `PS-001` rev. B ainda os referencia como *documento controlado*. A
-próxima revisão do conjunto tira as referências; até lá, a leitura vale é a deste
-registro.
+O conjunto `PS-001` rev. B ainda os referencia como *documento controlado* — são
+referências a itens obsoletos. A próxima revisão do conjunto as tira; até lá, a
+leitura que vale é a deste registro.
 
 ## 4. Documentação (git)
 
