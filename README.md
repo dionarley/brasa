@@ -2,7 +2,7 @@
 
 <p align="center"><img src="branding/brasa-wide.svg" alt="Brasa — estanhador 550 W / 127 V" height="96"></p>
 
-**Licença:** [CC BY-NC-SA 4.0](LICENSE) (conteúdo próprio) · **Versão:** 0.21.0 ·
+**Licença:** [CC BY-NC-SA 4.0](LICENSE) (conteúdo próprio) · **Versão:** 0.22.0 ·
 **Estado:** modelo 3D aprovado; documentação no git; prancha 2D A2 publicada;
 peças e conjunto com revisão liberada no TeamCraft.
 
@@ -17,7 +17,7 @@ reutilizar qualquer coisa.
 
 | Entrega | Situação |
 |---|---|
-| Modelo 3D paramétrico (`cad/solidcraft/PS-001.sc`) | **aprovado** — 22 corpos, 0 erros, 448,4 cm³ |
+| Modelo 3D paramétrico (`cad/solidcraft/PS-001.sc`) | **aprovado** — montagem de 14 peças (22 posições), 0 erros, 448,4 cm³, 1.721 g |
 | Renders de conferência (`out/plot/ps001_v15_*.png`) | gerados (não versionados) |
 | Exportações STEP/3MF | **regeradas** da versão aprovada (derivadas, fora do git) |
 | Prancha 2D A2 | **publicada** — vistas em 1º diedro, detalhe 1:1, cotas de envelope, BOM (`out/draw/`, derivada) |

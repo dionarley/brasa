@@ -11,35 +11,40 @@ listada no §4.
 |---|---|---|---|---|
 | `PS-001` | Brasa — estanhador 550 W / 127 V | B | `released` | `PS-001.sc`, `PS-001.step` (AP242), `PS-001.3mf`, 5 renders |
 
-BOM: 16 linhas, uma por peça do §2. Massa e custo ainda não preenchidos (pendência
-3 e 4 do plano).
+BOM: 16 linhas, uma por peça do §2. Massa do conjunto no modelo: **1.721 g** (soma
+das peças). Custo ainda não preenchido (pendência 4 do plano); o `mass_kg` da
+revisão no TeamCraft continua nulo até a revisão nova (§2).
 
 ## 2. Peças
 
-Todas em revisão **A**, `released`. A coluna **corpo** é o nome no
-`cad/solidcraft/PS-001.sc` — é o que liga o item à geometria.
+Todas em revisão **A**, `released`. Cada peça é um arquivo nativo em
+`cad/solidcraft/parts/`; `PS-001.sc` é a montagem — 14 links, 22 posições —
+e a coluna **arquivo** é o que liga o item à geometria.
 
-| Item | Nome | Qtd. | Corpo no modelo |
-|---|---|---:|---|
-| `PS-001-LM-01` | Núcleo EI-75 (pacote de chapas) | 1 | `Nucleo` |
-| `PS-001-LM-02` | Carretel do primário | 1 | `Bobina` |
-| `PS-001-LM-03` | Fio de cobre esmaltado AWG 28 | 1 | `Fio_primario` |
-| `PS-001-LM-04` | Fita de cobre do secundário | 1 | `Secundario` |
-| `PS-001-LM-05` | Ponta em U | 1 | `Ponta_U` |
-| `PS-001-LM-06` | Cantoneira do transformador | 4 | `Canto_dir_sup`, `Canto_dir_inf`, `Canto_esq_sup`, `Canto_esq_inf` |
-| `PS-001-LM-07` | Parafuso M5 das cantoneiras | 4 | `Parafuso_canto_*` |
-| `PS-001-LM-08` | Parafuso M5 da ponteira | 2 | `Parafuso_ponta_sup`, `Parafuso_ponta_inf` |
-| `PS-001-LM-09` | Porca M5 da ponteira | 2 | `Porca_ponta_sup`, `Porca_ponta_inf` |
-| `PS-001-LM-10` | Cabo / empunhadura | 1 | `Cabo` |
-| `PS-001-LM-11` | Chave | 1 | `Chave` |
-| `PS-001-LM-12` | Tecla | 1 | `Tecla` |
-| `PS-001-LM-13` | Prensa-cabo | 1 | `Prensa_cabo` |
-| `PS-001-LM-14` | Cabo de força | 1 | `Cabo_forca` |
-| `PS-001-LM-15` | Isolante entre primário e secundário | 1 | — (não modelado) |
-| `PS-001-LM-16` | Estanho e fluxo | 1 | — (consumível) |
+| Item | Nome | Qtd. | Arquivo nativo | Massa unit. (g) |
+|---|---|---:|---|---:|
+| `PS-001-LM-01` | Núcleo EI-75 (pacote de chapas) | 1 | `parts/PS-001-LM-01.sc` | 1.139,08 |
+| `PS-001-LM-02` | Carretel do primário | 1 | `parts/PS-001-LM-02.sc` | 32,81 |
+| `PS-001-LM-03` | Fio de cobre esmaltado AWG 28 | 1 | `parts/PS-001-LM-03.sc` | 5,90 |
+| `PS-001-LM-04` | Fita de cobre do secundário | 1 | `parts/PS-001-LM-04.sc` | 91,93 |
+| `PS-001-LM-05` | Ponta em U | 1 | `parts/PS-001-LM-05.sc` | 21,43 |
+| `PS-001-LM-06` | Cantoneira do transformador | 4 | `parts/PS-001-LM-06.sc` | 43,62 |
+| `PS-001-LM-07` | Parafuso M5 das cantoneiras | 4 | `parts/PS-001-LM-07.sc` | 14,51 |
+| `PS-001-LM-08` | Parafuso M5 da ponteira | 2 | `parts/PS-001-LM-08.sc` | 6,49 |
+| `PS-001-LM-09` | Porca M5 da ponteira | 2 | `parts/PS-001-LM-09.sc` | 2,47 |
+| `PS-001-LM-10` | Cabo / empunhadura | 1 | `parts/PS-001-LM-10.sc` | 161,25 |
+| `PS-001-LM-11` | Chave | 1 | `parts/PS-001-LM-11.sc` | 7,29 |
+| `PS-001-LM-12` | Tecla | 1 | `parts/PS-001-LM-12.sc` | 2,61 |
+| `PS-001-LM-13` | Prensa-cabo | 1 | `parts/PS-001-LM-13.sc` | 1,63 |
+| `PS-001-LM-14` | Cabo de força | 1 | `parts/PS-001-LM-14.sc` | 6,62 |
+| `PS-001-LM-15` | Isolante entre primário e secundário | 1 | — (não modelado) | — |
+| `PS-001-LM-16` | Estanho e fluxo | 1 | — (consumível) | — |
 
-Detalhe de material, dimensão e volume de cada uma está na descrição do item e na
-nota da linha da BOM. `docs/construcao/BOM.csv` é a exportação dessa estrutura.
+Cada peça tem material atribuído (densidade em `g/cm³`): silício 7,65; aço 7,85;
+aço zincado 7,87; baquelite 1,40; cobre esmaltado 8,94; cobre 8,96; madeira 0,75;
+ABS 1,04; borracha 1,10; PVC 1,35. Detalhe de dimensão e volume está na descrição
+do item e na nota da linha da BOM; `docs/construcao/BOM.csv` é a exportação dessa
+estrutura.
 
 Os números de 2 dígitos são históricos e **ficam**: o TeamCraft não renomeia item e
 a ECR-000001 foi decidida em 16/11/2026 por manter a numeração (a lista de
@@ -91,7 +96,8 @@ conjunto. Nenhum deles tem revisão de letra.
 | PDFs e manifesto | `tools/plm/build.sh` | `dist/v<versao>/` |
 | Site | `site/docs.sh build` | `site/build/` |
 | Renders | `screenshot` do SolidCraft | `dist/v<versao>/renders/` |
-| STEP / 3MF | exportação do SolidCraft | `cad/solidcraft/` e vault do conjunto |
+| STEP do conjunto e das peças | exportação do SolidCraft | `cad/solidcraft/PS-001.step` e `cad/solidcraft/parts/*.step` |
+| 3MF e renders | exportação do SolidCraft | `cad/solidcraft/` e `dist/v<versao>/renders/` |
 | DXF da prancha | OpenCADStudio | `out/draw/` |
 | Backup do PDM | `tools/plm/teamcraft_backup.sh` | `~/teamcraft/backups/` |
 

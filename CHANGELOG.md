@@ -6,6 +6,38 @@ documentação** (não a uma API). Enquanto a série for `0.x`, mudanças de for
 ocorrer em versões menores. Cada tag do git corresponde a um estado do arquivo
 `cad/solidcraft/PS-001.sc`.
 
+## [0.22.0] — 2026-11-16
+
+**Marco: o modelo vira dado de PLM.** O `PS-001.sc` deixa de ser um arquivo plano
+com 22 corpos e passa a ser uma montagem de **14 peças nativas em 22 posições**,
+cada uma com material, densidade, massa e STEP próprio. É a fase 0 do plano do
+PLM: sem peça isolada e material, o PDM não tem o que versionar.
+
+### Alterado
+- `cad/solidcraft/PS-001.sc`: montagem com 14 links; as 8 posições repetidas
+  (cantoneiras, parafusos de canto, parafuso e porca da ponteira) são ocorrências
+  da mesma definição, não cópias de história.
+- `cad/solidcraft/parts/`: 14 arquivos nativos (`PS-001-LM-01…14.sc`) e o STEP de
+  cada peça.
+- material por corpo, com densidade: silício 7,65; aço 7,85; aço zincado 7,87;
+  baquelite 1,40; cobre esmaltado 8,94; cobre 8,96; madeira 0,75; ABS 1,04;
+  borracha 1,10; PVC 1,35 g/cm³.
+- `docs/plm/REGISTRO.md`: a coluna "corpo no modelo" virou "arquivo nativo", com a
+  massa unitária de cada peça.
+
+### Verificado
+- Volume do conjunto **448.434 mm³** contra 448.433 mm³ do arquivo plano
+  (diferença 0,0002%); 22 corpos fechados.
+- Massa soma **1.721 g** (núcleo 1.139 g, cabo 161 g, secundário 92 g, o resto).
+- BOM do app: 14 linhas, quantidades 1, 1, 1, 1, 1, 4, 4, 2, 2, 1, 1, 1, 1, 1 —
+  idêntica ao `docs/construcao/BOM.csv`.
+- STEP do conjunto (assembly) e STEP de cada peça exportados da montagem nova.
+
+### Nota de ferramenta
+O lote (22 posições, 14 extrações, 14 STEPs) foi feito pelo `solidcraft-cli` em
+modo headless: a janela do app congela ao carregar o conjunto inteiro. A janela
+fica para ver e ajustar; o lote é do CLI.
+
 ## [0.21.0] — 2026-11-16
 
 **Marco: a fronteira do PLM.** O PLM passa a guardar **peça e montagem**; código e

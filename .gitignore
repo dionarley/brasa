@@ -39,6 +39,7 @@ cad/solidcraft/*.bak
 cad/solidcraft/*_backup.sc
 cad/solidcraft/.~*.lock
 cad/solidcraft/*.step
+cad/solidcraft/parts/*.step
 cad/solidcraft/*.3mf
 
 # ------------------------------------------------- referências de terceiros
