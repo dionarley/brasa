@@ -9,17 +9,22 @@ listada no §4.
 
 | Item | Nome | Rev. | Estado | Arquivos no vault |
 |---|---|---|---|---|
-| `PS-001` | Brasa — estanhador 550 W / 127 V | B | `released` | `PS-001.sc`, `PS-001.step` (AP242), `PS-001.3mf`, 5 renders |
+| `PS-001` | Brasa — estanhador 550 W / 127 V | C | `released` | `cad/PS-001.sc` (montagem nativa), `cad/PS-001.step`, `cad/PS-001.3mf`, 5 renders |
 
-BOM: 16 linhas, uma por peça do §2. Massa do conjunto no modelo: **1.721 g** (soma
-das peças). Custo ainda não preenchido (pendência 4 do plano); o `mass_kg` da
-revisão no TeamCraft continua nulo até a revisão nova (§2).
+BOM: 16 linhas, uma por peça do §2 — as 14 com geometria passam a apontar para a
+revisão **B** das peças. Massa do conjunto: **1,72098 kg** (soma das peças), gravada
+na revisão C. Custo ainda não preenchido (pendência 4 do plano).
+
+A rev. C entrou junto com as peças na ECO **CHG-000010** ("modelo nativo: 14 peças
++ montagem"), submetida e aprovada pelo usuário `revisor`. O release de um produto
+é atômico: peça e montagem foram liberadas no mesmo movimento.
 
 ## 2. Peças
 
-Todas em revisão **A**, `released`. Cada peça é um arquivo nativo em
-`cad/solidcraft/parts/`; `PS-001.sc` é a montagem — 14 links, 22 posições —
-e a coluna **arquivo** é o que liga o item à geometria.
+Todas em revisão **B**, `released`, com `mass_kg` e material na revisão. Cada peça é
+um arquivo nativo em `cad/solidcraft/parts/`; `PS-001.sc` é a montagem — 14 links,
+22 posições — e a coluna **arquivo** é o que liga o item à geometria. Cada revisão
+guarda o `.sc` e o STEP derivado (`cad/<item>.sc` e `cad/<item>.step` no vault).
 
 | Item | Nome | Qtd. | Arquivo nativo | Massa unit. (g) |
 |---|---|---:|---|---:|

@@ -41,6 +41,14 @@ O lote (22 posições, 14 extrações, 14 STEPs) foi feito pelo `solidcraft-cli`
 modo headless: a janela do app congela ao carregar o conjunto inteiro. A janela
 fica para ver e ajustar; o lote é do CLI.
 
+### No PDM
+- 14 peças em revisão **B** e a montagem em revisão **C**, `released`, cada uma com
+  o `.sc` nativo e o STEP derivado no vault, material e `mass_kg`.
+- ECO **CHG-000010** ("modelo nativo: 14 peças + montagem") submetida e aprovada
+  pelo usuário revisor: o release de um produto é atômico, peça e montagem juntas.
+- O `forja-pdm` passou a ler o `.sc` nativo: árvore da montagem, miniatura por peça
+  e a cena montada a partir das peças (22 posições), sem abrir o SolidCraft.
+
 ## [0.21.0] — 2026-11-16
 
 **Marco: a fronteira do PLM.** O PLM passa a guardar **peça e montagem**; código e
