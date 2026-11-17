@@ -16,7 +16,10 @@ PLM: sem peça isolada e material, o PDM não tem o que versionar.
 ### Alterado
 - `cad/solidcraft/PS-001.sc`: montagem com 14 links; as 8 posições repetidas
   (cantoneiras, parafusos de canto, parafuso e porca da ponteira) são ocorrências
-  da mesma definição, não cópias de história.
+  da mesma definição, não cópias de história. Foram posicionadas com
+  `solid.pattern.rectangular` — 2×2 nas cantoneiras e nos parafusos de canto,
+  linear nos da ponteira. O formato `solidcraft/48` grava as ocorrências, não o
+  nó do padrão: o padrão é a ferramenta de autoria, a ocorrência é o resultado.
 - `cad/solidcraft/parts/`: 14 arquivos nativos (`PS-001-LM-01…14.sc`) e o STEP de
   cada peça.
 - material por corpo, com densidade: silício 7,65; aço 7,85; aço zincado 7,87;
